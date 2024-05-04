@@ -18,8 +18,8 @@
             <Font size="34.0" />
          </font>
       </Label>
-      <TextField layoutX="194.0" layoutY="246.0" prefHeight="35.0" prefWidth="212.0" />
-      <Button layoutX="493.0" layoutY="347.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="58.0" text="Next" />
-      <Button layoutX="433.0" layoutY="251.0" mnemonicParsing="false" onAction="#verifyButtonClicked" prefHeight="25.0" prefWidth="48.0" text="Verify" />
+      <TextField fx:id="nameTextField" layoutX="194.0" layoutY="246.0" prefHeight="35.0" prefWidth="212.0" />
+      <Button fx:id="nextButton" layoutX="493.0" layoutY="347.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="58.0" text="Next" />
+      <Button fx:id="verifyButton" layoutX="433.0" layoutY="251.0" mnemonicParsing="false" onAction="#verifyButtonClicked" prefHeight="25.0" prefWidth="79.0" text="Verify" />
    </children>
 </AnchorPane>

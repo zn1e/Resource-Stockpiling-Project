@@ -13,7 +13,7 @@ import java.io.IOException;
  * Class starts the javaFX application window
  * @author seng201 teaching team
  */
-public class MainWindow extends Application {
+public class FXWindow extends Application {
     /**
      * Opens the gui with the fxml content specified in resources/fxml/main.fxml
      * @param primaryStage The current fxml stage, handled by javaFX Application class
@@ -21,13 +21,14 @@ public class MainWindow extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/NameSelection.fxml"));
-        Parent root = loader.load();
-
+        FXMLLoader baseloader = new FXMLLoader(getClass().getResource("/fxml/fx_wrapper.fxml"));
+        Parent root = baseloader.load();
+        FXWrapper fxWrapper = baseloader.getController();
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Setup Screen");
+        primaryStage.setTitle("<Game Name>");
         primaryStage.show();
+        fxWrapper.init(primaryStage);
     }
     /**
      * Launches the FXML application, this must be called from another class (in this cass App.java) otherwise JavaFX
