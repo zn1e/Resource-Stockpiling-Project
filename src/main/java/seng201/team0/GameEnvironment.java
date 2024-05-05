@@ -11,43 +11,69 @@ import java.util.function.Consumer;
  * It includes methods to launch setup screen, main screen, and clear screen.
  */
 public class GameEnvironment {
-    private String name; // Name of game environment.
-    private List<Tower> towerList; // List of towers.
-    private final List<Tower> defaultTowers = new ArrayList<>(); // Initializes an array list for default towers.
-    private final Consumer<GameEnvironment> setupScreenLauncher; // Launch the setup screen.
-    //private final Consumer<GameEnvironment> mainScreenLauncher; // Launch the main screen.
-    private final Runnable clearScreen; // Clear the screen.
+    private String playerName; // name of the player
+    private int numberOfRounds; // number of rounds of game
+    private String roundDifficulty; // difficulty of round
+    private List<Tower> towerList; // list of towers
+    private final List<Tower> defaultTowers = new ArrayList<>(); // initializes an array list for default towers
+    private final Consumer<GameEnvironment> setupScreenLauncher1; // launch the name selection screen
+    private final Consumer<GameEnvironment> setupScreenLauncher2; // launch the number of round and difficulty selection screen
+    private final Consumer<GameEnvironment> setupScreenLauncher3; // launch the tower selection screen
+    //private final Consumer<GameEnvironment> mainScreenLauncher; // launch the main screen
+    private final Runnable clearScreen; // clear the screen
 
     /**
      * Constructor for Game Environment class.
-     * Initializes the setup screen launcher, main screen launcher, and clear screen functionality.
+     * Initializes the setup screens launcher, main screen launcher, and clear screen functionality.
      * Also, initializes the list of default towers with unique resource type, and default base stats.
-     * @param setupScreenLauncher Consumer function to launch setup screen.
+     * Launches the name selection screen.
+     * @param setupScreenLauncher1 Consumer function to launch name selection screen.
+     * @param setupScreenLauncher2 Consumer function to launch number of round and difficulty selection screen.
+     * @param setupScreenLauncher3 Consumer function to launch tower selection screen.
      * @param //mainScreenLauncher Consumer function to launch main screen.
      * @param clearScreen Runnable to clear the screen.
-     * It also launches the setup screen.
+     *
      */
-    public GameEnvironment(Consumer<GameEnvironment> setupScreenLauncher, Runnable clearScreen){
-        this.setupScreenLauncher = setupScreenLauncher;
+    public GameEnvironment(Consumer<GameEnvironment> setupScreenLauncher1, Consumer<GameEnvironment> setupScreenLauncher2,
+                           Consumer<GameEnvironment> setupScreenLauncher3, Runnable clearScreen){
+        this.setupScreenLauncher1 = setupScreenLauncher1;
+        this.setupScreenLauncher2 = setupScreenLauncher2;
+        this.setupScreenLauncher3 = setupScreenLauncher3;
         //this.mainScreenLauncher = mainScreenLauncher;
         this.clearScreen = clearScreen;
-        launchSetupScreen();
+        launchSetupScreen1();
     }
 
     /**
      * Method for getting the name of game environment.
      * @return A string representing the name of game environment.
      */
-    public String getName(){
-        return name;
+    public String getPlayerName(){
+        return playerName;
     }
 
     /**
      * Sets the new name of game environment.
      * @param name A string representing the new name of game environment.
      */
-    public void setName(String name){
-        this.name = name;
+    public void setPlayerName(String name){
+        this.playerName = name;
+    }
+
+    /**
+     * Sets the number of rounds of the game.
+     * @param numberOfRounds An int representing the number of rounds of the game.
+     */
+    public void setNumberOfRounds(int numberOfRounds){
+        this.numberOfRounds = numberOfRounds;
+    }
+
+    /**
+     * Sets the round difficulty.
+     * @param roundDifficulty A string representing the round difficulty.
+     */
+    public void setRoundDifficulty(String roundDifficulty){
+        this.roundDifficulty = roundDifficulty;
     }
 
     /**
@@ -75,10 +101,26 @@ public class GameEnvironment {
     }
 
     /**
-     * Launches the setup screen.
+     * Launches the name selection screen.
      */
-    public void launchSetupScreen(){
-        setupScreenLauncher.accept(this);
+    public void launchSetupScreen1(){
+        setupScreenLauncher1.accept(this);
+    }
+
+    /**
+     * Clears the screen then launches the number of round and difficulty selection screen.
+     */
+    public void launchSetupScreen2(){
+        clearScreen.run();
+        setupScreenLauncher2.accept(this);
+    }
+
+    /**
+     * Clears the screen then launches the tower selection screen.
+     */
+    public void launchSetupScreen3(){
+        clearScreen.run();
+        setupScreenLauncher3.accept(this);
     }
 
     /**

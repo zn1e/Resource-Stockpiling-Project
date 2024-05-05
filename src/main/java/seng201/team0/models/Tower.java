@@ -6,12 +6,12 @@ package seng201.team0.models;
  * reloading speed, resource type, level, and cost.
  */
 public class Tower {
-    private String name; // Name of tower.
-    private String resourceType; // Resource type of tower.
-    private int resourceAmount; // Resource amount of tower.
-    private int reloadSpeed; // Reload speed of tower.
-    private int level; // Level of tower.
-    private int cost; // Cost of tower.
+    private String name; // name of tower
+    private String resourceType; // resource type of tower
+    private int resourceAmount; // resource amount of tower
+    private int reloadSpeed; // reload speed of tower
+    private int level; // level of tower
+    private int cost; // cost of tower
 
     /**
      *Constructor for Tower.
@@ -78,9 +78,7 @@ public class Tower {
 
     /**
      * Method for upgrading the level of tower.
-     * Increases the level of tower by 1.
-     * Increases the resource amount by 500.
-     * Increases the reload speed by 25.
+     * Increases the level of tower by 1, resource amount by 500, and reload speed by 25.
      */
     public void levelUp(){
         level++;

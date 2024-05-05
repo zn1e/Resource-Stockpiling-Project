@@ -9,17 +9,33 @@ import seng201.team0.GameEnvironment;
 
 import java.io.IOException;
 
+/**
+ * FXWrapper class handles the initialization and setup of JavaFX application screens.
+ */
 public class FXWrapper {
     @FXML
     private AnchorPane anchorPane;
     private Stage stage;
 
+    /**
+     * Initialize the game environment with the provided stage and setup screen launch methods.
+     * @param stage The primary stage for the JavaFX application.
+     */
     public void init(Stage stage) {
         this.stage = stage;
-        new GameEnvironment(this::launchSetupScreen, this::clearAnchorPane);
+        new GameEnvironment(
+                this::launchSetupScreen1, // launch method for name selection screen
+                this::launchSetupScreen2, // launch method for number of rounds and difficulty screen
+                this::launchSetupScreen3, // launch method for tower selection screen
+                this::clearAnchorPane // method to clear screen
+        );
     }
 
-    public void launchSetupScreen(GameEnvironment gameEnvironment) {
+    /**
+     * Launches the name selection setup screen with the provided game environment.
+     * @param gameEnvironment The game environment containing necessary data and functionalities.
+     */
+    public void launchSetupScreen1(GameEnvironment gameEnvironment) {
         try {
             FXMLLoader setupLoader = new FXMLLoader(getClass().getResource("/fxml/NameSelection.fxml"));
             // provide a custom Controller with parameters
@@ -32,6 +48,42 @@ public class FXWrapper {
         }
     }
 
+    /**
+     * Launches the number of rounds and difficulty selection with the provided game environment.
+     * @param gameEnvironment The game environment containing necessary data and functionalities.
+     */
+    public void launchSetupScreen2(GameEnvironment gameEnvironment){
+        try {
+            FXMLLoader setupLoader = new FXMLLoader(getClass().getResource("/fxml/RoundAndDifficultySelection.fxml"));
+            // provide a custom Controller with parameters
+            setupLoader.setControllerFactory(param -> new RoundAndDifficultySelectionController(gameEnvironment));
+            Parent setupParent  = setupLoader.load();
+            anchorPane.getChildren().add(setupParent);
+            stage.setTitle("<Game Name>");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    /**
+     * Launches the tower selection with the provided game environment.
+     * @param gameEnvironment The game environment containing necessary data and functionalities.
+     */
+    public void launchSetupScreen3(GameEnvironment gameEnvironment){
+        try {
+            FXMLLoader setupLoader = new FXMLLoader(getClass().getResource("/fxml/RoundAndDifficultySelection.fxml"));
+            // provide a custom Controller with parameters
+            setupLoader.setControllerFactory(param -> new RoundAndDifficultySelectionController(gameEnvironment));
+            Parent setupParent  = setupLoader.load();
+            anchorPane.getChildren().add(setupParent);
+            stage.setTitle("<Game Name>");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Clears the screen by removing the children of the anchor pane.
+     */
     public void clearAnchorPane() {
         anchorPane.getChildren().removeAll(anchorPane.getChildren());
     }
