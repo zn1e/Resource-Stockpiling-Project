@@ -85,5 +85,4 @@ public class Tower {
         resourceAmount += 500;
         reloadSpeed += 25;
     }
-
 }

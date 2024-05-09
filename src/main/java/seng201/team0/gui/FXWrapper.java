@@ -70,9 +70,9 @@ public class FXWrapper {
      */
     public void launchSetupScreen3(GameEnvironment gameEnvironment){
         try {
-            FXMLLoader setupLoader = new FXMLLoader(getClass().getResource("/fxml/RoundAndDifficultySelection.fxml"));
+            FXMLLoader setupLoader = new FXMLLoader(getClass().getResource("/fxml/TowerSelection.fxml"));
             // provide a custom Controller with parameters
-            setupLoader.setControllerFactory(param -> new RoundAndDifficultySelectionController(gameEnvironment));
+            setupLoader.setControllerFactory(param -> new TowerSelectionController(gameEnvironment));
             Parent setupParent  = setupLoader.load();
             anchorPane.getChildren().add(setupParent);
             stage.setTitle("<Game Name>");
