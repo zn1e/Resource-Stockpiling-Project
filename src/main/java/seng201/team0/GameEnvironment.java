@@ -41,6 +41,9 @@ public class GameEnvironment {
         this.setupScreenLauncher3 = setupScreenLauncher3;
         //this.mainScreenLauncher = mainScreenLauncher;
         this.clearScreen = clearScreen;
+        defaultTowers.addAll(List.of(new Tower("Tower 1", "eye"), new Tower("Tower 2", "brain"),
+                new Tower("Tower 3", "heart"), new Tower("Tower 4", "liver"),
+                new Tower("Tower 5", "kidney")));
         launchSetupScreen1();
     }
 

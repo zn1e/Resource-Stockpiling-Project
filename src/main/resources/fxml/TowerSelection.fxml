@@ -1,33 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.TowerSelectionController">
    <children>
-      <Button layoutX="544.0" layoutY="360.0" mnemonicParsing="false" text="Next" />
-      <Text layoutX="133.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tower Selector">
+      <Text layoutX="281.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tower Selection">
          <font>
-            <Font size="50.0" />
+            <Font name="Creepster" size="40.0" />
          </font>
       </Text>
-      <ToggleButton layoutX="36.0" layoutY="122.0" mnemonicParsing="false" text="Tower 1" />
-      <ToggleButton layoutX="266.0" layoutY="122.0" mnemonicParsing="false" text="Tower 2" />
-      <ToggleButton layoutX="486.0" layoutY="122.0" mnemonicParsing="false" text="Tower 3" />
-      <ToggleButton layoutX="151.0" layoutY="261.0" mnemonicParsing="false" text="Tower 4" />
-      <ToggleButton layoutX="371.0" layoutY="261.0" mnemonicParsing="false" text="Tower 5" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <TextArea layoutX="11.0" layoutY="161.0" prefHeight="90.0" prefWidth="129.0" text="Picture here&#10;Reload speed:&#10;Resource Type:&#10;&#10;" />
-      <TextArea layoutX="230.0" layoutY="161.0" prefHeight="90.0" prefWidth="129.0" text="Picture here&#10;Reload speed:&#10;Resource Type:&#10;&#10;" />
-      <TextArea layoutX="450.0" layoutY="161.0" prefHeight="90.0" prefWidth="129.0" text="Picture here&#10;Reload speed:&#10;Resource Type:&#10;&#10;" />
-      <TextArea layoutX="115.0" layoutY="295.0" prefHeight="90.0" prefWidth="129.0" text="Picture here&#10;Reload speed:&#10;Resource Type:&#10;&#10;" />
-      <TextArea layoutX="344.0" layoutY="295.0" prefHeight="90.0" prefWidth="129.0" text="Picture here&#10;Reload speed:&#10;Resource Type:&#10;&#10;&#10;" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select 3 or more" />
-      <Text layoutX="255.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select 3 towers" />
+      <Text layoutX="296.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select 3 starting towers">
+         <font>
+            <Font name="Comic Sans MS" size="18.0" />
+         </font></Text>
+      <Button fx:id="startButton" layoutX="657.0" layoutY="532.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="76.0" text="Start">
+         <font>
+            <Font name="Comic Sans MS" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="tower1Button" layoutX="168.0" layoutY="180.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="88.0" text="Tower 1">
+         <font>
+            <Font name="Comic Sans MS" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="tower2Button" layoutX="364.0" layoutY="180.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="88.0" text="Tower 2">
+         <font>
+            <Font name="Comic Sans MS" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="tower3Button" layoutX="569.0" layoutY="180.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="88.0" text="Tower 3">
+         <font>
+            <Font name="Comic Sans MS" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="tower4Button" layoutX="252.0" layoutY="352.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="88.0" text="Tower 4">
+         <font>
+            <Font name="Comic Sans MS" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="tower5Button" layoutX="490.0" layoutY="352.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="88.0" text="Tower 5">
+         <font>
+            <Font name="Comic Sans MS" size="16.0" />
+         </font>
+      </Button>
+      <Label layoutX="37.0" layoutY="538.0" text="Selected Towers:">
+         <font>
+            <Font name="Comic Sans MS" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="selectedTower1Button" layoutX="193.0" layoutY="533.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="88.0">
+         <font>
+            <Font name="Comic Sans MS" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="selectedTower2Button" layoutX="296.0" layoutY="533.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="88.0">
+         <font>
+            <Font name="Comic Sans MS" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="selectedTower3Button" layoutX="400.0" layoutY="533.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="88.0">
+         <font>
+            <Font name="Comic Sans MS" size="16.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
