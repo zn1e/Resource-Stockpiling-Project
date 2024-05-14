@@ -68,6 +68,9 @@ public class Tower {
         return resourceType;
     }
 
+    public int getLevel(){
+        return level;
+    }
     /**
      * Sets the resource type of the tower.
      * @param resourceType A String representing the new resource type of tower.

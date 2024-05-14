@@ -47,6 +47,8 @@ public class RoundAndDifficultySelectionController {
         nextButton.setOnAction(event -> nextButtonClicked());
         // set the easy difficulty as default
         easyToggleButton.setSelected(true);
+        // initialize round value
+        numberOfRounds = (int) roundSlider.getValue();
     }
 
     /**

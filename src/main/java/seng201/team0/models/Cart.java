@@ -1,23 +1,20 @@
 package seng201.team0.models;
 
-public class Cart {
-    private String size;
-    private int resourceCapacity;
-    private int speed;
 
-    public Cart(String size, int resourceCapacity, int speed){
-        this.size = size;
+public class Cart {
+    private int resourceCapacity;
+    private double speed;
+
+    public Cart(int resourceCapacity, double speed){
         this.resourceCapacity = resourceCapacity;
         this.speed = speed;
-    }
-    public String getSize(){
-        return this.size;
+
     }
     public int getResourceCapacity(){
-        return this.resourceCapacity;
+        return resourceCapacity;
     }
-    public int getSpeed(){
-        return this.speed;
+    public double getSpeed(){
+        return speed;
     }
 
 }

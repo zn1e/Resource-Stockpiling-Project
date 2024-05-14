@@ -27,6 +27,7 @@ public class FXWrapper {
                 this::launchSetupScreen1, // launch method for name selection screen
                 this::launchSetupScreen2, // launch method for number of rounds and difficulty screen
                 this::launchSetupScreen3, // launch method for tower selection screen
+                this::launchMainScreen,
                 this::clearAnchorPane // method to clear screen
         );
     }
@@ -88,18 +89,17 @@ public class FXWrapper {
         anchorPane.getChildren().removeAll(anchorPane.getChildren());
     }
 
-    /**
-    public void launchMainScreen(RocketManager rocketManager) {
+    public void launchMainScreen(GameEnvironment gameEnvironment) {
         try {
-            FXMLLoader mainScreenLoader = new FXMLLoader(getClass().getResource("/fxml/main_screen.fxml"));
-            mainScreenLoader.setControllerFactory(param -> new MainScreenController(rocketManager));
+            FXMLLoader mainScreenLoader = new FXMLLoader(getClass().getResource("/fxml/GameArena.fxml"));
+            mainScreenLoader.setControllerFactory(param -> new GameArena(gameEnvironment));
             Parent setupParent  = mainScreenLoader.load();
-            pane.getChildren().add(setupParent);
-            stage.setTitle("Rocket Manager Main Screen");
+            anchorPane.getChildren().add(setupParent);
+            stage.setTitle("<Game Name>");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-     **/
+
 
 }
