@@ -40,7 +40,7 @@ public class FXWrapper {
         try {
             FXMLLoader setupLoader = new FXMLLoader(getClass().getResource("/fxml/NameSelection.fxml"));
             // provide a custom Controller with parameters
-            setupLoader.setControllerFactory(param -> new NameSelectionController(gameEnvironment));
+            setupLoader.setControllerFactory(param -> new NameSelection(gameEnvironment));
             Parent setupParent  = setupLoader.load();
             anchorPane.getChildren().add(setupParent);
             stage.setTitle("<Game Name>");
@@ -57,7 +57,7 @@ public class FXWrapper {
         try {
             FXMLLoader setupLoader = new FXMLLoader(getClass().getResource("/fxml/RoundAndDifficultySelection.fxml"));
             // provide a custom Controller with parameters
-            setupLoader.setControllerFactory(param -> new RoundAndDifficultySelectionController(gameEnvironment));
+            setupLoader.setControllerFactory(param -> new RoundAndDifficultySelection(gameEnvironment));
             Parent setupParent  = setupLoader.load();
             anchorPane.getChildren().add(setupParent);
             stage.setTitle("<Game Name>");
@@ -73,7 +73,7 @@ public class FXWrapper {
         try {
             FXMLLoader setupLoader = new FXMLLoader(getClass().getResource("/fxml/TowerSelection.fxml"));
             // provide a custom Controller with parameters
-            setupLoader.setControllerFactory(param -> new TowerSelectionController(gameEnvironment));
+            setupLoader.setControllerFactory(param -> new TowerSelection(gameEnvironment));
             Parent setupParent  = setupLoader.load();
             anchorPane.getChildren().add(setupParent);
             stage.setTitle("<Game Name>");

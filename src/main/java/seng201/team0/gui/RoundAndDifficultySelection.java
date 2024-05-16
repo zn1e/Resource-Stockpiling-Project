@@ -11,7 +11,7 @@ import seng201.team0.GameEnvironment;
  * Controller class for the number of rounds and difficulty selection screen.
  * Handles the user input for the number of rounds and difficulty.
  */
-public class RoundAndDifficultySelectionController {
+public class RoundAndDifficultySelection {
     private GameEnvironment gameEnvironment; // the game environment instance
     private int numberOfRounds; // number of rounds
 
@@ -29,7 +29,7 @@ public class RoundAndDifficultySelectionController {
      * Constructor for the RoundAndDifficultySelectionController with the specified game environment instance.
      * @param gameEnvironment The game environment instance to associate with this controller.
      */
-    public RoundAndDifficultySelectionController(GameEnvironment gameEnvironment){
+    public RoundAndDifficultySelection(GameEnvironment gameEnvironment){
         this.gameEnvironment = gameEnvironment;
     }
 
