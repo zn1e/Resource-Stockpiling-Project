@@ -14,7 +14,7 @@ public class GameEnvironment {
     private String playerName; // name of the player
     private int playerGold = 50;
     private int playerPoints;
-    private int numberOfRounds; // number of rounds of game
+    private int numberOfRounds; // number of rounds of ga1me
     private int currentRound = 1;
     private String roundDifficulty; // difficulty of round
     private List<Tower> towerList; // list of towers

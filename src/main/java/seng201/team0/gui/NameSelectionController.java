@@ -34,6 +34,7 @@ public class NameSelectionController {
         verifyButton.setOnAction(event-> verifyButtonClicked());
         // set event handler for next button
         nextButton.setOnAction(event -> nextButtonClicked());
+        //set name
     }
 
     /**
@@ -46,9 +47,11 @@ public class NameSelectionController {
         if (name.length() >= 3 && name.length() <= 15 && name.matches("^[a-zA-Z0-9]+$")){
             nameVerified = true;
             verifyButton.setText("OK");
+            System.out.println("Name Valid");
         } else{
             nameVerified = false;
             verifyButton.setText("Try again");
+            System.out.println("Name invalid");
         }
     }
 
@@ -59,6 +62,7 @@ public class NameSelectionController {
     private void nextButtonClicked(){
         if (nameVerified && playerNameTextField.getText() != null){
             gameEnvironment.setPlayerName(playerNameTextField.getText());
+            System.out.println("Player name: "+ gameEnvironment.getPlayerName());
             gameEnvironment.launchSetupScreen2();
         }
     }
