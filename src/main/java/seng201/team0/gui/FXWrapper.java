@@ -28,6 +28,7 @@ public class FXWrapper {
                 this::launchSetupScreen2, // launch method for number of rounds and difficulty screen
                 this::launchSetupScreen3, // launch method for tower selection screen
                 this::launchMainScreen,
+                this::launchShopScreen,
                 this::clearAnchorPane // method to clear screen
         );
     }
@@ -94,6 +95,18 @@ public class FXWrapper {
             FXMLLoader mainScreenLoader = new FXMLLoader(getClass().getResource("/fxml/GameArena.fxml"));
             mainScreenLoader.setControllerFactory(param -> new GameArena(gameEnvironment));
             Parent setupParent  = mainScreenLoader.load();
+            anchorPane.getChildren().add(setupParent);
+            stage.setTitle("<Game Name>");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void launchShopScreen(GameEnvironment gameEnvironment) {
+        try {
+            FXMLLoader setupLoader = new FXMLLoader(getClass().getResource("/fxml/Shop.fxml"));
+            setupLoader.setControllerFactory(param -> new ShopController(gameEnvironment));
+            Parent setupParent  = setupLoader.load();
             anchorPane.getChildren().add(setupParent);
             stage.setTitle("<Game Name>");
         } catch (IOException e) {

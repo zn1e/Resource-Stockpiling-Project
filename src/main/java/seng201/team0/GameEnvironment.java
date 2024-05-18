@@ -1,6 +1,7 @@
 package seng201.team0;
 
 import seng201.team0.models.Tower;
+import seng201.team0.models.Item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,15 +15,17 @@ public class GameEnvironment {
     private String playerName; // name of the player
     private int playerGold = 50;
     private int playerPoints;
-    private int numberOfRounds; // number of rounds of ga1me
+    private int numberOfRounds; // number of rounds of game
     private int currentRound = 1;
     private String roundDifficulty; // difficulty of round
     private List<Tower> towerList; // list of towers
+    private final List<Item> defaultItems = new ArrayList<>(); // initializes an array list fot default items
     private final List<Tower> defaultTowers = new ArrayList<>(); // initializes an array list for default towers
     private final Consumer<GameEnvironment> setupScreenLauncher1; // launch the name selection screen
     private final Consumer<GameEnvironment> setupScreenLauncher2; // launch the number of round and difficulty selection screen
     private final Consumer<GameEnvironment> setupScreenLauncher3; // launch the tower selection screen
     private final Consumer<GameEnvironment> mainScreenLauncher; // launch the main screen
+    private final Consumer<GameEnvironment> shopScreenLauncher; // launch the shop screen
     private final Runnable clearScreen; // clear the screen
 
     /**
@@ -38,16 +41,19 @@ public class GameEnvironment {
      *
      */
     public GameEnvironment(Consumer<GameEnvironment> setupScreenLauncher1, Consumer<GameEnvironment> setupScreenLauncher2,
-                           Consumer<GameEnvironment> setupScreenLauncher3, Consumer<GameEnvironment> mainScreenLauncher,
+                           Consumer<GameEnvironment> setupScreenLauncher3, Consumer<GameEnvironment> mainScreenLauncher, Consumer<GameEnvironment> shopScreenLauncher,
                            Runnable clearScreen){
         this.setupScreenLauncher1 = setupScreenLauncher1;
         this.setupScreenLauncher2 = setupScreenLauncher2;
         this.setupScreenLauncher3 = setupScreenLauncher3;
         this.mainScreenLauncher = mainScreenLauncher;
+        this.shopScreenLauncher = shopScreenLauncher;
         this.clearScreen = clearScreen;
         defaultTowers.addAll(List.of(new Tower("Tower 1", "eye"), new Tower("Tower 2", "brain"),
                 new Tower("Tower 3", "heart"), new Tower("Tower 4", "liver"),
                 new Tower("Tower 5", "kidney")));
+        defaultItems.addAll(List.of(new Item("Upgrade", 50), new Item("Swap", 50),
+                new Item("Repair", 50)));
         launchSetupScreen1();
     }
 
@@ -125,6 +131,8 @@ public class GameEnvironment {
         return defaultTowers;
     }
 
+    public List<Item> getDefaultItems() { return defaultItems;}
+
     /**
      * Launches the name selection screen.
      */
@@ -156,12 +164,16 @@ public class GameEnvironment {
         launchMainScreen();
     }
 
+
     /**
      * Launches the main screen.
     **/
     public void launchMainScreen(){
         mainScreenLauncher.accept(this);
     }
+
+    public void launchShopScreen(){
+        shopScreenLauncher.accept(this);}
 
 
     /**

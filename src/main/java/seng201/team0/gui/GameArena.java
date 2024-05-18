@@ -18,6 +18,10 @@ public class GameArena {
     @FXML
     Button playButton;
     @FXML
+    Button shopButton;
+    @FXML
+    Button inventoryButton;
+    @FXML
     Label tower1NameLabel, tower2NameLabel, tower3NameLabel, tower4NameLabel, tower5NameLabel;
     @FXML
     Label tower1TypeLabel, tower2TypeLabel, tower3TypeLabel, tower4TypeLabel, tower5TypeLabel;
@@ -32,6 +36,8 @@ public class GameArena {
     public void initialize(){
         updateUI();
         playButton.setOnAction(event -> startGame());
+        shopButton.setOnAction(event -> shopButtonClicked());
+
     }
     private void updateUI(){
         goldLabel.setText(String.valueOf(gameEnvironment.getPlayerGold()));
@@ -63,5 +69,8 @@ public class GameArena {
     }
     private void startGame(){
 
+    }
+    private void shopButtonClicked(){
+        //gameEnvironment.launchShopScreen();
     }
 }
