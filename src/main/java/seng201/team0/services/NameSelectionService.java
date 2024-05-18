@@ -4,10 +4,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import seng201.team0.GameEnvironment;
 
-public class SetupScreenService {
+public class NameSelectionService {
     private GameEnvironment gameEnvironment;
     private boolean nameVerified;
-    public SetupScreenService(GameEnvironment gameEnvironment){
+    public NameSelectionService(GameEnvironment gameEnvironment){
         this.gameEnvironment = gameEnvironment;
     }
     public void setVerifyButtonAction(Button verifyButton, TextField playerNameTextField){

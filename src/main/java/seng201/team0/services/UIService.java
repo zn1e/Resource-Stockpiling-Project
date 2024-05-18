@@ -29,17 +29,19 @@ public class UIService {
         roundLabel.setText(String.format("%d of %d", gameEnvironment.getCurrentRound(), gameEnvironment.getNumberOfRounds()));
     }
 
-    public void updateTowerLabels(List<Tower> towers, Label[] nameLabels, Label[] typeLabels, Label[] speedLabels, Label[] levelLabels) {
+    public void updateTowerLabels(List<Tower> towers, Label[] nameLabels, Label[] typeLabels, Label[] amountLabels, Label[] speedLabels, Label[] levelLabels) {
         for (int i = 0; i < nameLabels.length; i++) {
             if (i < towers.size()) {
                 Tower tower = towers.get(i);
                 nameLabels[i].setText(tower.getName());
-                typeLabels[i].setText(tower.getResourceType());
-                speedLabels[i].setText(String.valueOf(tower.getReloadSpeed()));
-                levelLabels[i].setText(String.valueOf(tower.getLevel()));
+                typeLabels[i].setText("Rsrc: "+ tower.getResourceType());
+                amountLabels[i].setText("Amnt: " + tower.getResourceAmount());
+                speedLabels[i].setText("Reload spd: "+ tower.getReloadSpeed());
+                levelLabels[i].setText("Lv. " +tower.getLevel());
             } else {
                 nameLabels[i].setText("");
                 typeLabels[i].setText("");
+                amountLabels[i].setText("");
                 speedLabels[i].setText("");
                 levelLabels[i].setText("");
             }

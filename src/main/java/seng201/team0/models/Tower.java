@@ -1,6 +1,8 @@
 package seng201.team0.models;
 
 
+import javafx.scene.image.Image;
+
 /**
  * Tower class containing default stats such as resource amount,
  * reloading speed, resource type, level, and cost.
@@ -12,6 +14,7 @@ public class Tower {
     private int reloadSpeed; // reload speed of tower
     private int level; // level of tower
     private int cost; // cost of tower
+    private Image image;
 
     /**
      *Constructor for Tower.
@@ -19,13 +22,14 @@ public class Tower {
      * @param resourceType An int resource type of tower
      * Initializes the value for resource amount, reload speed, level of tower, and cost (all int type).
      */
-    public Tower(String name, String resourceType){
+    public Tower(String name, String resourceType, Image image){
         this.name = name;
         this.resourceType = resourceType;
         this.resourceAmount = 500;
         this.reloadSpeed = 25;
         this.level = 1;
         this.cost = 60;
+        this.image = image;
     }
 
     /**
@@ -75,17 +79,20 @@ public class Tower {
      * Sets the resource type of the tower.
      * @param resourceType A String representing the new resource type of tower.
      */
+
     public void setResourceType(String resourceType){
         this.resourceType = resourceType;
     }
-
+    public Image getImage(){
+        return image;
+    }
     /**
      * Method for upgrading the level of tower.
      * Increases the level of tower by 1, resource amount by 500, and reload speed by 25.
      */
     public void levelUp(){
         level++;
-        resourceAmount += 500;
+        resourceAmount += 250;
         reloadSpeed += 25;
     }
 }

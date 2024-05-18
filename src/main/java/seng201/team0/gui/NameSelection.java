@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import seng201.team0.GameEnvironment;
-import seng201.team0.services.SetupScreenService;
+import seng201.team0.services.NameSelectionService;
 
 /**
  * Controller class for the name selection screen.
@@ -12,7 +12,7 @@ import seng201.team0.services.SetupScreenService;
  */
 public class NameSelection {
     private GameEnvironment gameEnvironment; // the game environment instance
-    private SetupScreenService setupScreenService;
+    private NameSelectionService setupScreenService;
     @FXML
     private Button verifyButton, nextButton; // buttons for player name verification and proceeding to next screen
     @FXML
@@ -24,7 +24,7 @@ public class NameSelection {
      */
     public NameSelection(GameEnvironment gameEnvironment){
         this.gameEnvironment = gameEnvironment;
-        this.setupScreenService = new SetupScreenService(gameEnvironment);
+        this.setupScreenService = new NameSelectionService(gameEnvironment);
     }
 
     /**

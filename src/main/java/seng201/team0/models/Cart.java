@@ -3,18 +3,24 @@ package seng201.team0.models;
 
 public class Cart {
     private int resourceCapacity;
-    private double speed;
+    private String resourceType;
+    private int currentPosition;
 
-    public Cart(int resourceCapacity, double speed){
+    public Cart(int resourceCapacity, String resourceType, int position){
         this.resourceCapacity = resourceCapacity;
-        this.speed = speed;
-
+        this.resourceType = resourceType;
+        this.currentPosition = position;
     }
     public int getResourceCapacity(){
         return resourceCapacity;
     }
-    public double getSpeed(){
-        return speed;
+    public String getResourceType(){
+        return resourceType;
     }
-
+    public int getCurrentPosition(){
+        return currentPosition;
+    }
+    public void setCurrentPosition(int position){
+        this.currentPosition = position;
+    }
 }
