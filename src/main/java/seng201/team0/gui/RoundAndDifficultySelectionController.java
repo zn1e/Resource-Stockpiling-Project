@@ -79,8 +79,6 @@ public class RoundAndDifficultySelectionController {
         selectedButton = (ToggleButton) difficultyToggleGroup.getSelectedToggle();
         gameEnvironment.setNumberOfRounds(numberOfRounds);
         gameEnvironment.setRoundDifficulty(selectedButton.getText());
-        System.out.println("Num rounds: "+ gameEnvironment.getNumberOfRounds()+" , Difficulty: "+ gameEnvironment.getRoundDifficulty());
         gameEnvironment.launchSetupScreen3();
-
     }
 }

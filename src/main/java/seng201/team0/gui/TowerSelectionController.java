@@ -75,7 +75,6 @@ public class TowerSelectionController {
         confirmSelectedTowers();
         if (selectedTowersFlag){
             gameEnvironment.setTowerList(Arrays.stream(selectedTowers).filter((Objects::nonNull)).toList());
-            System.out.println("Selected towers! "+ gameEnvironment.getTowerList());
             gameEnvironment.closeSetupScreen();
         }
     }

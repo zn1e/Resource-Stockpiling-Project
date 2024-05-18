@@ -88,9 +88,4 @@ public class Tower {
         resourceAmount += 500;
         reloadSpeed += 25;
     }
-
-    @Override
-    public String toString() {
-        return name;
-    }
 }
