@@ -1,9 +1,12 @@
 package seng201.team0.gui;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.util.Duration;
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.Tower;
 import seng201.team0.services.TowerService;
@@ -17,6 +20,7 @@ public class GameArena {
     private TowerService towerService;
     private UIService uiService;
     private TrackService trackService;
+    private Timeline timeline;
     @FXML
     GridPane trackGrid;
     @FXML
@@ -73,6 +77,19 @@ public class GameArena {
     }
 
     private void startGame(){
-
+        trackService.initializeCarts(trackGrid);
+        trackService.maxDistanceCoveredProperty().addListener((observableValue, notCompleted, nowCompleted) -> {
+            if (nowCompleted){
+                stopGame();
+            }
+        });
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> trackService.moveCarts(trackGrid)));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+    }
+    private void stopGame(){
+        if (timeline != null){
+            timeline.stop();
+        }
     }
 }
