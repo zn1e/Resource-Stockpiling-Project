@@ -113,19 +113,29 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="tower1TypeLabel" alignment="CENTER" layoutY="53.0" prefHeight="15.0" prefWidth="70.0" text="Type">
+                  <Label fx:id="tower1TypeLabel" alignment="CENTER" layoutX="1.0" layoutY="56.0" prefHeight="15.0" prefWidth="70.0" text="Type">
                      <font>
-                        <Font name="Comic Sans MS" size="11.0" />
+                        <Font name="Comic Sans MS" size="9.0" />
                      </font>
                   </Label>
-                  <Label fx:id="tower1SpeedLabel" alignment="CENTER" layoutY="76.0" prefHeight="15.0" prefWidth="70.0" text="Speed">
+                  <Label fx:id="tower1SpeedLabel" alignment="CENTER" layoutX="1.0" layoutY="97.0" prefHeight="15.0" prefWidth="70.0" text="Speed">
                      <font>
-                        <Font name="Comic Sans MS" size="11.0" />
+                        <Font name="Comic Sans MS" size="9.0" />
                      </font>
                   </Label>
-                  <Label fx:id="tower1LevelLabel" alignment="CENTER" layoutY="98.0" prefHeight="15.0" prefWidth="70.0" text="Level">
+                  <Label fx:id="tower1LevelLabel" alignment="CENTER" layoutY="116.0" prefHeight="15.0" prefWidth="70.0" text="Level">
                      <font>
-                        <Font name="Comic Sans MS" size="11.0" />
+                        <Font name="Comic Sans MS" size="9.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tower1NameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="37.0" prefHeight="15.0" prefWidth="79.0" text="&lt;Tower&gt;">
+                     <font>
+                        <Font name="Comic Sans MS" size="9.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tower1AmountLabel" alignment="CENTER" layoutX="-1.0" layoutY="77.0" prefHeight="15.0" prefWidth="75.0" text="Amount">
+                     <font>
+                        <Font name="Comic Sans MS" size="9.0" />
                      </font>
                   </Label>
                </children>
@@ -134,17 +144,27 @@
                <children>
                   <Label fx:id="tower2TypeLabel" alignment="CENTER" layoutY="53.0" prefHeight="15.0" prefWidth="70.0" text="Type">
                      <font>
-                        <Font name="Comic Sans MS" size="11.0" />
+                        <Font name="Comic Sans MS" size="9.0" />
                      </font>
                   </Label>
-                  <Label fx:id="tower2SpeedLabel" alignment="CENTER" layoutY="76.0" prefHeight="15.0" prefWidth="70.0" text="Speed">
+                  <Label fx:id="tower2SpeedLabel" alignment="CENTER" layoutY="99.0" prefHeight="15.0" prefWidth="70.0" text="Speed">
                      <font>
-                        <Font name="Comic Sans MS" size="11.0" />
+                        <Font name="Comic Sans MS" size="9.0" />
                      </font>
                   </Label>
-                  <Label fx:id="tower2LevelLabel" alignment="CENTER" layoutY="98.0" prefHeight="15.0" prefWidth="70.0" text="Level">
+                  <Label fx:id="tower2LevelLabel" alignment="CENTER" layoutY="121.0" prefHeight="15.0" prefWidth="70.0" text="Level">
                      <font>
-                        <Font name="Comic Sans MS" size="11.0" />
+                        <Font name="Comic Sans MS" size="9.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tower2NameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-2.0" layoutY="32.0" prefHeight="15.0" prefWidth="79.0" text="&lt;Tower&gt;">
+                     <font>
+                        <Font name="Comic Sans MS" size="9.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tower2AmountLabel" alignment="CENTER" layoutX="2.0" layoutY="78.0" prefHeight="15.0" prefWidth="70.0" text="Amount">
+                     <font>
+                        <Font name="Comic Sans MS" size="9.0" />
                      </font>
                   </Label>
                </children>
@@ -153,17 +173,27 @@
                <children>
                   <Label fx:id="tower3TypeLabel" alignment="CENTER" layoutY="53.0" prefHeight="15.0" prefWidth="70.0" text="Type">
                      <font>
-                        <Font name="Comic Sans MS" size="11.0" />
+                        <Font name="Comic Sans MS" size="9.0" />
                      </font>
                   </Label>
-                  <Label fx:id="tower3SpeedLabel" alignment="CENTER" layoutY="76.0" prefHeight="15.0" prefWidth="70.0" text="Speed">
+                  <Label fx:id="tower3SpeedLabel" alignment="CENTER" layoutY="96.0" prefHeight="15.0" prefWidth="70.0" text="Speed">
                      <font>
-                        <Font name="Comic Sans MS" size="11.0" />
+                        <Font name="Comic Sans MS" size="9.0" />
                      </font>
                   </Label>
-                  <Label fx:id="tower3LevelLabel" alignment="CENTER" layoutY="98.0" prefHeight="15.0" prefWidth="70.0" text="Level">
+                  <Label fx:id="tower3LevelLabel" alignment="CENTER" layoutY="116.0" prefHeight="15.0" prefWidth="70.0" text="Level">
                      <font>
-                        <Font name="Comic Sans MS" size="11.0" />
+                        <Font name="Comic Sans MS" size="9.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tower3NameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="32.0" prefHeight="15.0" prefWidth="79.0" text="&lt;Tower&gt;">
+                     <font>
+                        <Font name="Comic Sans MS" size="9.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tower3AmountLabel" alignment="CENTER" layoutX="-2.0" layoutY="76.0" prefHeight="15.0" prefWidth="75.0" text="Amount">
+                     <font>
+                        <Font name="Comic Sans MS" size="9.0" />
                      </font>
                   </Label>
                </children>
@@ -172,17 +202,27 @@
                <children>
                   <Label fx:id="tower4TypeLabel" alignment="CENTER" layoutY="53.0" prefHeight="15.0" prefWidth="70.0" text="Type">
                      <font>
-                        <Font name="Comic Sans MS" size="11.0" />
+                        <Font name="Comic Sans MS" size="9.0" />
                      </font>
                   </Label>
-                  <Label fx:id="tower4SpeedLabel" alignment="CENTER" layoutY="76.0" prefHeight="15.0" prefWidth="70.0" text="Speed">
+                  <Label fx:id="tower4SpeedLabel" alignment="CENTER" layoutY="101.0" prefHeight="15.0" prefWidth="70.0" text="Speed">
                      <font>
-                        <Font name="Comic Sans MS" size="11.0" />
+                        <Font name="Comic Sans MS" size="9.0" />
                      </font>
                   </Label>
-                  <Label fx:id="tower4LevelLabel" alignment="CENTER" layoutY="98.0" prefHeight="15.0" prefWidth="70.0" text="Level">
+                  <Label fx:id="tower4LevelLabel" alignment="CENTER" layoutY="123.0" prefHeight="15.0" prefWidth="70.0" text="Level">
                      <font>
-                        <Font name="Comic Sans MS" size="11.0" />
+                        <Font name="Comic Sans MS" size="9.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tower4NameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="31.0" prefHeight="15.0" prefWidth="79.0" text="&lt;Tower&gt;">
+                     <font>
+                        <Font name="Comic Sans MS" size="9.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tower4AmountLabel" alignment="CENTER" layoutY="77.0" prefHeight="15.0" prefWidth="70.0" text="Amount">
+                     <font>
+                        <Font name="Comic Sans MS" size="9.0" />
                      </font>
                   </Label>
                </children>
@@ -191,17 +231,27 @@
                <children>
                   <Label fx:id="tower5TypeLabel" alignment="CENTER" layoutY="53.0" prefHeight="15.0" prefWidth="70.0" text="Type">
                      <font>
-                        <Font name="Comic Sans MS" size="11.0" />
+                        <Font name="Comic Sans MS" size="9.0" />
                      </font>
                   </Label>
-                  <Label fx:id="tower5SpeedLabel" alignment="CENTER" layoutY="76.0" prefHeight="15.0" prefWidth="70.0" text="Speed">
+                  <Label fx:id="tower5SpeedLabel" alignment="CENTER" layoutY="96.0" prefHeight="15.0" prefWidth="70.0" text="Speed">
                      <font>
-                        <Font name="Comic Sans MS" size="11.0" />
+                        <Font name="Comic Sans MS" size="9.0" />
                      </font>
                   </Label>
-                  <Label fx:id="tower5LevelLabel" alignment="CENTER" layoutY="98.0" prefHeight="15.0" prefWidth="70.0" text="Level">
+                  <Label fx:id="tower5LevelLabel" alignment="CENTER" layoutY="118.0" prefHeight="15.0" prefWidth="70.0" text="Level">
                      <font>
-                        <Font name="Comic Sans MS" size="11.0" />
+                        <Font name="Comic Sans MS" size="9.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tower5NameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="32.0" prefHeight="15.0" prefWidth="79.0" text="&lt;Tower&gt;">
+                     <font>
+                        <Font name="Comic Sans MS" size="9.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tower5AmountLabel" alignment="CENTER" layoutX="3.0" layoutY="76.0" prefHeight="15.0" prefWidth="70.0" text="Amount">
+                     <font>
+                        <Font name="Comic Sans MS" size="9.0" />
                      </font>
                   </Label>
                </children>
@@ -217,51 +267,11 @@
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: skyblue;" GridPane.columnIndex="8" GridPane.rowIndex="1" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: skyblue;" GridPane.columnIndex="9" GridPane.rowIndex="1" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: skyblue;" GridPane.columnIndex="10" GridPane.rowIndex="1" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-               <children>
-                  <Label fx:id="tower1NameLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="69.0" prefHeight="15.0" prefWidth="79.0" text="&lt;Tower&gt;">
-                     <font>
-                        <Font name="Comic Sans MS" size="11.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
-               <children>
-                  <Label fx:id="tower2NameLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="69.0" prefHeight="15.0" prefWidth="79.0" text="&lt;Tower&gt;">
-                     <font>
-                        <Font name="Comic Sans MS" size="11.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5">
-               <children>
-                  <Label fx:id="tower3NameLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="69.0" prefHeight="15.0" prefWidth="79.0" text="&lt;Tower&gt;">
-                     <font>
-                        <Font name="Comic Sans MS" size="11.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="2">
-               <children>
-                  <Label fx:id="tower4NameLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="69.0" prefHeight="15.0" prefWidth="79.0" text="&lt;Tower&gt;">
-                     <font>
-                        <Font name="Comic Sans MS" size="11.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="9">
-               <children>
-                  <Label fx:id="tower5NameLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="69.0" prefHeight="15.0" prefWidth="79.0" text="&lt;Tower&gt;">
-                     <font>
-                        <Font name="Comic Sans MS" size="11.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="9" />
          </children>
       </GridPane>
    </children>

@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class TowerSelectionController {
+public class TowerSelection {
 
     private GameEnvironment gameEnvironment; // the game environment instance
     private final Tower[] selectedTowers = new Tower[3];
@@ -28,7 +28,7 @@ public class TowerSelectionController {
      *
      * @param gameEnvironment The game environment instance to associate with this controller.
      */
-    public TowerSelectionController(GameEnvironment gameEnvironment) {
+    public TowerSelection(GameEnvironment gameEnvironment) {
         this.gameEnvironment = gameEnvironment;
     }
 
@@ -75,7 +75,6 @@ public class TowerSelectionController {
         confirmSelectedTowers();
         if (selectedTowersFlag){
             gameEnvironment.setTowerList(Arrays.stream(selectedTowers).filter((Objects::nonNull)).toList());
-            System.out.println("Selected towers! "+ gameEnvironment.getTowerList());
             gameEnvironment.closeSetupScreen();
         }
     }

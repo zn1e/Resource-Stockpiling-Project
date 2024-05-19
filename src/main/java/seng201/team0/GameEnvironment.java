@@ -1,7 +1,9 @@
 package seng201.team0;
 
+import javafx.scene.image.Image;
 import seng201.team0.models.Tower;
 import seng201.team0.models.Item;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,9 +51,7 @@ public class GameEnvironment {
         this.mainScreenLauncher = mainScreenLauncher;
         this.shopScreenLauncher = shopScreenLauncher;
         this.clearScreen = clearScreen;
-        defaultTowers.addAll(List.of(new Tower("Tower 1", "eye"), new Tower("Tower 2", "brain"),
-                new Tower("Tower 3", "heart"), new Tower("Tower 4", "liver"),
-                new Tower("Tower 5", "kidney")));
+        loadDefaultTowers();
         defaultItems.addAll(List.of(new Item("Upgrade", 50), new Item("Swap", 50),
                 new Item("Repair", 50)));
         launchSetupScreen1();
@@ -133,6 +133,16 @@ public class GameEnvironment {
 
     public List<Item> getDefaultItems() { return defaultItems;}
 
+    private void loadDefaultTowers() {
+        defaultTowers.add(new Tower("Eye Tower", "eye", loadImage("images/eye_tower.png")));
+        defaultTowers.add(new Tower("Brain Tower", "brain", loadImage("images/brain_tower.png")));
+        defaultTowers.add(new Tower("Heart Tower", "heart", loadImage("images/heart_tower.png")));
+        defaultTowers.add(new Tower("Liver Tower", "liver", loadImage("images/liver_tower.png")));
+        defaultTowers.add(new Tower("Kidney Tower", "kidney", loadImage("images/kidney_tower.png")));
+    }
+    private Image loadImage(String path) {
+        return new Image(getClass().getResourceAsStream("/" + path));
+    }
     /**
      * Launches the name selection screen.
      */
