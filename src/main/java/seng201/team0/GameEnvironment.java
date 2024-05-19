@@ -21,13 +21,13 @@ public class GameEnvironment {
     private int currentRound = 1;
     private String roundDifficulty; // difficulty of round
     private List<Tower> towerList; // list of towers
-    private final List<Item> defaultItems = new ArrayList<>(); // initializes an array list fot default items
     private final List<Tower> defaultTowers = new ArrayList<>(); // initializes an array list for default towers
+    private final List<Item> defaultItems = new ArrayList<>(); // initializes an array list for default items
     private final Consumer<GameEnvironment> setupScreenLauncher1; // launch the name selection screen
     private final Consumer<GameEnvironment> setupScreenLauncher2; // launch the number of round and difficulty selection screen
     private final Consumer<GameEnvironment> setupScreenLauncher3; // launch the tower selection screen
     private final Consumer<GameEnvironment> mainScreenLauncher; // launch the main screen
-    private final Consumer<GameEnvironment> shopScreenLauncher; // launch the shop screen
+    private final Consumer<GameEnvironment> shopScreenLauncher; // launch shop screen
     private final Runnable clearScreen; // clear the screen
 
     /**
@@ -43,7 +43,8 @@ public class GameEnvironment {
      *
      */
     public GameEnvironment(Consumer<GameEnvironment> setupScreenLauncher1, Consumer<GameEnvironment> setupScreenLauncher2,
-                           Consumer<GameEnvironment> setupScreenLauncher3, Consumer<GameEnvironment> mainScreenLauncher, Consumer<GameEnvironment> shopScreenLauncher,
+                           Consumer<GameEnvironment> setupScreenLauncher3, Consumer<GameEnvironment> mainScreenLauncher,
+                           Consumer<GameEnvironment> shopScreenLauncher,
                            Runnable clearScreen){
         this.setupScreenLauncher1 = setupScreenLauncher1;
         this.setupScreenLauncher2 = setupScreenLauncher2;
@@ -52,10 +53,11 @@ public class GameEnvironment {
         this.shopScreenLauncher = shopScreenLauncher;
         this.clearScreen = clearScreen;
         loadDefaultTowers();
-        defaultItems.addAll(List.of(new Item("Upgrade", 50), new Item("Swap", 50),
-                new Item("Repair", 50)));
+        loadDefaultItems();
         launchSetupScreen1();
     }
+
+
 
     /**
      * Method for getting the player name.
@@ -131,7 +133,10 @@ public class GameEnvironment {
         return defaultTowers;
     }
 
-    public List<Item> getDefaultItems() { return defaultItems;}
+    public List<Item> getDefaultItems() {
+        return defaultItems;
+    }
+
 
     private void loadDefaultTowers() {
         defaultTowers.add(new Tower("Eye Tower", "eye", loadImage("images/eye_tower.png")));
@@ -140,6 +145,12 @@ public class GameEnvironment {
         defaultTowers.add(new Tower("Liver Tower", "liver", loadImage("images/liver_tower.png")));
         defaultTowers.add(new Tower("Kidney Tower", "kidney", loadImage("images/kidney_tower.png")));
     }
+    private void loadDefaultItems() {
+        defaultItems.add(new Item("Upgrade", 50, loadImage("images/upgrade_item.png")));
+        defaultItems.add(new  Item("Swap type", 50, loadImage("images/swap_item.png")));
+        defaultItems.add(new Item("Repair", 50, loadImage("images/repair_item.png")));
+    }
+
     private Image loadImage(String path) {
         return new Image(getClass().getResourceAsStream("/" + path));
     }
@@ -183,7 +194,9 @@ public class GameEnvironment {
     }
 
     public void launchShopScreen(){
-        shopScreenLauncher.accept(this);}
+        clearScreen.run();
+        shopScreenLauncher.accept(this);
+    }
 
 
     /**

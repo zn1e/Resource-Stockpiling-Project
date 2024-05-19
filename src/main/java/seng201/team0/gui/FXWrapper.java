@@ -82,6 +82,18 @@ public class FXWrapper {
             e.printStackTrace();
         }
     }
+    public void launchShopScreen(GameEnvironment gameEnvironment){
+        try {
+            FXMLLoader mainScreenLoader = new FXMLLoader(getClass().getResource("/fxml/Shop.fxml"));
+            // provide a custom Controller with parameters
+            mainScreenLoader.setControllerFactory(param -> new ShopController(gameEnvironment));
+            Parent setupParent  = mainScreenLoader.load();
+            anchorPane.getChildren().add(setupParent);
+            stage.setTitle("<Game Name>");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Clears the screen by removing the children of the anchor pane.
@@ -102,17 +114,7 @@ public class FXWrapper {
         }
     }
 
-    public void launchShopScreen(GameEnvironment gameEnvironment) {
-        try {
-            FXMLLoader setupLoader = new FXMLLoader(getClass().getResource("/fxml/Shop.fxml"));
-            setupLoader.setControllerFactory(param -> new ShopController(gameEnvironment));
-            Parent setupParent  = setupLoader.load();
-            anchorPane.getChildren().add(setupParent);
-            stage.setTitle("<Game Name>");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 
 
 }
