@@ -17,8 +17,12 @@ public class GameEnvironment {
     private String playerName; // name of the player
     private int playerGold = 50;
     private int playerPoints;
+    private int goldGained;
+    private int pointsGained;
     private int numberOfRounds; // number of rounds of game
+    private int completedRounds;
     private int currentRound = 1;
+    private boolean victoryFlag;
     private String roundDifficulty; // difficulty of round
     private List<Tower> towerList; // list of towers
     private final List<Tower> defaultTowers = new ArrayList<>(); // initializes an array list for default towers
@@ -28,6 +32,7 @@ public class GameEnvironment {
     private final Consumer<GameEnvironment> setupScreenLauncher3; // launch the tower selection screen
     private final Consumer<GameEnvironment> mainScreenLauncher; // launch the main screen
     private final Consumer<GameEnvironment> shopScreenLauncher; // launch shop screen
+    private final Consumer<GameEnvironment> endScreenLauncher;
     private final Runnable clearScreen; // clear the screen
 
     /**
@@ -44,20 +49,19 @@ public class GameEnvironment {
      */
     public GameEnvironment(Consumer<GameEnvironment> setupScreenLauncher1, Consumer<GameEnvironment> setupScreenLauncher2,
                            Consumer<GameEnvironment> setupScreenLauncher3, Consumer<GameEnvironment> mainScreenLauncher,
-                           Consumer<GameEnvironment> shopScreenLauncher,
+                           Consumer<GameEnvironment> shopScreenLauncher, Consumer<GameEnvironment> endScreenLauncher,
                            Runnable clearScreen){
         this.setupScreenLauncher1 = setupScreenLauncher1;
         this.setupScreenLauncher2 = setupScreenLauncher2;
         this.setupScreenLauncher3 = setupScreenLauncher3;
         this.mainScreenLauncher = mainScreenLauncher;
         this.shopScreenLauncher = shopScreenLauncher;
+        this.endScreenLauncher = endScreenLauncher;
         this.clearScreen = clearScreen;
         loadDefaultTowers();
         loadDefaultItems();
         launchSetupScreen1();
     }
-
-
 
     /**
      * Method for getting the player name.
@@ -77,17 +81,31 @@ public class GameEnvironment {
     public int getPlayerGold(){
         return playerGold;
     }
-    public void setPlayerGold(int playerGold){
-        this.playerGold = playerGold;
+    public void addPlayerGold(int addGold){
+        this.playerGold += addGold;
+        this.goldGained += addGold;
+    }
+    public int getGoldGained(){
+        return goldGained;
+    }
+    public int getPointsGained(){
+        return pointsGained;
     }
     public int getPlayerPoints(){
         return playerPoints;
     }
-    public void setPlayerPoints(int playerPoints){
-        this.playerPoints = playerPoints;
+    public void addPlayerPoints(int addPoints){
+        this.playerPoints += addPoints;
+        this.pointsGained += addPoints;
     }
     public int getCurrentRound(){
         return currentRound;
+    }
+    public int getCompletedRounds(){
+        return completedRounds;
+    }
+    public void incrementCurrentRound(){
+        currentRound++;
     }
     /**
      * Sets the number of rounds of the game.
@@ -95,6 +113,9 @@ public class GameEnvironment {
      */
     public void setNumberOfRounds(int numberOfRounds){
         this.numberOfRounds = numberOfRounds;
+    }
+    public void incrementCompletedRounds(){
+        completedRounds++;
     }
     public int getNumberOfRounds(){
         return numberOfRounds;
@@ -136,7 +157,12 @@ public class GameEnvironment {
     public List<Item> getDefaultItems() {
         return defaultItems;
     }
-
+    public void setVictoryFlag(boolean flag){
+        this.victoryFlag = flag;
+    }
+    public boolean getVictoryFlag(){
+        return victoryFlag;
+    }
 
     private void loadDefaultTowers() {
         defaultTowers.add(new Tower("Eye Tower", "eye", loadImage("images/eye_tower.png")));
@@ -190,6 +216,7 @@ public class GameEnvironment {
      * Launches the main screen.
     **/
     public void launchMainScreen(){
+        clearScreen.run();
         mainScreenLauncher.accept(this);
     }
 
@@ -197,12 +224,15 @@ public class GameEnvironment {
         clearScreen.run();
         shopScreenLauncher.accept(this);
     }
-
+    public void launchEndScreen(){
+        clearScreen.run();
+        endScreenLauncher.accept(this);
+    }
 
     /**
      * Closes the main screen and exit the system.
      */
-    public void closeMainScreen(){
+    public void closeScreen(){
         System.exit(0);
     }
 

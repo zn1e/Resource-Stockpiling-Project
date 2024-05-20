@@ -29,6 +29,7 @@ public class FXWrapper {
                 this::launchSetupScreen3, // launch method for tower selection screen
                 this::launchMainScreen,
                 this::launchShopScreen,
+                this::launchEndScreen,
                 this::clearAnchorPane // method to clear screen
         );
     }
@@ -44,7 +45,7 @@ public class FXWrapper {
             setupLoader.setControllerFactory(param -> new NameSelection(gameEnvironment));
             Parent setupParent  = setupLoader.load();
             anchorPane.getChildren().add(setupParent);
-            stage.setTitle("<Game Name>");
+            stage.setTitle("Organ Factory");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -61,7 +62,7 @@ public class FXWrapper {
             setupLoader.setControllerFactory(param -> new RoundAndDifficultySelection(gameEnvironment));
             Parent setupParent  = setupLoader.load();
             anchorPane.getChildren().add(setupParent);
-            stage.setTitle("<Game Name>");
+            stage.setTitle("Organ Factory");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -77,7 +78,7 @@ public class FXWrapper {
             setupLoader.setControllerFactory(param -> new TowerSelection(gameEnvironment));
             Parent setupParent  = setupLoader.load();
             anchorPane.getChildren().add(setupParent);
-            stage.setTitle("<Game Name>");
+            stage.setTitle("Organ Factory");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -89,7 +90,7 @@ public class FXWrapper {
             mainScreenLoader.setControllerFactory(param -> new ShopController(gameEnvironment));
             Parent setupParent  = mainScreenLoader.load();
             anchorPane.getChildren().add(setupParent);
-            stage.setTitle("<Game Name>");
+            stage.setTitle("Organ Factory");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -108,13 +109,22 @@ public class FXWrapper {
             mainScreenLoader.setControllerFactory(param -> new GameArena(gameEnvironment));
             Parent setupParent  = mainScreenLoader.load();
             anchorPane.getChildren().add(setupParent);
-            stage.setTitle("<Game Name>");
+            stage.setTitle("Organ Factory");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
+    public void launchEndScreen(GameEnvironment gameEnvironment) {
+        try {
+            FXMLLoader mainScreenLoader = new FXMLLoader(getClass().getResource("/fxml/EndScreen.fxml"));
+            mainScreenLoader.setControllerFactory(param -> new GameArena(gameEnvironment));
+            Parent setupParent  = mainScreenLoader.load();
+            anchorPane.getChildren().add(setupParent);
+            stage.setTitle("Organ Factory");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }

@@ -3,7 +3,7 @@ package seng201.team0.gui;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import seng201.team0.GameEnvironment;
-import seng201.team0.models.Inventory;
+//import seng201.team0.models.Inventory;
 import javafx.scene.control.Button;
 import seng201.team0.models.Item;
 import javafx.scene.image.ImageView;
@@ -17,8 +17,8 @@ public class ShopController {
 
     private final UIService uiService;
     private GameEnvironment gameEnvironment; // the game environment instance
-    private Inventory itemInventory;
-    private Inventory towerInventory;
+   // private Inventory itemInventory;
+   // private Inventory towerInventory;
     private Item selectedItem;
     private Tower selectedTower;
 

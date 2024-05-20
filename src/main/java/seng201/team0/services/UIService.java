@@ -22,7 +22,7 @@ public class UIService {
     }
 
     public void updateDifficultyLabel(Label difficultyLabel) {
-        difficultyLabel.setText(gameEnvironment.getRoundDifficulty());
+        difficultyLabel.setText(gameEnvironment.getRoundDifficulty().toUpperCase());
     }
 
     public void updateRoundLabel(Label roundLabel) {

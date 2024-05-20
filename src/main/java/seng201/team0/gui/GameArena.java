@@ -8,7 +8,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
 import seng201.team0.GameEnvironment;
+import seng201.team0.models.Cart;
 import seng201.team0.models.Tower;
+import seng201.team0.services.RoundService;
 import seng201.team0.services.TowerService;
 import seng201.team0.services.TrackService;
 import seng201.team0.services.UIService;
@@ -20,6 +22,7 @@ public class GameArena {
     private TowerService towerService;
     private UIService uiService;
     private TrackService trackService;
+    private RoundService roundService;
     private Timeline timeline;
     @FXML
     GridPane trackGrid;
@@ -48,13 +51,14 @@ public class GameArena {
         this.towerService = new TowerService(gameEnvironment);
         this.uiService = new UIService(gameEnvironment);
         this.trackService = new TrackService(gameEnvironment);
+        this.roundService = new RoundService(gameEnvironment);
     }
     public void initialize(){
         updateUI();
         setupTowers(trackGrid);
         setupTrack(trackGrid);
         playButton.setOnAction(event -> startGame());
-        shopButton.setOnAction(event -> shopButtonClicked());
+        // shopButton.setOnAction(event -> shopButtonClicked());
 
     }
     private void updateUI() {
@@ -83,10 +87,6 @@ public class GameArena {
     }
 
     private void startGame(){
-
-    }
-    private void shopButtonClicked(){
-        //gameEnvironment.launchShopScreen();
         trackService.initializeCarts(trackGrid);
         trackService.maxDistanceCoveredProperty().addListener((observableValue, notCompleted, nowCompleted) -> {
             if (nowCompleted){
@@ -97,9 +97,18 @@ public class GameArena {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
+    private void shopButtonClicked(){
+        //gameEnvironment.launchShopScreen();
+    }
     private void stopGame(){
         if (timeline != null){
             timeline.stop();
+            afterRoundInteraction();
         }
+    }
+    private void afterRoundInteraction(){
+        List<Cart> notFilledCarts = trackService.getNotFilledCarts();
+        boolean allCartsFilled = notFilledCarts.isEmpty();
+        roundService.afterRound(allCartsFilled);
     }
 }

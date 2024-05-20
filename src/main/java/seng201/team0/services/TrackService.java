@@ -37,6 +37,9 @@ public class TrackService {
         setResourceTypeList();
         random = new Random();
     }
+    public List<Cart> getNotFilledCarts(){
+        return notFilledCarts;
+    }
     public void setupTrackImage(GridPane trackGrid){
         Image trackImage = new Image(getClass().getResourceAsStream("/images/track.png"));
         for (int i = 0; i < TRACK_POSITIONS.length;i++){
@@ -60,7 +63,7 @@ public class TrackService {
     }
     private void addCartToGrid(GridPane trackGrid, Cart cart){
         VBox cartContainer = new VBox();
-        Label cartLoadLabel = new Label("Load: " + cart.getCurrentLoad());
+        Label cartLoadLabel = new Label("Ld: " + cart.getCurrentLoad() + "/" + cart.getResourceCapacity());
         Label cartResourceLabel = new Label("Rrsc: " + cart.getResourceType());
         Label cartSpeedLabel = new Label("Spd: " + cart.getSpeed());
 
@@ -111,6 +114,7 @@ public class TrackService {
 
             if (carts.isEmpty()){
                 maxDistanceCovered.set(true);
+            cartTimeline.stop();
             }
         });
         cartTimeline.setCycleCount(1);
@@ -139,10 +143,10 @@ public class TrackService {
     private int getRandomResourceCapacity(){
         String difficulty = gameEnvironment.getRoundDifficulty();
         if (difficulty.equals("easy")){
-            int randomResourceCapacity = random.nextInt(250,500);
+            int randomResourceCapacity = random.nextInt(250) + 250;
             return randomResourceCapacity;
         }else{
-            int randomResourceCapacity = random.nextInt(500,1000);
+            int randomResourceCapacity = random.nextInt(500) + 500;
             return randomResourceCapacity;
         }
     }
