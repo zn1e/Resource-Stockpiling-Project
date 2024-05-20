@@ -7,16 +7,25 @@ public class Item {
     private int itemCost;
     private Image image;
 
+
     public Item(String itemName, int itemCost, Image image){
         this.itemName = itemName;
         this.itemCost = itemCost;
         this.image = image;
 
 
+
     }
     public Image getImage(){
         return image;
     }
+    public int getItemCost(){return itemCost;}
+
+    public String toString(){
+        return itemName;
+    }
+
+
 
 
 }

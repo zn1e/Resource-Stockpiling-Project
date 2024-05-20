@@ -11,7 +11,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.ShopController">
    <children>
       <Button fx:id="backButton" layoutX="21.0" layoutY="24.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="88.0" text="Back">
@@ -107,7 +106,8 @@
             </Text>
          </children>
       </GridPane>
-      <Text fx:id="descriptionLabel" layoutX="521.0" layoutY="449.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;description&gt;" wrappingWidth="93.60000000000002" />
+      <Text fx:id="descriptionLabel" layoutX="551.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;description&gt;" wrappingWidth="93.60000000000002" />
       <Button fx:id="buyButton" layoutX="658.0" layoutY="429.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="94.0" text="BUY" />
+      <Text fx:id="buyText" layoutX="572.0" layoutY="485.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
    </children>
 </AnchorPane>
