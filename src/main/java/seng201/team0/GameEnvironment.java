@@ -2,6 +2,7 @@ package seng201.team0;
 
 import javafx.scene.image.Image;
 import seng201.team0.models.Tower;
+import seng201.team0.models.Item;
 
 
 import java.util.ArrayList;
@@ -21,10 +22,12 @@ public class GameEnvironment {
     private String roundDifficulty; // difficulty of round
     private List<Tower> towerList; // list of towers
     private final List<Tower> defaultTowers = new ArrayList<>(); // initializes an array list for default towers
+    private final List<Item> defaultItems = new ArrayList<>(); // initializes an array list for default items
     private final Consumer<GameEnvironment> setupScreenLauncher1; // launch the name selection screen
     private final Consumer<GameEnvironment> setupScreenLauncher2; // launch the number of round and difficulty selection screen
     private final Consumer<GameEnvironment> setupScreenLauncher3; // launch the tower selection screen
     private final Consumer<GameEnvironment> mainScreenLauncher; // launch the main screen
+    private final Consumer<GameEnvironment> shopScreenLauncher; // launch shop screen
     private final Runnable clearScreen; // clear the screen
 
     /**
@@ -41,15 +44,20 @@ public class GameEnvironment {
      */
     public GameEnvironment(Consumer<GameEnvironment> setupScreenLauncher1, Consumer<GameEnvironment> setupScreenLauncher2,
                            Consumer<GameEnvironment> setupScreenLauncher3, Consumer<GameEnvironment> mainScreenLauncher,
+                           Consumer<GameEnvironment> shopScreenLauncher,
                            Runnable clearScreen){
         this.setupScreenLauncher1 = setupScreenLauncher1;
         this.setupScreenLauncher2 = setupScreenLauncher2;
         this.setupScreenLauncher3 = setupScreenLauncher3;
         this.mainScreenLauncher = mainScreenLauncher;
+        this.shopScreenLauncher = shopScreenLauncher;
         this.clearScreen = clearScreen;
         loadDefaultTowers();
+        loadDefaultItems();
         launchSetupScreen1();
     }
+
+
 
     /**
      * Method for getting the player name.
@@ -124,6 +132,12 @@ public class GameEnvironment {
     public List<Tower> getDefaultTowers(){
         return defaultTowers;
     }
+
+    public List<Item> getDefaultItems() {
+        return defaultItems;
+    }
+
+
     private void loadDefaultTowers() {
         defaultTowers.add(new Tower("Eye Tower", "eye", loadImage("images/eye_tower.png")));
         defaultTowers.add(new Tower("Brain Tower", "brain", loadImage("images/brain_tower.png")));
@@ -131,6 +145,12 @@ public class GameEnvironment {
         defaultTowers.add(new Tower("Liver Tower", "liver", loadImage("images/liver_tower.png")));
         defaultTowers.add(new Tower("Kidney Tower", "kidney", loadImage("images/kidney_tower.png")));
     }
+    private void loadDefaultItems() {
+        defaultItems.add(new Item("Upgrade", 50, loadImage("images/upgrade_item.png")));
+        defaultItems.add(new  Item("Swap type", 50, loadImage("images/swap_item.png")));
+        defaultItems.add(new Item("Repair", 50, loadImage("images/repair_item.png")));
+    }
+
     private Image loadImage(String path) {
         return new Image(getClass().getResourceAsStream("/" + path));
     }
@@ -165,11 +185,17 @@ public class GameEnvironment {
         launchMainScreen();
     }
 
+
     /**
      * Launches the main screen.
     **/
     public void launchMainScreen(){
         mainScreenLauncher.accept(this);
+    }
+
+    public void launchShopScreen(){
+        clearScreen.run();
+        shopScreenLauncher.accept(this);
     }
 
 
