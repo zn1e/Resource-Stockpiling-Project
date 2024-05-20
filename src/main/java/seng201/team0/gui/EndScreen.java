@@ -23,6 +23,7 @@ public class EndScreen {
         if (!victory){
             resultLabel.setText("DEFEAT!");
         }
+        System.out.println("what?");
         playerNameLabel.setText("Player Name: " + gameEnvironment.getPlayerName());
         roundsLabel.setText("# of rounds: " + gameEnvironment.getNumberOfRounds());
         completedRoundsLabel.setText("# of rounds completed: " + gameEnvironment.getCompletedRounds());

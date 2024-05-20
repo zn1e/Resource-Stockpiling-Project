@@ -117,7 +117,7 @@ public class FXWrapper {
     public void launchEndScreen(GameEnvironment gameEnvironment) {
         try {
             FXMLLoader mainScreenLoader = new FXMLLoader(getClass().getResource("/fxml/EndScreen.fxml"));
-            mainScreenLoader.setControllerFactory(param -> new GameArena(gameEnvironment));
+            mainScreenLoader.setControllerFactory(param -> new EndScreen(gameEnvironment));
             Parent setupParent  = mainScreenLoader.load();
             anchorPane.getChildren().add(setupParent);
             stage.setTitle("Organ Factory");

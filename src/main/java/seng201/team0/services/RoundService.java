@@ -19,9 +19,9 @@ public class RoundService {
         int currentRound = gameEnvironment.getCurrentRound();
         int numberOfRounds = gameEnvironment.getNumberOfRounds();
         if (!allCartsFilled){
-            gameEnvironment.setVictoryFlag(false);
             gameEnvironment.launchEndScreen();
         } else if (allCartsFilled && currentRound == numberOfRounds) {
+            gameEnvironment.setVictoryFlag(true);
             gameEnvironment.launchEndScreen();
         }else {
             addRewards();
