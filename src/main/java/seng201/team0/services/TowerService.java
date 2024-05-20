@@ -13,7 +13,7 @@ public class TowerService {
     private List<Tower> mainTowers;
     private List<Tower> reserveTowers;
     private List<int[]> mainTowerPositions;
-    private static final int[][] INITIAL_POSITIONS = { {1,0}, {3,2}, {5,0}, {7,2}, {9,0}};
+    private static final int[][] INITIAL_POSITIONS = { {2,0}, {4,2}, {6,0}, {8,2}, {10,0}};
     private GameEnvironment gameEnvironment;
 
     public TowerService(GameEnvironment gameEnvironment){

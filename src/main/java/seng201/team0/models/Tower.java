@@ -26,7 +26,7 @@ public class Tower {
         this.name = name;
         this.resourceType = resourceType;
         this.resourceAmount = 500;
-        this.reloadSpeed = 25;
+        this.reloadSpeed = 1;
         this.level = 1;
         this.cost = 60;
         this.image = image;
@@ -93,6 +93,5 @@ public class Tower {
     public void levelUp(){
         level++;
         resourceAmount += 250;
-        reloadSpeed += 25;
     }
 }
