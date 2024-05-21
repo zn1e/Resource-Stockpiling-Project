@@ -12,22 +12,42 @@ import seng201.team0.GameEnvironment;
  * Handles the user input for the number of rounds and difficulty.
  */
 public class RoundAndDifficultySelection {
-    private GameEnvironment gameEnvironment; // the game environment instance
-    private int numberOfRounds; // number of rounds
-
+    /**
+     * The game environment instance.
+     */
+    private GameEnvironment gameEnvironment;
+    /**
+     * The number of rounds.
+     */
+    private int numberOfRounds;
+    /**
+     * Button for proceeding to next screen.
+     */
     @FXML
-    private Button nextButton; // button for proceeding to next screen
+    private Button nextButton;
+    /**
+     * Toggle buttons for round difficulty.
+     */
     @FXML
-    private ToggleButton easyToggleButton, hardToggleButton; // toggle buttons for easy and hard difficulty
+    private ToggleButton easyToggleButton, hardToggleButton;
+    /**
+     * Toggle group for round difficulty toggle buttons.
+     */
     @FXML
-    private ToggleGroup difficultyToggleGroup; // toggle group for the difficulty toggle buttons
+    private ToggleGroup difficultyToggleGroup;
+    /**
+     * Slider for the number of rounds.
+     */
     @FXML
-    private Slider roundSlider; // slider for the number of rounds
-    private ToggleButton selectedButton; // the selected toggle button
+    private Slider roundSlider;
+    /**
+     * The selected toggle button
+     */
+    private ToggleButton selectedButton;
 
     /**
-     * Constructor for the RoundAndDifficultySelectionController with the specified game environment instance.
-     * @param gameEnvironment The game environment instance to associate with this controller.
+     * Constructor for the RoundAndDifficultySelection with the specified game environment instance.
+     * @param gameEnvironment The game environment instance to associate with this class.
      */
     public RoundAndDifficultySelection(GameEnvironment gameEnvironment){
         this.gameEnvironment = gameEnvironment;

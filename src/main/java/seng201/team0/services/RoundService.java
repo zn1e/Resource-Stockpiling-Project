@@ -10,11 +10,24 @@ import java.util.List;
 import java.util.Optional;
 
 public class RoundService {
+    /**
+     * The game environment instance.
+     */
     private GameEnvironment gameEnvironment;
 
+    /**
+     * Constructor for this class with the specified game environment instance.
+     * @param gameEnvironment The game environment instance associated with this class.
+     */
     public RoundService(GameEnvironment gameEnvironment){
         this.gameEnvironment = gameEnvironment;
     }
+
+    /**
+     * Handles the interaction after each round.
+     * This method checks if the round is successful or not.
+     * @param allCartsFilled Boolean describing if all carts were filled.
+     */
     public void afterRound(boolean allCartsFilled){
         int currentRound = gameEnvironment.getCurrentRound();
         int numberOfRounds = gameEnvironment.getNumberOfRounds();
@@ -25,9 +38,13 @@ public class RoundService {
             gameEnvironment.launchEndScreen();
         }else {
             addRewards();
-            Platform.runLater(this::selectNextRoundDifficulty);
+            Platform.runLater(this::selectNextRoundDifficulty); // wait animation to ends before calling the method
         }
     }
+
+    /**
+     * Add rewards to the player based on the completed round difficulty.
+     */
     private void addRewards(){
         String roundDifficulty = gameEnvironment.getRoundDifficulty();
         if (roundDifficulty.equals("easy")){
@@ -40,6 +57,10 @@ public class RoundService {
         gameEnvironment.incrementCompletedRounds();
         gameEnvironment.incrementCurrentRound();
     }
+
+    /**
+     * Opens a choice dialog box asking the player for the difficulty of next round.
+     */
     private void selectNextRoundDifficulty() {
         List<String> choices = Arrays.asList("Easy", "Hard");
         ChoiceDialog<String> dialog = new ChoiceDialog<>("Easy", choices);

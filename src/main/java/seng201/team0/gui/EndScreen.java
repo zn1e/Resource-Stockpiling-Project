@@ -6,24 +6,45 @@ import javafx.scene.control.Label;
 import seng201.team0.GameEnvironment;
 
 public class EndScreen {
+    /**
+     * The game environment instance.
+     */
     private GameEnvironment gameEnvironment;
+    /**
+     * Labels for end screen.
+     */
     @FXML
     Label resultLabel, playerNameLabel, roundsLabel, completedRoundsLabel, goldGainedLabel, pointsGainedLabel;
+    /**
+     * Button for quitting the game.
+     */
     @FXML
     Button quitButton;
+
+    /**
+     * Constructor for EndScreen with specified game environment instance.
+     * @param gameEnvironment The game environment instance to associate with this class.
+     */
     public EndScreen(GameEnvironment gameEnvironment){
         this.gameEnvironment = gameEnvironment;
     }
+
+    /**
+     * Initializes the screen by setting up the UI components and event handlers.
+     */
     public void initialize(){
         updateLabels();
         quitButton.setOnAction(event -> gameEnvironment.closeScreen());
     }
+
+    /**
+     * Update the labels of the UI. Displays the result of the game and the stats of the player.
+     */
     private void updateLabels(){
         boolean victory = gameEnvironment.getVictoryFlag();
         if (!victory){
             resultLabel.setText("DEFEAT!");
         }
-        System.out.println("what?");
         playerNameLabel.setText("Player Name: " + gameEnvironment.getPlayerName());
         roundsLabel.setText("# of rounds: " + gameEnvironment.getNumberOfRounds());
         completedRoundsLabel.setText("# of rounds completed: " + gameEnvironment.getCompletedRounds());

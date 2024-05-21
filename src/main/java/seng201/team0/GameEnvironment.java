@@ -225,7 +225,6 @@ public class GameEnvironment {
         shopScreenLauncher.accept(this);
     }
     public void launchEndScreen(){
-        System.out.println("exec");
         clearScreen.run();
         endScreenLauncher.accept(this);
     }

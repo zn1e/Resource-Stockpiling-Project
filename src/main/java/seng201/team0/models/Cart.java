@@ -10,13 +10,19 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 public class Cart {
-    private int resourceCapacity;
-    private String resourceType;
-    private int currentPosition;
-    private int currentLoad;
-    private int speed;
-    private VBox cartContainer;
+    private int resourceCapacity; // resource capacity of the cart
+    private String resourceType; // resource type of cart
+    private int currentPosition; // current position of cart
+    private int currentLoad; // load of cart at current position
+    private int speed; // speed of cart
+    private VBox cartContainer; // vbox container of the cart
 
+    /**
+     * Initializes the resource capacity, resource type, position, current load, and speed of the cart.
+     * @param resourceCapacity An int describing the resource capacity of cart.
+     * @param resourceType A String describing the resource type of cart.
+     * @param position An int describing the position of cart.
+     */
     public Cart(int resourceCapacity, String resourceType, int position){
         this.resourceCapacity = resourceCapacity;
         this.resourceType = resourceType;
@@ -24,34 +30,83 @@ public class Cart {
         this.currentLoad = 0;
         this.speed = 10;
     }
+
+    /**
+     * Gets the resource capacity of cart.
+     * @return An int representing the value of cart's resource capacity.
+     */
     public int getResourceCapacity(){
         return resourceCapacity;
     }
+
+    /**
+     * Gets the resource type of cart.
+     * @return A String representing the resource type of cart.
+     */
     public String getResourceType(){
         return resourceType;
     }
+
+    /**
+     * Gets the current position of cart.
+     * @return An int representing the cart's current position.
+     */
     public int getCurrentPosition(){
         return currentPosition;
     }
+
+    /**
+     * Sets the current position of cart.
+     * @param position An int describing the position of cart.
+     */
     public void setCurrentPosition(int position){
         this.currentPosition = position;
     }
+
+    /**
+     * Gets the current load of cart at current position.
+     * @return An int describing the current load of cart.
+     */
     public int getCurrentLoad(){
         return currentLoad;
     }
+
+    /**
+     * Gets the speed of the cart.
+     * @return An int representing the speed of cart.
+     */
     public int getSpeed(){
         return speed;
     }
+
+    /**
+     * Add resources to the load of cart.
+     * @param amount An int representing the amount of resources added.
+     */
     public void addResources(int amount){
         currentLoad  = Math.min(currentLoad + amount, resourceCapacity);
         updateLoadLabel();
     }
+
+    /**
+     *Checks if the cart load is full.
+     * @return A boolean describing if the cart is full.
+     */
     public boolean isFull(){
         return currentLoad == resourceCapacity;
     }
+
+    /**
+     * Sets the vbox container of the cart.
+     * @param cartContainer A vbox containing the cart's labels.
+     */
     public void setCartContainer(VBox cartContainer){
         this.cartContainer = cartContainer;
     }
+
+    /**
+     * Update the load label of the cart.
+     */
     private void updateLoadLabel(){
         if (cartContainer != null && cartContainer.getChildren().get(0) instanceof Label) {
             Label loadLabel = (Label) cartContainer.getChildren().get(0);
