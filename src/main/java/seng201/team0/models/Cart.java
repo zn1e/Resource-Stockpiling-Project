@@ -10,12 +10,30 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 public class Cart {
-    private int resourceCapacity; // resource capacity of the cart
-    private String resourceType; // resource type of cart
-    private int currentPosition; // current position of cart
-    private int currentLoad; // load of cart at current position
-    private int speed; // speed of cart
-    private VBox cartContainer; // vbox container of the cart
+    /**
+     * Resource capacity of the cart.
+     */
+    private int resourceCapacity;
+    /**
+     * Resource type of cart.
+     */
+    private String resourceType;
+    /**
+     * Current position of cart.
+     */
+    private int currentPosition;
+    /**
+     * Load of cart at current position.
+     */
+    private int currentLoad;
+    /**
+     * Speed of cart.
+     */
+    private int speed;
+    /**
+     * Vbox container of the cart.
+     */
+    private VBox cartContainer;
 
     /**
      * Initializes the resource capacity, resource type, position, current load, and speed of the cart.
