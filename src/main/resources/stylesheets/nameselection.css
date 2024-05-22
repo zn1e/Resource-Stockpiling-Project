@@ -2,6 +2,12 @@
     font-family: 'Creepster';
     src: url('fonts/Creepster.ttf')
 }
+.root {
+    -fx-background-image: url('/images/background.PNG');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
 
 #titleLabel{
     -fx-font-family: 'Creepster';
