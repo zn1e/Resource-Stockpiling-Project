@@ -21,27 +21,27 @@
    <children>
       <AnchorPane prefHeight="122.0" prefWidth="800.0">
          <children>
-            <Label layoutX="30.0" layoutY="14.0" text="Gold">
+            <Label fx:id="goldHeaderLabel" layoutX="30.0" layoutY="14.0" text="Gold">
                <font>
                   <Font name="Creepster" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="86.0" layoutY="14.0" text="Points">
+            <Label fx:id="pointsHeaderLabel" layoutX="86.0" layoutY="14.0" text="Points">
                <font>
                   <Font name="Creepster" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="278.0" layoutY="14.0" text="Round">
+            <Label fx:id="roundHeaderLabel" layoutX="278.0" layoutY="14.0" text="Round">
                <font>
                   <Font name="Creepster" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="164.0" layoutY="14.0" text="Difficulty">
+            <Label fx:id="difficultyHeaderLabel" layoutX="164.0" layoutY="14.0" text="Difficulty">
                <font>
                   <Font name="Creepster" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="423.0" layoutY="14.0" text="Progress">
+            <Label fx:id="progressHeaderLabel" layoutX="423.0" layoutY="14.0" text="Progress">
                <font>
                   <Font name="Creepster" size="20.0" />
                </font>
@@ -67,7 +67,7 @@
                </font>
             </Label>
             <ProgressBar layoutX="358.0" layoutY="52.0" prefWidth="200.0" progress="0.0" />
-            <Label layoutX="648.0" layoutY="14.0" text="Start Round">
+            <Label fx:id="startRoundHeaderLabel" layoutX="648.0" layoutY="14.0" text="Start Round">
                <font>
                   <Font name="Creepster" size="20.0" />
                </font>
@@ -77,12 +77,12 @@
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
          <children>
-            <Label layoutX="574.0" layoutY="65.0" text="Inventory">
+            <Label fx:id="inventoryLabel" layoutX="574.0" layoutY="65.0" text="Inventory">
                <font>
                   <Font name="Creepster" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="712.0" layoutY="65.0" text="SHOP">
+            <Label fx:id="shopLabel" layoutX="712.0" layoutY="65.0" text="SHOP">
                <font>
                   <Font name="Creepster" size="20.0" />
                </font>

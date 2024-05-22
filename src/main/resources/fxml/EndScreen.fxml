@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.EndScreen">
    <children>
       <Label fx:id="resultLabel" alignment="CENTER" layoutX="184.0" layoutY="63.0" prefHeight="77.0" prefWidth="433.0" text="VICTORY!">
@@ -18,7 +17,7 @@
             <Font name="Comic Sans MS" size="19.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="210.0" text="STATS:">
+      <Label fx:id="statsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="210.0" text="STATS:">
          <font>
             <Font name="Comic Sans MS Bold" size="29.0" />
          </font>
