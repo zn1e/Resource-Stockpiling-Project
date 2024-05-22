@@ -53,9 +53,9 @@ public class GameEnvironment {
                            Consumer<GameEnvironment> setupScreenLauncher3,
                            Consumer<GameEnvironment> mainScreenLauncher,
                            Consumer<GameEnvironment> shopScreenLauncher,
-                           Runnable clearScreen,
+                           Consumer<GameEnvironment> endScreenLauncher,
                            Consumer<GameEnvironment> inventoryScreenLauncher,
-                           Consumer<GameEnvironment> endScreenLauncher){
+                           Runnable clearScreen){
         this.setupScreenLauncher1 = setupScreenLauncher1;
         this.setupScreenLauncher2 = setupScreenLauncher2;
         this.setupScreenLauncher3 = setupScreenLauncher3;
