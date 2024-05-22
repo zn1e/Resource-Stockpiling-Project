@@ -28,6 +28,7 @@ public class GameEnvironment {
     private final Consumer<GameEnvironment> setupScreenLauncher3; // launch the tower selection screen
     private final Consumer<GameEnvironment> mainScreenLauncher; // launch the main screen
     private final Consumer<GameEnvironment> shopScreenLauncher; // launch shop screen
+    private final Consumer<GameEnvironment> inventoryScreenLauncher; //launch inventory screen
     private final Runnable clearScreen; // clear the screen
 
     /**
@@ -45,13 +46,14 @@ public class GameEnvironment {
     public GameEnvironment(Consumer<GameEnvironment> setupScreenLauncher1, Consumer<GameEnvironment> setupScreenLauncher2,
                            Consumer<GameEnvironment> setupScreenLauncher3, Consumer<GameEnvironment> mainScreenLauncher,
                            Consumer<GameEnvironment> shopScreenLauncher,
-                           Runnable clearScreen){
+                           Runnable clearScreen, Consumer<GameEnvironment> inventoryScreenLauncher){
         this.setupScreenLauncher1 = setupScreenLauncher1;
         this.setupScreenLauncher2 = setupScreenLauncher2;
         this.setupScreenLauncher3 = setupScreenLauncher3;
         this.mainScreenLauncher = mainScreenLauncher;
         this.shopScreenLauncher = shopScreenLauncher;
         this.clearScreen = clearScreen;
+        this.inventoryScreenLauncher = inventoryScreenLauncher;
         loadDefaultTowers();
         loadDefaultItems();
         launchSetupScreen1();
@@ -204,6 +206,11 @@ public class GameEnvironment {
      */
     public void closeMainScreen(){
         System.exit(0);
+    }
+
+    public void launchInventoryScreen(){
+        clearScreen.run();
+        inventoryScreenLauncher.accept(this);
     }
 
 }

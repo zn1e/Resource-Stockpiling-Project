@@ -55,6 +55,7 @@ public class GameArena {
         setupTrack(trackGrid);
         playButton.setOnAction(event -> startGame());
         shopButton.setOnAction(event -> shopButtonClicked());
+        inventoryButton.setOnAction(event ->inventoryButtonClicked());
 
     }
     private void updateUI() {
@@ -83,10 +84,6 @@ public class GameArena {
     }
 
     private void startGame(){
-
-    }
-    private void shopButtonClicked(){
-        //gameEnvironment.launchShopScreen();
         trackService.initializeCarts(trackGrid);
         trackService.maxDistanceCoveredProperty().addListener((observableValue, notCompleted, nowCompleted) -> {
             if (nowCompleted){
@@ -97,9 +94,17 @@ public class GameArena {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
-    private void stopGame(){
-        if (timeline != null){
+    private void stopGame() {
+        if (timeline != null) {
             timeline.stop();
         }
     }
+
+    private void shopButtonClicked(){
+        gameEnvironment.launchShopScreen();
+    }
+    private void inventoryButtonClicked(){
+        gameEnvironment.launchInventoryScreen();
+    }
+
 }

@@ -29,9 +29,11 @@ public class FXWrapper {
                 this::launchSetupScreen3, // launch method for tower selection screen
                 this::launchMainScreen,
                 this::launchShopScreen,
-                this::clearAnchorPane // method to clear screen
+                this::clearAnchorPane, // method to clear screen
+                this::launchInventoryScreen
         );
     }
+
 
     /**
      * Launches the name selection setup screen with the provided game environment.
@@ -106,6 +108,18 @@ public class FXWrapper {
         try {
             FXMLLoader mainScreenLoader = new FXMLLoader(getClass().getResource("/fxml/GameArena.fxml"));
             mainScreenLoader.setControllerFactory(param -> new GameArena(gameEnvironment));
+            Parent setupParent  = mainScreenLoader.load();
+            anchorPane.getChildren().add(setupParent);
+            stage.setTitle("<Game Name>");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void launchInventoryScreen(GameEnvironment gameEnvironment){
+        try {
+            FXMLLoader mainScreenLoader = new FXMLLoader(getClass().getResource("/fxml/Inventory.fxml"));
+            // provide a custom Controller with parameters
+            mainScreenLoader.setControllerFactory(param -> new InventoryController(gameEnvironment));
             Parent setupParent  = mainScreenLoader.load();
             anchorPane.getChildren().add(setupParent);
             stage.setTitle("<Game Name>");

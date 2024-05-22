@@ -1,59 +1,54 @@
 package seng201.team0.gui;
-
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import seng201.team0.GameEnvironment;
-import javafx.scene.control.Button;
 import seng201.team0.models.Item;
-import javafx.scene.image.ImageView;
 import seng201.team0.models.Tower;
 import seng201.team0.services.InventoryService;
 import seng201.team0.services.UIService;
 
-
 import java.util.List;
 
-public class ShopController {
 
-    private final UIService uiService;
+public class InventoryController {
+    private UIService uiService;
     private GameEnvironment gameEnvironment; // the game environment instance
     private InventoryService inventoryService;
     private Item selectedItem;
     private Tower selectedTower;
-
     @FXML
     private Button backButton;
     @FXML
-    private Button buyButton;
+    private Button sellButton;
     @FXML
-    private Button tower1Button, tower2Button, tower3Button, tower4Button, tower5Button;
+    private Button resTower1Button, resTower2Button, resTower3Button, resTower4Button, resTower5Button;
     @FXML
     private Button item1Button, item2Button, item3Button;
     @FXML
-    Label goldLabel;
+    private Label tower1Label, tower2Label, tower3Label, tower4Label, tower5Label;
     @FXML
-    private ImageView shopImage;
+    private Label item1Label, item2Label, item3Label;
     @FXML
-    private Text descriptionLabel;
+    private Label goldLabel;
     @FXML
-    private Text buyText;
+    private Text sellText;
 
-    public ShopController(GameEnvironment gameEnvironment) {
+    public InventoryController(GameEnvironment gameEnvironment){
         this.gameEnvironment = gameEnvironment;
         this.uiService = new UIService(gameEnvironment);
         this.inventoryService = new InventoryService(gameEnvironment);
     }
-
     public void initialize() {
         updateUI();
-        List<Button> towerButtons = List.of(tower1Button, tower2Button, tower3Button, tower4Button, tower5Button);
+        List<Button> resTowerButtons = List.of(resTower1Button, resTower2Button, resTower3Button, resTower4Button, resTower5Button);
         List<Button> itemButtons = List.of(item1Button, item2Button, item3Button);
 
-        for (int i = 0; i < towerButtons.size(); i++) {
+        for (int i = 0; i < resTowerButtons.size(); i++) {
             int finalI = i;
-            towerButtons.get(i).setOnAction(event -> {
-                handleTowerButtonClick(finalI);
+            resTowerButtons.get(i).setOnAction(event -> {
+                handleResTowerButtonClick(finalI);
             });
         }
         for (int i = 0; i < itemButtons.size(); i++) {
@@ -63,12 +58,8 @@ public class ShopController {
             });
         }
         backButton.setOnAction(event -> backButtonClicked());
-        buyButton.setOnAction(event -> buySelectedObject());
-        buyText.setText("");
-    }
-
-    private void updateUI() {
-        uiService.updateGoldLabel(goldLabel);
+        sellButton.setOnAction(event -> sellSelectedObject());
+        sellText.setText("");
     }
 
     private void updateButtonStyles(Button... buttons) {
@@ -84,7 +75,7 @@ public class ShopController {
 
     private Button getTowerButton(Tower tower) {
         int index = gameEnvironment.getDefaultTowers().indexOf(tower);
-        return List.of(tower1Button, tower2Button, tower3Button, tower4Button, tower5Button).get(index);
+        return List.of(resTower1Button, resTower2Button, resTower3Button, resTower4Button, resTower5Button).get(index);
     }
 
     private Button getItemButton(Item item) {
@@ -92,21 +83,17 @@ public class ShopController {
         return List.of(item1Button, item2Button, item3Button).get(index);
     }
 
-    private void handleTowerButtonClick(int index) {
+    private void handleResTowerButtonClick(int index) {
         Tower clickedTower = gameEnvironment.getDefaultTowers().get(index);
         if (selectedTower == clickedTower) {
             selectedTower = null;
-            shopImage.setImage(null);
-            descriptionLabel.setText("");
-            buyText.setText("");
-            updateButtonStyles(tower1Button, tower2Button, tower3Button, tower4Button, tower5Button);
+            sellText.setText("");
+            updateButtonStyles(resTower1Button, resTower2Button, resTower3Button, resTower4Button, resTower5Button);
         } else {
             selectedTower = clickedTower;
             selectedItem = null;
-            buyText.setText("");
-            shopImage.setImage(clickedTower.getImage());
-            descriptionLabel.setText("Price: "+ selectedTower.getCost());
-            updateButtonStyles(tower1Button, tower2Button, tower3Button, tower4Button, tower5Button);
+            sellText.setText("Sell Price: "+ selectedTower.getSellPrice());
+            updateButtonStyles(resTower1Button, resTower2Button, resTower3Button, resTower4Button, resTower5Button);
             updateButtonStyles(item1Button, item2Button, item3Button);
         }
     }
@@ -115,49 +102,37 @@ public class ShopController {
         Item clickedItem = gameEnvironment.getDefaultItems().get(index);
         if (selectedItem == clickedItem) {
             selectedItem = null;
-            shopImage.setImage(null);
-            descriptionLabel.setText("");
-            buyText.setText("");
+            sellText.setText("");
             updateButtonStyles(item1Button, item2Button, item3Button);
         } else {
             selectedItem = clickedItem;
             selectedTower = null;
-            buyText.setText("");
-            shopImage.setImage(selectedItem.getImage());
-            descriptionLabel.setText("Price: "+ selectedItem.getItemCost());
+            sellText.setText("Sell Price: "+ selectedItem.getSellPrice());
             updateButtonStyles(item1Button, item2Button, item3Button);
-            updateButtonStyles(tower1Button, tower2Button, tower3Button, tower4Button, tower5Button);
+            updateButtonStyles(resTower1Button, resTower2Button, resTower3Button, resTower4Button, resTower5Button);
         }
     }
 
+    private void sellSelectedObject() {
+        if (selectedTower != null) {
+            inventoryService.removeReserveTower(selectedTower);
+            gameEnvironment.setPlayerGold(gameEnvironment.getPlayerGold() + selectedTower.getSellPrice());
+            selectedTower = null;
+            updateButtonStyles();
+            updateUI();
+        } else if (selectedItem != null) {
+            inventoryService.removeItem(selectedItem);
+            gameEnvironment.setPlayerGold(gameEnvironment.getPlayerGold() + selectedItem.getSellPrice());
+            selectedItem = null;
+            updateButtonStyles();
+            updateUI();
+        }
+    }
     private void backButtonClicked() {
         gameEnvironment.closeSetupScreen();
     }
-
-    private void buySelectedObject() {
-        if (selectedTower != null) {
-            int price = selectedTower.getCost();
-            if (price <= gameEnvironment.getPlayerGold()) {
-                inventoryService.addReserveTower(selectedTower);
-                gameEnvironment.setPlayerGold(gameEnvironment.getPlayerGold() - price);
-                buyText.setText("Purchase Sucessful!");
-                updateUI();
-            }
-            else{
-                buyText.setText("NOT ENOUGH MONEY LOL!");
-            }
-        } else if (selectedItem != null) {
-            int price = selectedItem.getItemCost();
-            if (price <= gameEnvironment.getPlayerGold()) {
-                inventoryService.addItem(selectedItem);
-                gameEnvironment.setPlayerGold(gameEnvironment.getPlayerGold() - price);
-                buyText.setText("Purchase Sucessful!");
-                updateUI();
-            }
-            else{
-                buyText.setText("NOT ENOUGH MONEY LOL!");
-            }
-
-        }
+    private void updateUI() {
+        uiService.updateGoldLabel(goldLabel);
     }
+
 }

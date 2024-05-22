@@ -86,6 +86,7 @@ public class Tower {
     public Image getImage(){
         return image;
     }
+    public int getCost(){return cost;}
     /**
      * Method for upgrading the level of tower.
      * Increases the level of tower by 1, resource amount by 500, and reload speed by 25.
@@ -95,4 +96,17 @@ public class Tower {
         resourceAmount += 250;
         reloadSpeed += 25;
     }
+    public int getSellPrice(){return cost - 5;}
+
+    public void reloadUpgrade(int amount){
+        reloadSpeed -= amount;
+    }
+
+    public void resourceUpgrade(int amount){
+        resourceAmount += amount;
+    }
+    public void swapTower(Tower tower){
+
+    }
 }
+

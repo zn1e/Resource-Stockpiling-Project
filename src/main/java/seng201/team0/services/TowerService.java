@@ -38,6 +38,7 @@ public class TowerService {
     public List<Tower> getReserveTowers(){
         return reserveTowers;
     }
+
     private int[] getNextAvailablePosition() {
         for (int i = 0; i < INITIAL_POSITIONS.length; i++) {
             if (!mainTowerPositions.contains(INITIAL_POSITIONS[i])) {
