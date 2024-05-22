@@ -108,6 +108,7 @@ public class GameArena {
         List<Cart> notFilledCarts = trackService.getNotFilledCarts();
         boolean allCartsFilled = notFilledCarts.isEmpty();
         roundService.afterRound(allCartsFilled);
+        trackService.triggerRandomEvents(trackGrid);
     }
 
     private void shopButtonClicked(){

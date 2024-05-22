@@ -1,5 +1,6 @@
 package seng201.team0.services;
 
+import javafx.scene.control.Alert;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import seng201.team0.GameEnvironment;
@@ -8,6 +9,7 @@ import seng201.team0.models.Tower;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class TowerService {
     /**
@@ -30,6 +32,7 @@ public class TowerService {
      * The game environment instance.
      */
     private GameEnvironment gameEnvironment;
+    private Random random;
 
     /**
      * Initializes the game environment instance and setting up the main towers and their positions.
@@ -39,6 +42,7 @@ public class TowerService {
         this.gameEnvironment = gameEnvironment;
         this.mainTowerPositions = new ArrayList<>();
         this.mainTowers = gameEnvironment.getTowerList();
+        this.random = new Random();
         setInitialPositions();
     }
 
@@ -124,6 +128,52 @@ public class TowerService {
     }
 
     /**
+     * Remove tower on the grid.
+     * @param towerToRemove Tower object to be removed.
+     * @param trackGrid GridPane where tower is removed.
+     */
+    public void removeTower(Tower towerToRemove, GridPane trackGrid){
+        int towerIndex = mainTowers.indexOf(towerToRemove);
+        if (towerIndex != -1){
+            mainTowers.remove(towerIndex);
+            int[] positionToRemove = mainTowerPositions.get(towerIndex);
+            mainTowerPositions.remove(towerIndex);
+
+            for (javafx.scene.Node node : trackGrid.getChildren()){
+                if (GridPane.getColumnIndex(node) == positionToRemove[0] &
+                GridPane.getRowIndex(node) == positionToRemove[1]){
+                    trackGrid.getChildren().remove(node);
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * Event where tower breaks.
+     * @param tower Tower object to be broken.
+     * @param trackGrid GridPane where tower is.
+     */
+    public void breakTower(Tower tower, GridPane trackGrid){
+        int breakChance = random.nextInt(2);
+        if (breakChance == 0){
+            removeTower(tower, trackGrid);
+            showAlert("Main Tower Removed", "Tower " + tower.getName() + " has been removed from inventory.");
+        }
+    }
+
+    /**
+     * Event where tower resource amount is reduced.
+     * @param tower Tower object which resource amount is reduced.
+     */
+    public void modifyTowerStat(Tower tower){
+        int resourceAmount = tower.getResourceAmount();
+        int statChange = random.nextInt(resourceAmount - 250) + 250;
+        tower.setResourceAmount(resourceAmount - statChange);
+        showAlert("Tower Stat Changed", "Tower " + tower.getName() + " stat changed.");
+    }
+
+    /**
      * Handles the tower interaction of the cart at specified position.
      * @param cart The cart containing its own property.
      * @param cartPosition Int array containing the current position of the cart.
@@ -138,5 +188,18 @@ public class TowerService {
                 }
             }
         }
+    }
+
+    /**
+     * Show an alert box to the player about the random event.
+     * @param title Title of the alert.
+     * @param message Message of the alert.
+     */
+    private void showAlert(String title, String message){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

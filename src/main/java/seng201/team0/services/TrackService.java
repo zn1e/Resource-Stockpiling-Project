@@ -99,7 +99,7 @@ public class TrackService {
      * @param trackGrid GridPane where the cart is placed.
      */
     public void initializeCarts(GridPane trackGrid){
-        int numberOfCarts = random.nextInt(8)+ 3;
+        int numberOfCarts = getRandomNumberOfCarts();
         System.out.println("Number of carts: " + numberOfCarts);
         for (int i = 0; i < numberOfCarts; i++){
             int cartResourceCapacity = getRandomResourceCapacity();
@@ -250,6 +250,39 @@ public class TrackService {
             filledCarts.add(cart);
         } else{
             notFilledCarts.add(cart);
+        }
+    }
+
+    /**
+     * Generates random number of carts based on difficulty.
+     * @return Int random number of carts.
+     */
+    private int getRandomNumberOfCarts(){
+        String difficulty = gameEnvironment.getRoundDifficulty();
+        if (difficulty.equals("easy")){
+            int numberOfCarts = random.nextInt(2) + 3;
+            return numberOfCarts;
+        }else{
+            int numberOfCarts = random.nextInt(4) + 6;
+            return numberOfCarts;
+        }
+    }
+
+    /**
+     * Trigger random events after round.
+     * @param trackGrid GridPane where random events occurred.
+     */
+    public void triggerRandomEvents(GridPane trackGrid){
+        List<Tower> mainTowers = towerService.getMainTowers();
+        for (Tower tower: mainTowers){
+            int statChangeChance = random.nextInt(100);
+            if (statChangeChance < 20){
+                towerService.modifyTowerStat(tower);
+            }
+            int breakTowerChance = random.nextInt(100);
+            if (breakTowerChance < 30){
+                towerService.breakTower(tower, trackGrid);
+            }
         }
     }
 
