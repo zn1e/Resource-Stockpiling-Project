@@ -8,25 +8,46 @@ import javafx.scene.image.Image;
  * reloading speed, resource type, level, and cost.
  */
 public class Tower {
-    private String name; // name of tower
-    private String resourceType; // resource type of tower
-    private int resourceAmount; // resource amount of tower
-    private int reloadSpeed; // reload speed of tower
-    private int level; // level of tower
-    private int cost; // cost of tower
+    /**
+     * Name of tower.
+     */
+    private String name;
+    /**
+     * Resource type of tower.
+     */
+    private String resourceType;
+    /**
+     * Resource amount of tower.
+     */
+    private int resourceAmount;
+    /**
+     * Reload speed of tower.
+     */
+    private int reloadSpeed;
+    /**
+     * Level of tower.
+     */
+    private int level;
+    /**
+     * Cost of tower.
+     */
+    private int cost;
+    /**
+     * Image of tower.
+     */
     private Image image;
 
     /**
      *Constructor for Tower.
-     * @param name A String name of tower
-     * @param resourceType An int resource type of tower
+     * @param name A String describing the name of tower
+     * @param resourceType A String describing the resource type of tower
      * Initializes the value for resource amount, reload speed, level of tower, and cost (all int type).
      */
     public Tower(String name, String resourceType, Image image){
         this.name = name;
         this.resourceType = resourceType;
         this.resourceAmount = 500;
-        this.reloadSpeed = 25;
+        this.reloadSpeed = 1;
         this.level = 1;
         this.cost = 60;
         this.image = image;
@@ -94,7 +115,6 @@ public class Tower {
     public void levelUp(){
         level++;
         resourceAmount += 250;
-        reloadSpeed += 25;
     }
     public int getSellPrice(){return cost - 5;}
 

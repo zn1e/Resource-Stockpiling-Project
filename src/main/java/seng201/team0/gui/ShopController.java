@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import seng201.team0.GameEnvironment;
+//import seng201.team0.models.Inventory;
 import javafx.scene.control.Button;
 import seng201.team0.models.Item;
 import javafx.scene.image.ImageView;

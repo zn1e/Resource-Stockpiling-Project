@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.InventoryController">
+   <children>
+      <Text layoutX="259.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INVENTORY">
+         <font>
+            <Font size="53.0" />
+         </font>
+      </Text>
+      <Text layoutX="620.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GOLD" wrappingWidth="61.74169921875">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Label fx:id="goldLabel" layoutX="691.0" layoutY="35.0" prefHeight="28.0" prefWidth="88.0" text="&lt;gold&gt;">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Button fx:id="backButton" layoutX="28.0" layoutY="26.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="88.0" text="Back">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <GridPane layoutX="16.0" layoutY="113.0" prefHeight="461.0" prefWidth="773.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="RESERVE TOWERS" GridPane.columnIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ITEMS" GridPane.columnIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Button fx:id="sellButton" mnemonicParsing="false" prefHeight="41.0" prefWidth="94.0" text="SELL" GridPane.columnIndex="3" GridPane.rowIndex="5">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Button>
+            <Button fx:id="item1Button" mnemonicParsing="false" text="UP!" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="item2Button" mnemonicParsing="false" text="SWAP!" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="item3Button" mnemonicParsing="false" text="FIX!" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Button fx:id="resTower1Button" mnemonicParsing="false" text="Eye Tower" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="resTower2Button" mnemonicParsing="false" text="Brain Tower" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="resTower3Button" mnemonicParsing="false" text="Heart Tower" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button fx:id="resTower4Button" mnemonicParsing="false" text="Liver Tower" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button fx:id="resTower5Button" mnemonicParsing="false" text="Kidney Tower" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Text fx:id="sellText" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;sellText&gt;" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Label fx:id="tower1Label" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="80.0" left="80.0" right="80.0" top="80.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="tower2Label" prefHeight="18.0" prefWidth="49.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="85.0" left="85.0" right="70.0" top="85.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="tower3Label" prefHeight="18.0" prefWidth="39.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="85.0" left="85.0" top="85.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="tower4Label" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="80.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="tower5Label" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="90.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="item1Label" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="40.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="item2Label" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="60.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="item3Label" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="40.0" />
+               </GridPane.margin>
+            </Label>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

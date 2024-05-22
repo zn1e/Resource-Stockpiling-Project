@@ -10,23 +10,43 @@ import java.util.List;
 import java.util.Objects;
 
 public class TowerSelection {
-
-    private GameEnvironment gameEnvironment; // the game environment instance
+    /**
+     * The game environment instance.
+     */
+    private GameEnvironment gameEnvironment;
+    /**
+     * Selected tower arrays containing three towers.
+     */
     private final Tower[] selectedTowers = new Tower[3];
+    /**
+     * Initializes the selected tower index.
+     */
     private int selectedTowerIndex = -1;
+    /**
+     * Flag for checking the number of selected towers.
+     */
     private boolean selectedTowersFlag;
+    /**
+     * Button for proceeding to next screen.
+     */
     @FXML
-    private Button startButton; // button for proceeding to next screen
+    private Button startButton;
+    /**
+     * Tower buttons.
+     */
     @FXML
     private Button tower1Button, tower2Button, tower3Button, tower4Button, tower5Button;
+    /**
+     * Selected tower buttons.
+     */
     @FXML
     private Button selectedTower1Button, selectedTower2Button, selectedTower3Button;
 
 
     /**
-     * Constructor for the TowerSelectionController with the specified game environment instance.
+     * Constructor for the TowerSelection with the specified game environment instance.
      *
-     * @param gameEnvironment The game environment instance to associate with this controller.
+     * @param gameEnvironment The game environment instance to associate with this class.
      */
     public TowerSelection(GameEnvironment gameEnvironment) {
         this.gameEnvironment = gameEnvironment;
@@ -35,6 +55,7 @@ public class TowerSelection {
     /**
      * Initializes the controller by setting up UI components and event handlers.
      * This method is automatically called by JavaFX after the fxml file is loaded and instantiated.
+     * The code is similar from tutorial 2.
      */
     public void initialize() {
         List<Button> towerButtons = List.of(tower1Button, tower2Button, tower3Button, tower4Button, tower5Button);
@@ -63,6 +84,10 @@ public class TowerSelection {
         }
         startButton.setOnAction(event -> startButtonClicked());
     }
+
+    /**
+     * Method for checking if the number of selected towers is equal to 3.
+     */
     private void confirmSelectedTowers(){
         if (selectedTowers.length == 3){
             selectedTowersFlag = true;
@@ -70,6 +95,10 @@ public class TowerSelection {
             selectedTowersFlag = false;
         }
     }
+
+    /**
+     * Method for handling the event when start button is clicked.
+     */
     @FXML
     private void startButtonClicked() {
         confirmSelectedTowers();

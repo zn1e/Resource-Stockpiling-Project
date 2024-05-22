@@ -2,6 +2,7 @@ package seng201.team0.gui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import seng201.team0.GameEnvironment;
 import seng201.team0.services.NameSelectionService;
@@ -11,16 +12,34 @@ import seng201.team0.services.NameSelectionService;
  * Handles the user input for player name and verification.
  */
 public class NameSelection {
-    private GameEnvironment gameEnvironment; // the game environment instance
+    /**
+     * The game environment instance.
+     */
+    private GameEnvironment gameEnvironment;
+    /**
+     * The name selection service instance.
+     */
     private NameSelectionService setupScreenService;
+    /**
+     * Buttons for player name verification and proceeding to next screen.
+     */
     @FXML
-    private Button verifyButton, nextButton; // buttons for player name verification and proceeding to next screen
+    private Button verifyButton, nextButton;
+    /**
+     * Text field for entering player name.
+     */
     @FXML
-    private TextField playerNameTextField; // text field for entering player name
+    private TextField playerNameTextField;
+    /**
+     * Label indicating the format instruction.
+     */
+    @FXML
+    private Label formatLabel;
 
     /**
-     * Constructor for the NameSelectionController with the specified game environment instance.
-     * @param gameEnvironment The game environment instance to associate with this controller.
+     * Constructor for the NameSelection with the specified game environment instance.
+     * Creates new instance of name selection service that handles the functionality.
+     * @param gameEnvironment The game environment instance to associate with this class.
      */
     public NameSelection(GameEnvironment gameEnvironment){
         this.gameEnvironment = gameEnvironment;
@@ -32,9 +51,8 @@ public class NameSelection {
      * This method is automatically called by JavaFX after the fxml file is loaded and instantiated.
      */
     public void initialize(){
-        setupScreenService.setVerifyButtonAction(verifyButton, playerNameTextField);
+        setupScreenService.setVerifyButtonAction(verifyButton, playerNameTextField, formatLabel);
         setupScreenService.setNextButtonAction(nextButton, playerNameTextField);
     }
-
 
 }

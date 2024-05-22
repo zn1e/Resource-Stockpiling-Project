@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.NameSelection">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="100.0" layoutY="52.0" prefHeight="70.0" prefWidth="600.0" text="Welcome to &lt;Game&gt;!" textAlignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="78.0" layoutY="40.0" prefHeight="136.0" prefWidth="645.0" text="Welcome to ORGAN FACTORY!" textAlignment="CENTER">
          <font>
             <Font name="Creepster" size="60.0" />
          </font>
@@ -30,5 +30,10 @@
          <font>
             <Font name="Comic Sans MS" size="16.0" />
          </font></Button>
+      <Label fx:id="formatLabel" layoutX="200.0" layoutY="345.0" text="Please enter 3-15 characters. Must not include special characters.">
+         <font>
+            <Font name="Comic Sans MS" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

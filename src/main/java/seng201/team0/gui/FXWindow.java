@@ -26,7 +26,7 @@ public class FXWindow extends Application {
         FXWrapper fxWrapper = baseloader.getController();
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("<Game Name>");
+        primaryStage.setTitle("Organ Factory");
         primaryStage.show();
         fxWrapper.init(primaryStage);
     }
