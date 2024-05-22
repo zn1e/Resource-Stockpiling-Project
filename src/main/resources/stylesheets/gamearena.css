@@ -30,11 +30,6 @@
     -fx-font-size: 20px;
 }
 
-#progressHeaderLabel{
-    -fx-font-family: 'Creepster';
-    -fx-font-size: 20px;
-}
-
 #startRoundHeaderLabel{
     -fx-font-family: 'Creepster';
     -fx-font-size: 20px;

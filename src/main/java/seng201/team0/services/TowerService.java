@@ -1,5 +1,7 @@
 package seng201.team0.services;
 
+import javafx.application.Platform;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -41,7 +43,7 @@ public class TowerService {
     public TowerService(GameEnvironment gameEnvironment){
         this.gameEnvironment = gameEnvironment;
         this.mainTowerPositions = new ArrayList<>();
-        this.mainTowers = gameEnvironment.getTowerList();
+        this.mainTowers = new ArrayList<>(gameEnvironment.getTowerList());
         this.random = new Random();
         setInitialPositions();
     }
@@ -139,7 +141,7 @@ public class TowerService {
             int[] positionToRemove = mainTowerPositions.get(towerIndex);
             mainTowerPositions.remove(towerIndex);
 
-            for (javafx.scene.Node node : trackGrid.getChildren()){
+            for (Node node : trackGrid.getChildren()){
                 if (GridPane.getColumnIndex(node) == positionToRemove[0] &
                 GridPane.getRowIndex(node) == positionToRemove[1]){
                     trackGrid.getChildren().remove(node);
@@ -147,30 +149,6 @@ public class TowerService {
                 }
             }
         }
-    }
-
-    /**
-     * Event where tower breaks.
-     * @param tower Tower object to be broken.
-     * @param trackGrid GridPane where tower is.
-     */
-    public void breakTower(Tower tower, GridPane trackGrid){
-        int breakChance = random.nextInt(2);
-        if (breakChance == 0){
-            removeTower(tower, trackGrid);
-            showAlert("Main Tower Removed", "Tower " + tower.getName() + " has been removed from inventory.");
-        }
-    }
-
-    /**
-     * Event where tower resource amount is reduced.
-     * @param tower Tower object which resource amount is reduced.
-     */
-    public void modifyTowerStat(Tower tower){
-        int resourceAmount = tower.getResourceAmount();
-        int statChange = random.nextInt(resourceAmount - 250) + 250;
-        tower.setResourceAmount(resourceAmount - statChange);
-        showAlert("Tower Stat Changed", "Tower " + tower.getName() + " stat changed.");
     }
 
     /**
@@ -188,18 +166,5 @@ public class TowerService {
                 }
             }
         }
-    }
-
-    /**
-     * Show an alert box to the player about the random event.
-     * @param title Title of the alert.
-     * @param message Message of the alert.
-     */
-    private void showAlert(String title, String message){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 }

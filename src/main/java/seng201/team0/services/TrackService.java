@@ -62,7 +62,7 @@ public class TrackService {
     /**
      * Constructor for TrackService with specified game environment instance.
      * Initializes the tower service, random instance, and resource type list.
-     * @param gameEnvironment
+     * @param gameEnvironment The game environment instance associated with this class.
      */
     public TrackService(GameEnvironment gameEnvironment){
         this.gameEnvironment = gameEnvironment;
@@ -265,24 +265,6 @@ public class TrackService {
         }else{
             int numberOfCarts = random.nextInt(4) + 6;
             return numberOfCarts;
-        }
-    }
-
-    /**
-     * Trigger random events after round.
-     * @param trackGrid GridPane where random events occurred.
-     */
-    public void triggerRandomEvents(GridPane trackGrid){
-        List<Tower> mainTowers = towerService.getMainTowers();
-        for (Tower tower: mainTowers){
-            int statChangeChance = random.nextInt(100);
-            if (statChangeChance < 20){
-                towerService.modifyTowerStat(tower);
-            }
-            int breakTowerChance = random.nextInt(100);
-            if (breakTowerChance < 30){
-                towerService.breakTower(tower, trackGrid);
-            }
         }
     }
 

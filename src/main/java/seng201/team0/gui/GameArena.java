@@ -5,6 +5,7 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
 import seng201.team0.GameEnvironment;
@@ -35,6 +36,8 @@ public class GameArena {
     @FXML
     Button inventoryButton;
     @FXML
+    ProgressBar progressBar;
+    @FXML
     Label tower1NameLabel, tower2NameLabel, tower3NameLabel, tower4NameLabel, tower5NameLabel;
     @FXML
     Label tower1TypeLabel, tower2TypeLabel, tower3TypeLabel, tower4TypeLabel, tower5TypeLabel;
@@ -60,7 +63,6 @@ public class GameArena {
         playButton.setOnAction(event -> startGame());
         shopButton.setOnAction(event -> shopButtonClicked());
         inventoryButton.setOnAction(event ->inventoryButtonClicked());
-
     }
     private void updateUI() {
         uiService.updateGoldLabel(goldLabel);
@@ -108,7 +110,6 @@ public class GameArena {
         List<Cart> notFilledCarts = trackService.getNotFilledCarts();
         boolean allCartsFilled = notFilledCarts.isEmpty();
         roundService.afterRound(allCartsFilled);
-        trackService.triggerRandomEvents(trackGrid);
     }
 
     private void shopButtonClicked(){
@@ -117,5 +118,6 @@ public class GameArena {
     private void inventoryButtonClicked(){
         gameEnvironment.launchInventoryScreen();
     }
+
 
 }

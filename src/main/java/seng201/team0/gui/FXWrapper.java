@@ -47,8 +47,6 @@ public class FXWrapper {
             // provide a custom Controller with parameters
             setupLoader.setControllerFactory(param -> new NameSelection(gameEnvironment));
             Parent setupParent  = setupLoader.load();
-            Scene scene = new Scene(setupParent);
-            scene.getStylesheets().add(getClass().getResource("/stylesheets/nameselection.css").toExternalForm());
             anchorPane.getChildren().add(setupParent);
             stage.setTitle("Organ Factory");
         } catch (IOException e) {
@@ -66,8 +64,6 @@ public class FXWrapper {
             // provide a custom Controller with parameters
             setupLoader.setControllerFactory(param -> new RoundAndDifficultySelection(gameEnvironment));
             Parent setupParent  = setupLoader.load();
-            Scene scene = new Scene(setupParent);
-            scene.getStylesheets().add(getClass().getResource("/stylesheets/roundanddifficulty.css").toExternalForm());
             anchorPane.getChildren().add(setupParent);
             stage.setTitle("Organ Factory");
         } catch (IOException e) {
@@ -84,8 +80,6 @@ public class FXWrapper {
             // provide a custom Controller with parameters
             setupLoader.setControllerFactory(param -> new TowerSelection(gameEnvironment));
             Parent setupParent  = setupLoader.load();
-            Scene scene = new Scene(setupParent);
-            scene.getStylesheets().add(getClass().getResource("/stylesheets/towerselection.css").toExternalForm());
             anchorPane.getChildren().add(setupParent);
             stage.setTitle("Organ Factory");
         } catch (IOException e) {
@@ -117,8 +111,6 @@ public class FXWrapper {
             FXMLLoader mainScreenLoader = new FXMLLoader(getClass().getResource("/fxml/GameArena.fxml"));
             mainScreenLoader.setControllerFactory(param -> new GameArena(gameEnvironment));
             Parent setupParent  = mainScreenLoader.load();
-            Scene scene = new Scene(setupParent);
-            scene.getStylesheets().add(getClass().getResource("/stylesheets/gamearena.css").toExternalForm());
             anchorPane.getChildren().add(setupParent);
             stage.setTitle("Organ Factory");
         } catch (IOException e) {
@@ -130,8 +122,6 @@ public class FXWrapper {
             FXMLLoader mainScreenLoader = new FXMLLoader(getClass().getResource("/fxml/EndScreen.fxml"));
             mainScreenLoader.setControllerFactory(param -> new EndScreen(gameEnvironment));
             Parent setupParent  = mainScreenLoader.load();
-            Scene scene = new Scene(setupParent);
-            scene.getStylesheets().add(getClass().getResource("/stylesheets/endscreen.css").toExternalForm());
             anchorPane.getChildren().add(setupParent);
             stage.setTitle("Organ Factory");
         } catch (IOException e) {

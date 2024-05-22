@@ -1,6 +1,7 @@
 package seng201.team0.services;
 
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.Tower;
 
