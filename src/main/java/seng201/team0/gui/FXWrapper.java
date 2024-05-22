@@ -29,8 +29,8 @@ public class FXWrapper {
                 this::launchSetupScreen3, // launch method for tower selection screen
                 this::launchMainScreen,
                 this::launchShopScreen,
+                this::clearAnchorPane,
                 this::launchEndScreen,
-                this::clearAnchorPane, // method to clear screen
                 this::launchInventoryScreen
         );
     }

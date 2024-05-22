@@ -48,17 +48,21 @@ public class GameEnvironment {
      * @param clearScreen Runnable to clear the screen.
      *
      */
-    public GameEnvironment(Consumer<GameEnvironment> setupScreenLauncher1, Consumer<GameEnvironment> setupScreenLauncher2,
-                           Consumer<GameEnvironment> setupScreenLauncher3, Consumer<GameEnvironment> mainScreenLauncher,
+    public GameEnvironment(Consumer<GameEnvironment> setupScreenLauncher1,
+                           Consumer<GameEnvironment> setupScreenLauncher2,
+                           Consumer<GameEnvironment> setupScreenLauncher3,
+                           Consumer<GameEnvironment> mainScreenLauncher,
                            Consumer<GameEnvironment> shopScreenLauncher,
-                           Runnable clearScreen, Consumer<GameEnvironment> inventoryScreenLauncher, Consumer<GameEnvironment> endScreenLauncher){
+                           Runnable clearScreen,
+                           Consumer<GameEnvironment> inventoryScreenLauncher,
+                           Consumer<GameEnvironment> endScreenLauncher){
         this.setupScreenLauncher1 = setupScreenLauncher1;
         this.setupScreenLauncher2 = setupScreenLauncher2;
         this.setupScreenLauncher3 = setupScreenLauncher3;
         this.mainScreenLauncher = mainScreenLauncher;
         this.shopScreenLauncher = shopScreenLauncher;
-        this.endScreenLauncher = endScreenLauncher;
         this.clearScreen = clearScreen;
+        this.endScreenLauncher = endScreenLauncher;
         this.inventoryScreenLauncher = inventoryScreenLauncher;
         loadDefaultTowers();
         loadDefaultItems();
@@ -89,6 +93,21 @@ public class GameEnvironment {
     public int getPlayerPoints(){
         return playerPoints;
     }
+    public void addPlayerGold(int gold){
+        playerGold += gold;
+        goldGained += gold;
+    }
+    public void addPlayerPoints(int points){
+        playerPoints += points;
+        pointsGained += points;
+    }
+    public int getGoldGained(){
+        return goldGained;
+    }
+    public int getPointsGained(){
+        return pointsGained;
+    }
+
     public void setPlayerPoints(int playerPoints){
         this.playerPoints = playerPoints;
     }
