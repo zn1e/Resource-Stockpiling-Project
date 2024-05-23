@@ -8,11 +8,12 @@ import java.util.ArrayList;
 
 
 public class InventoryService {
-    private static final int ITEM_INVENTORY_SIZE = 10;
+    private static final int ITEM_INVENTORY_SIZE = 5;
     private static final int TOWER_INVENTORY_SIZE = 5;
 
     private ArrayList<Item> itemInventory;
     private ArrayList<Tower> towerInventory;
+    private static InventoryService instance;
 
     public InventoryService(GameEnvironment gameEnvironment){
         itemInventory = new ArrayList<>(ITEM_INVENTORY_SIZE);
@@ -92,7 +93,6 @@ public class InventoryService {
     public int getItemCount(String itemName) {
         return (int) itemInventory.stream().filter(item -> item.getName().equals(itemName)).count();
     }
-
 
 
 }

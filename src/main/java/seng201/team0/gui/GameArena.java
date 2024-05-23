@@ -114,6 +114,7 @@ public class GameArena {
         gameEnvironment.launchShopScreen();
     }
     private void inventoryButtonClicked(){
+        System.out.println("Inventory Screen");
         gameEnvironment.launchInventoryScreen();
     }
 

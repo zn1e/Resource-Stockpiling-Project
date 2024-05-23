@@ -30,8 +30,9 @@ public class FXWrapper {
                 this::launchMainScreen,
                 this::launchShopScreen,
                 this::clearAnchorPane,
-                this::launchEndScreen,
-                this::launchInventoryScreen
+                this::launchInventoryScreen,
+                this::launchEndScreen
+
         );
     }
 
@@ -134,7 +135,7 @@ public class FXWrapper {
             mainScreenLoader.setControllerFactory(param -> new InventoryController(gameEnvironment));
             Parent setupParent  = mainScreenLoader.load();
             anchorPane.getChildren().add(setupParent);
-            stage.setTitle("<Game Name>");
+            stage.setTitle("Organ Factory");
         } catch (IOException e) {
             e.printStackTrace();
         }

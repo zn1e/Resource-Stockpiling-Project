@@ -10,7 +10,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.InventoryController">
    <children>
       <Text layoutX="259.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INVENTORY">
@@ -33,87 +32,63 @@
             <Font size="21.0" />
          </font>
       </Button>
-      <GridPane layoutX="16.0" layoutY="113.0" prefHeight="461.0" prefWidth="773.0">
+      <GridPane layoutY="129.0" prefHeight="456.0" prefWidth="678.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="133.4" minHeight="10.0" prefHeight="66.39997253417968" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="138.60002746582035" minHeight="10.0" prefHeight="79.20003051757811" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="122.39996948242185" minHeight="10.0" prefHeight="77.60001220703123" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="101.19998779296873" minHeight="10.0" prefHeight="34.39997558593751" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="134.4000244140625" minHeight="10.0" prefHeight="134.4000244140625" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="RESERVE TOWERS" GridPane.columnIndex="1">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ITEMS" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ITEMS" GridPane.columnIndex="2">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
-            <Button fx:id="sellButton" mnemonicParsing="false" prefHeight="41.0" prefWidth="94.0" text="SELL" GridPane.columnIndex="3" GridPane.rowIndex="5">
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </Button>
-            <Button fx:id="item1Button" mnemonicParsing="false" text="UP!" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button fx:id="item2Button" mnemonicParsing="false" text="SWAP!" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button fx:id="item3Button" mnemonicParsing="false" text="FIX!" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Button fx:id="resTower1Button" mnemonicParsing="false" text="Eye Tower" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button fx:id="resTower2Button" mnemonicParsing="false" text="Brain Tower" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button fx:id="resTower3Button" mnemonicParsing="false" text="Heart Tower" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Button fx:id="resTower4Button" mnemonicParsing="false" text="Liver Tower" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Button fx:id="resTower5Button" mnemonicParsing="false" text="Kidney Tower" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Text fx:id="sellText" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;sellText&gt;" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <Label fx:id="tower1Label" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="tower1Label" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets bottom="80.0" left="80.0" right="80.0" top="80.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="tower2Label" prefHeight="18.0" prefWidth="49.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets bottom="85.0" left="85.0" right="70.0" top="85.0" />
-               </GridPane.margin>
-            </Label>
-            <Label fx:id="tower3Label" prefHeight="18.0" prefWidth="39.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets bottom="85.0" left="85.0" top="85.0" />
-               </GridPane.margin>
-            </Label>
-            <Label fx:id="tower4Label" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets left="80.0" />
-               </GridPane.margin>
-            </Label>
-            <Label fx:id="tower5Label" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets left="90.0" />
-               </GridPane.margin>
-            </Label>
-            <Label fx:id="item1Label" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="40.0" />
-               </GridPane.margin>
-            </Label>
-            <Label fx:id="item2Label" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets left="60.0" />
-               </GridPane.margin>
-            </Label>
-            <Label fx:id="item3Label" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets left="40.0" />
-               </GridPane.margin>
-            </Label>
+            <Button fx:id="main1Button" mnemonicParsing="false" prefHeight="86.0" prefWidth="142.0" text="Button" />
+            <Button fx:id="main2Button" mnemonicParsing="false" prefHeight="120.0" prefWidth="188.0" text="Button" GridPane.columnIndex="1" />
+            <Button fx:id="res3Button" mnemonicParsing="false" prefHeight="204.0" prefWidth="311.0" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Button fx:id="res1Button" mnemonicParsing="false" prefHeight="181.0" prefWidth="236.0" text="Button" GridPane.columnIndex="3" />
+            <Button fx:id="res2Button" mnemonicParsing="false" prefHeight="218.0" prefWidth="400.0" text="Button" GridPane.columnIndex="4" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="1" />
+            <Button fx:id="main5Button" mnemonicParsing="false" prefHeight="203.0" prefWidth="322.0" text="Button" GridPane.rowIndex="2" />
+            <Button fx:id="main4Button" mnemonicParsing="false" prefHeight="138.0" prefWidth="219.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="main3Button" mnemonicParsing="false" prefHeight="196.0" prefWidth="266.0" text="Button" GridPane.rowIndex="1" />
+            <Button fx:id="res5Button" mnemonicParsing="false" prefHeight="189.0" prefWidth="399.0" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Button fx:id="res4Button" mnemonicParsing="false" prefHeight="155.0" prefWidth="278.0" text="Button" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Button fx:id="item1Button" mnemonicParsing="false" prefHeight="196.0" prefWidth="269.0" text="Button" GridPane.rowIndex="4" />
+            <Button fx:id="item2Button" mnemonicParsing="false" prefHeight="138.0" prefWidth="163.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button fx:id="item3Button" mnemonicParsing="false" prefHeight="146.0" prefWidth="146.0" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button fx:id="item4Button" mnemonicParsing="false" prefHeight="148.0" prefWidth="178.0" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Button fx:id="item5Button" mnemonicParsing="false" prefHeight="194.0" prefWidth="162.0" text="Button" GridPane.columnIndex="4" GridPane.rowIndex="4" />
          </children>
       </GridPane>
+      <Button fx:id="useButton" layoutX="708.0" layoutY="466.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="70.0" text="USE ITEM" />
+      <Button fx:id="swapButton" layoutX="708.0" layoutY="163.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="70.0" text="SWAP" />
+      <Text layoutX="116.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MAIN">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="510.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RESERVE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="itemText" layoutX="688.0" layoutY="525.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="110.40000000000009" />
+      <Text fx:id="towerText" layoutX="732.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
    </children>
 </AnchorPane>

@@ -3,6 +3,7 @@ package seng201.team0;
 import javafx.scene.image.Image;
 import seng201.team0.models.Tower;
 import seng201.team0.models.Item;
+import seng201.team0.services.InventoryService;
 
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.function.Consumer;
  */
 public class GameEnvironment {
     private String playerName; // name of the player
-    private int playerGold = 50;
+    private int playerGold = 50000;
     private int playerPoints;
     private int goldGained;
     private int pointsGained;
@@ -25,6 +26,7 @@ public class GameEnvironment {
     private boolean victoryFlag;
     private String roundDifficulty; // difficulty of round
     private List<Tower> towerList; // list of towers
+    private InventoryService inventoryService;
     private final List<Tower> defaultTowers = new ArrayList<>(); // initializes an array list for default towers
     private final List<Item> defaultItems = new ArrayList<>(); // initializes an array list for default items
     private final Consumer<GameEnvironment> setupScreenLauncher1; // launch the name selection screen
@@ -62,11 +64,12 @@ public class GameEnvironment {
         this.mainScreenLauncher = mainScreenLauncher;
         this.shopScreenLauncher = shopScreenLauncher;
         this.clearScreen = clearScreen;
-        this.endScreenLauncher = endScreenLauncher;
         this.inventoryScreenLauncher = inventoryScreenLauncher;
+        this.endScreenLauncher = endScreenLauncher;
         loadDefaultTowers();
         loadDefaultItems();
         launchSetupScreen1();
+        inventoryService = new InventoryService(this);
     }
 
     /**
@@ -253,5 +256,7 @@ public class GameEnvironment {
         clearScreen.run();
         inventoryScreenLauncher.accept(this);
     }
-
+    public InventoryService getInventoryService() {
+        return inventoryService;
+    }
 }
