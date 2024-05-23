@@ -5,6 +5,7 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
 import seng201.team0.GameEnvironment;
@@ -35,6 +36,8 @@ public class GameArena {
     @FXML
     Button inventoryButton;
     @FXML
+    ProgressBar progressBar;
+    @FXML
     Label tower1NameLabel, tower2NameLabel, tower3NameLabel, tower4NameLabel, tower5NameLabel;
     @FXML
     Label tower1TypeLabel, tower2TypeLabel, tower3TypeLabel, tower4TypeLabel, tower5TypeLabel;
@@ -44,6 +47,8 @@ public class GameArena {
     Label tower1SpeedLabel, tower2SpeedLabel, tower3SpeedLabel, tower4SpeedLabel, tower5SpeedLabel;
     @FXML
     Label tower1LevelLabel, tower2LevelLabel, tower3LevelLabel, tower4LevelLabel, tower5LevelLabel;
+    @FXML
+    Label alert1Label, alert2Label;
 
 
     public GameArena(GameEnvironment gameEnvironment){
@@ -52,6 +57,7 @@ public class GameArena {
         this.uiService = new UIService(gameEnvironment);
         this.trackService = new TrackService(gameEnvironment);
         this.roundService = new RoundService(gameEnvironment);
+        this.trackGrid = new GridPane();
     }
     public void initialize(){
         updateUI();
@@ -60,7 +66,6 @@ public class GameArena {
         playButton.setOnAction(event -> startGame());
         shopButton.setOnAction(event -> shopButtonClicked());
         inventoryButton.setOnAction(event ->inventoryButtonClicked());
-
     }
     private void updateUI() {
         uiService.updateGoldLabel(goldLabel);
@@ -68,6 +73,8 @@ public class GameArena {
         uiService.updateDifficultyLabel(difficultyLabel);
         uiService.updateRoundLabel(roundLabel);
         updateTowerLabels();
+        progressBar.setStyle("-fx-accent: green");
+        increaseProgress();
     }
 
     private void updateTowerLabels() {
@@ -107,7 +114,10 @@ public class GameArena {
     private void afterRoundInteraction(){
         List<Cart> notFilledCarts = trackService.getNotFilledCarts();
         boolean allCartsFilled = notFilledCarts.isEmpty();
+        Label[] alertLabels = {alert1Label, alert2Label};
+        trackService.triggerRandomEvents(trackGrid, alertLabels);
         roundService.afterRound(allCartsFilled);
+        increaseProgress();
     }
 
     private void shopButtonClicked(){
@@ -116,6 +126,11 @@ public class GameArena {
     private void inventoryButtonClicked(){
         System.out.println("Inventory Screen");
         gameEnvironment.launchInventoryScreen();
+    }
+    private void increaseProgress(){
+        int currentRound = gameEnvironment.getCurrentRound();
+        int numberOfRounds = gameEnvironment.getNumberOfRounds();
+        progressBar.setProgress((double) currentRound / numberOfRounds);
     }
 
 }

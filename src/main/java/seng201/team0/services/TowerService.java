@@ -1,5 +1,9 @@
 package seng201.team0.services;
 
+import javafx.application.Platform;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import seng201.team0.GameEnvironment;
@@ -8,6 +12,7 @@ import seng201.team0.models.Tower;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class TowerService {
     /**
@@ -30,6 +35,7 @@ public class TowerService {
      * The game environment instance.
      */
     private GameEnvironment gameEnvironment;
+    private Random random;
 
     /**
      * Initializes the game environment instance and setting up the main towers and their positions.
@@ -39,6 +45,7 @@ public class TowerService {
         this.gameEnvironment = gameEnvironment;
         this.mainTowerPositions = new ArrayList<>();
         this.mainTowers = gameEnvironment.getTowerList();
+        this.random = new Random();
         setInitialPositions();
     }
 
@@ -98,10 +105,16 @@ public class TowerService {
         for (int i = 0; i < mainTowers.size(); i++){
             Tower tower = mainTowers.get(i);
             int[] position = INITIAL_POSITIONS[i];
+            mainTowerPositions.add(position);
             ImageView towerImageView = new ImageView(tower.getImage());
             towerImageView.setFitHeight(80);
             towerImageView.setFitWidth(50);
             trackGrid.add(towerImageView, position[0], position[1]);
+
+            // Check if the node is added.
+            Integer rowIndex = GridPane.getRowIndex(towerImageView);
+            Integer colIndex = GridPane.getColumnIndex(towerImageView);
+            System.out.println("Tower ImageView added with rowIndex: " + rowIndex + " and colIndex: " + colIndex);
         }
     }
 
@@ -124,6 +137,37 @@ public class TowerService {
     }
 
     /**
+     * Remove tower on the grid.
+     * @param towerToRemove Tower object to be removed.
+     * @param trackGrid GridPane where tower is removed.
+     */
+    public void removeTower(Tower towerToRemove, GridPane trackGrid){
+        int towerIndex = mainTowers.indexOf(towerToRemove);
+        if (towerIndex != -1){
+            mainTowers.remove(towerIndex);
+            int[] positionToRemove = mainTowerPositions.get(towerIndex);
+            mainTowerPositions.remove(towerIndex);
+
+            Node nodeToRemove = null;
+            for (Node node : trackGrid.getChildren()){
+                Integer rowIndex = GridPane.getRowIndex(node);
+                Integer colIndex = GridPane.getColumnIndex(node);
+                if (rowIndex != null && colIndex != null){
+                    if (colIndex == positionToRemove[0] && rowIndex == positionToRemove[1]){
+                        nodeToRemove = node;
+                        break;
+                    }
+                }
+            }
+            if (nodeToRemove != null){
+                trackGrid.getChildren().remove(nodeToRemove);
+            } else{
+                System.out.println("Node not found.");
+            }
+        }
+    }
+
+    /**
      * Handles the tower interaction of the cart at specified position.
      * @param cart The cart containing its own property.
      * @param cartPosition Int array containing the current position of the cart.
@@ -139,4 +183,29 @@ public class TowerService {
             }
         }
     }
+
+    /**
+     * Event where tower resource amount is reduced.
+     * @param tower Tower object which resource amount is reduced.
+     */
+    public void modifyTowerStat(Tower tower, Label alertLabel1){
+        int resourceAmount = tower.getResourceAmount();
+        int statChange = random.nextInt(resourceAmount - 250) + 250;
+        tower.setResourceAmount(resourceAmount - statChange);
+        alertLabel1.setText("Alert 1: Tower stat changed.");
+    }
+
+    /**
+     * Event where tower breaks.
+     * @param tower Tower object to be broken.
+     * @param trackGrid GridPane where tower is.
+     */
+    public void breakTower(Tower tower, GridPane trackGrid, Label alertLabel2){
+        int breakChance = random.nextInt(2);
+        if (breakChance == 0){
+            removeTower(tower, trackGrid);
+            alertLabel2.setText("Alert 2: A tower has been removed.");
+        }
+    }
+
 }

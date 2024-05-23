@@ -16,7 +16,7 @@ import java.util.function.Consumer;
  */
 public class GameEnvironment {
     private String playerName; // name of the player
-    private int playerGold = 50000;
+    private int playerGold = 50;
     private int playerPoints;
     private int goldGained;
     private int pointsGained;
@@ -55,9 +55,9 @@ public class GameEnvironment {
                            Consumer<GameEnvironment> setupScreenLauncher3,
                            Consumer<GameEnvironment> mainScreenLauncher,
                            Consumer<GameEnvironment> shopScreenLauncher,
-                           Runnable clearScreen,
+                           Consumer<GameEnvironment> endScreenLauncher,
                            Consumer<GameEnvironment> inventoryScreenLauncher,
-                           Consumer<GameEnvironment> endScreenLauncher){
+                           Runnable clearScreen){
         this.setupScreenLauncher1 = setupScreenLauncher1;
         this.setupScreenLauncher2 = setupScreenLauncher2;
         this.setupScreenLauncher3 = setupScreenLauncher3;

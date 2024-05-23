@@ -3,6 +3,7 @@ package seng201.team0.gui;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import seng201.team0.GameEnvironment;
@@ -29,10 +30,9 @@ public class FXWrapper {
                 this::launchSetupScreen3, // launch method for tower selection screen
                 this::launchMainScreen,
                 this::launchShopScreen,
-                this::clearAnchorPane,
+                this::launchEndScreen,
                 this::launchInventoryScreen,
-                this::launchEndScreen
-
+                this::clearAnchorPane
         );
     }
 

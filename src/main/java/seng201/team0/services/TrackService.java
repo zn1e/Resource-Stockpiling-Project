@@ -62,7 +62,7 @@ public class TrackService {
     /**
      * Constructor for TrackService with specified game environment instance.
      * Initializes the tower service, random instance, and resource type list.
-     * @param gameEnvironment
+     * @param gameEnvironment The game environment instance associated with this class.
      */
     public TrackService(GameEnvironment gameEnvironment){
         this.gameEnvironment = gameEnvironment;
@@ -99,7 +99,7 @@ public class TrackService {
      * @param trackGrid GridPane where the cart is placed.
      */
     public void initializeCarts(GridPane trackGrid){
-        int numberOfCarts = random.nextInt(8)+ 3;
+        int numberOfCarts = getRandomNumberOfCarts();
         System.out.println("Number of carts: " + numberOfCarts);
         for (int i = 0; i < numberOfCarts; i++){
             int cartResourceCapacity = getRandomResourceCapacity();
@@ -221,9 +221,14 @@ public class TrackService {
      * @return String resource type of the cart.
      */
     private String getRandomResourceType(){
-        int randomResourceTypeIndex = random.nextInt(resourceTypeList.size()-1);
-        String randomResourceType = resourceTypeList.get(randomResourceTypeIndex);
-        return randomResourceType;
+        if (resourceTypeList.size() == 1){
+            return resourceTypeList.get(0);
+        }
+        else{
+            int randomResourceTypeIndex = random.nextInt(resourceTypeList.size()- 1);
+            String randomResourceType = resourceTypeList.get(randomResourceTypeIndex);
+            return randomResourceType;
+        }
     }
 
     /**
@@ -254,10 +259,51 @@ public class TrackService {
     }
 
     /**
+     * Generates random number of carts based on difficulty.
+     * @return Int random number of carts.
+     */
+    private int getRandomNumberOfCarts(){
+        String difficulty = gameEnvironment.getRoundDifficulty();
+        if (difficulty.equals("easy")){
+            int numberOfCarts = random.nextInt(2) + 3;
+            return numberOfCarts;
+        }else{
+            int numberOfCarts = random.nextInt(4) + 6;
+            return numberOfCarts;
+        }
+    }
+
+    /**
      * Gets the current state of the distance covered.
      * @return A boolean describing if the max distance is covered.
      */
     public BooleanProperty maxDistanceCoveredProperty(){
         return maxDistanceCovered;
     }
+
+    /**
+     * Trigger random events after round.
+     * @param trackGrid GridPane where random events occurred.
+     */
+    public void triggerRandomEvents(GridPane trackGrid, Label[] alertLabels){
+        List<Tower> towersToChange = new ArrayList<>();
+        List<Tower> towersToRemove = new ArrayList<>();
+        for (Tower tower: towerService.getMainTowers()){
+            int statChangeChance = random.nextInt(100);
+            if (statChangeChance < 20){
+                towersToChange.add(tower);
+            }
+            int breakTowerChance = random.nextInt(100);
+            if (breakTowerChance < 35){
+                towersToRemove.add(tower);
+            }
+        }
+        for (Tower tower : towersToChange){
+            towerService.modifyTowerStat(tower, alertLabels[0]);
+        }
+        for (Tower tower : towersToRemove){
+            towerService.breakTower(tower, trackGrid, alertLabels[1]);
+        }
+    }
+
 }

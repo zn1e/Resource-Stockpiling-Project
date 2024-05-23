@@ -78,6 +78,14 @@ public class Tower {
     }
 
     /**
+     * Sets new resource amount of tower.
+     * @param resourceAmount An int containing the value of resource amount of tower.
+     */
+    public void setResourceAmount(int resourceAmount){
+        this.resourceAmount = resourceAmount;
+    }
+
+    /**
      * Method for getting the amount of reload speed.
      * @return An int representing the reload speed of tower.
      */
