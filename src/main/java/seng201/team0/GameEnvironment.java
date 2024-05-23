@@ -24,7 +24,7 @@ public class GameEnvironment {
     private int currentRound = 1;
     private boolean victoryFlag;
     private String roundDifficulty; // difficulty of round
-    private List<Tower> towerList; // list of towers
+    private List<Tower> towerList = new ArrayList<>(); // list of towers
     private final List<Tower> defaultTowers = new ArrayList<>(); // initializes an array list for default towers
     private final List<Item> defaultItems = new ArrayList<>(); // initializes an array list for default items
     private final Consumer<GameEnvironment> setupScreenLauncher1; // launch the name selection screen

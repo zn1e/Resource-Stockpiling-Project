@@ -1,6 +1,7 @@
 package seng201.team0.services;
 
 import javafx.application.Platform;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.DialogPane;
 import seng201.team0.GameEnvironment;
@@ -31,7 +32,11 @@ public class RoundService {
     public void afterRound(boolean allCartsFilled){
         int currentRound = gameEnvironment.getCurrentRound();
         int numberOfRounds = gameEnvironment.getNumberOfRounds();
+        int numberOfTowers = gameEnvironment.getTowerList().size();
         if (!allCartsFilled){
+            gameEnvironment.launchEndScreen();
+        } else if (numberOfTowers == 0) {
+            Platform.runLater(this::showNoTowersAlert);
             gameEnvironment.launchEndScreen();
         } else if (allCartsFilled && currentRound == numberOfRounds) {
             gameEnvironment.setVictoryFlag(true);
@@ -76,5 +81,16 @@ public class RoundService {
             gameEnvironment.setRoundDifficulty(difficulty.toLowerCase());
             gameEnvironment.launchMainScreen();
         });
+    }
+
+    /**
+     * Show alert when there's no more towers.
+     */
+    private void showNoTowersAlert(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("No Working Towers!");
+        alert.setHeaderText(null);
+        alert.setContentText("No more working towers!");
+        alert.showAndWait();
     }
 }

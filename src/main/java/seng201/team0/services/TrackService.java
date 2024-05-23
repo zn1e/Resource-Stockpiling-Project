@@ -221,9 +221,14 @@ public class TrackService {
      * @return String resource type of the cart.
      */
     private String getRandomResourceType(){
-        int randomResourceTypeIndex = random.nextInt(resourceTypeList.size()-1);
-        String randomResourceType = resourceTypeList.get(randomResourceTypeIndex);
-        return randomResourceType;
+        if (resourceTypeList.size() == 1){
+            return resourceTypeList.get(0);
+        }
+        else{
+            int randomResourceTypeIndex = random.nextInt(resourceTypeList.size()- 1);
+            String randomResourceType = resourceTypeList.get(randomResourceTypeIndex);
+            return randomResourceType;
+        }
     }
 
     /**
@@ -275,4 +280,30 @@ public class TrackService {
     public BooleanProperty maxDistanceCoveredProperty(){
         return maxDistanceCovered;
     }
+
+    /**
+     * Trigger random events after round.
+     * @param trackGrid GridPane where random events occurred.
+     */
+    public void triggerRandomEvents(GridPane trackGrid, Label[] alertLabels){
+        List<Tower> towersToChange = new ArrayList<>();
+        List<Tower> towersToRemove = new ArrayList<>();
+        for (Tower tower: towerService.getMainTowers()){
+            int statChangeChance = random.nextInt(100);
+            if (statChangeChance < 20){
+                towersToChange.add(tower);
+            }
+            int breakTowerChance = random.nextInt(100);
+            if (breakTowerChance < 35){
+                towersToRemove.add(tower);
+            }
+        }
+        for (Tower tower : towersToChange){
+            towerService.modifyTowerStat(tower, alertLabels[0]);
+        }
+        for (Tower tower : towersToRemove){
+            towerService.breakTower(tower, trackGrid, alertLabels[1]);
+        }
+    }
+
 }

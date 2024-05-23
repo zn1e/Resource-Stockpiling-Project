@@ -8,6 +8,7 @@ import seng201.team0.models.Tower;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class TowerSelection {
     /**
@@ -89,11 +90,13 @@ public class TowerSelection {
      * Method for checking if the number of selected towers is equal to 3.
      */
     private void confirmSelectedTowers(){
-        if (selectedTowers.length == 3){
-            selectedTowersFlag = true;
-        }else{
-            selectedTowersFlag = false;
+        int count = 0;
+        for (Tower tower: selectedTowers){
+            if (tower != null){
+                count++;
+            }
         }
+        selectedTowersFlag = (count == 3);
     }
 
     /**
@@ -103,8 +106,10 @@ public class TowerSelection {
     private void startButtonClicked() {
         confirmSelectedTowers();
         if (selectedTowersFlag){
-            gameEnvironment.setTowerList(Arrays.stream(selectedTowers).filter((Objects::nonNull)).toList());
+            gameEnvironment.setTowerList(Arrays.stream(selectedTowers).filter((Objects::nonNull)).collect(Collectors.toList()));
             gameEnvironment.closeSetupScreen();
+        }else{
+            System.out.println("Select 3 towers.");
         }
     }
 }
