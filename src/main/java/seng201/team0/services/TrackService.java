@@ -237,7 +237,7 @@ public class TrackService {
      */
     private int getRandomResourceCapacity(){
         String difficulty = gameEnvironment.getRoundDifficulty();
-        if (difficulty.equals("easy")){
+        if (difficulty.equals("easy") || gameEnvironment.getCurrentRound() == 1){
             int randomResourceCapacity = random.nextInt(250) + 250;
             return randomResourceCapacity;
         }else{
