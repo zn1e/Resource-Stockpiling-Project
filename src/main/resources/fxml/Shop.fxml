@@ -123,10 +123,10 @@
             <Button fx:id="item5InvButton" mnemonicParsing="false" text="&lt;empty&gt;" GridPane.columnIndex="4" GridPane.rowIndex="7" />
          </children>
       </GridPane>
-      <Text fx:id="descriptionLabel" layoutX="572.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;description&gt;" wrappingWidth="93.60000000000002" />
+      <Text fx:id="descriptionLabel" layoutX="534.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;description&gt;" wrappingWidth="93.60000000000002" />
       <Button fx:id="buyButton" layoutX="687.0" layoutY="509.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="94.0" text="BUY" textFill="#43c759" />
-      <Text fx:id="shopText" layoutX="607.0" layoutY="573.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="shopText" layoutX="537.0" layoutY="573.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="88.00000000000011" />
       <Button fx:id="sellButton" layoutX="687.0" layoutY="551.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="94.0" text="SELL" textFill="#bf4444" />
-      <Label fx:id="towerDescriptionLabel" layoutX="638.0" layoutY="217.0" text="Label" />
+      <Label fx:id="towerDescriptionLabel" layoutX="581.0" layoutY="217.0" prefHeight="18.0" prefWidth="201.0" text="Label" textAlignment="CENTER" />
    </children>
 </AnchorPane>
