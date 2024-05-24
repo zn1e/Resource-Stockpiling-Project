@@ -126,6 +126,8 @@ public class ShopController {
             descriptionLabel.setText("Price: "+ clickedTower.getCost());
             updateButtonStyles(tower1Button, tower2Button, tower3Button, tower4Button, tower5Button);
             updateButtonStyles(item1Button, item2Button, item3Button);
+            buyButton.setDisable(false);
+            sellButton.setDisable(true);
         }
     }
 
@@ -146,6 +148,8 @@ public class ShopController {
             descriptionLabel.setText("Price: "+ clickedItem.getItemCost());
             updateButtonStyles(item1Button, item2Button, item3Button);
             updateButtonStyles(tower1Button, tower2Button, tower3Button, tower4Button, tower5Button);
+            buyButton.setDisable(false);
+            sellButton.setDisable(true);
         }
     }
 
@@ -198,6 +202,8 @@ public class ShopController {
                     updateButtonStyles(itemInvButtons.toArray(new Button[0]));
                     descriptionLabel.setText("Sell Price: "+ selectedTower.getSellPrice());
                     shopImage.setImage(selectedTower.getImage());
+                    buyButton.setDisable(true);
+                    sellButton.setDisable(false);
                 });
             } else {
                 resTowerButtons.get(i).setText("Empty");
@@ -217,6 +223,8 @@ public class ShopController {
                     updateButtonStyles(resTowerButtons.toArray(new Button[0]));
                     descriptionLabel.setText("Sell Price: "+ selectedItem.getSellPrice());
                     shopImage.setImage(selectedItem.getImage());
+                    buyButton.setDisable(true);
+                    sellButton.setDisable(false);
                 });
             } else {
                 itemInvButtons.get(i).setText("Empty");
