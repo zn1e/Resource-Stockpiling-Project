@@ -128,7 +128,8 @@ public class Cart {
     private void updateLoadLabel(){
         if (cartContainer != null && cartContainer.getChildren().get(0) instanceof Label) {
             Label loadLabel = (Label) cartContainer.getChildren().get(0);
-            loadLabel.setText("Load: " + currentLoad);
+            loadLabel.setText("Ld: " + currentLoad);
+            loadLabel.setMinWidth(80);
             loadLabel.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
         }
     }

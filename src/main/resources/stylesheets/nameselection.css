@@ -8,7 +8,7 @@
     src: url('/fonts/comic.ttf')
 }
 
-#titleLabel{
+#titleLabel {
     -fx-font-family: 'Creepster';
     -fx-font-size: 60px;
 }

@@ -6,65 +6,65 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.TowerSelection">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f08b84;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.TowerSelection">
    <children>
-      <Text fx:id="towerSelectionLabel" layoutX="281.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tower Selection">
+      <Text fx:id="towerSelectionLabel" layoutX="274.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tower Selection">
          <font>
-            <Font name="Creepster" size="40.0" />
+            <Font name="Dyuthi Regular" size="40.0" />
          </font>
       </Text>
-      <Text layoutX="296.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select 3 starting towers">
+      <Text layoutX="306.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select 3 starting towers">
          <font>
-            <Font name="Comic Sans MS" size="18.0" />
+            <Font name="Roboto" size="18.0" />
          </font></Text>
       <Button fx:id="startButton" layoutX="678.0" layoutY="532.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="76.0" text="Start">
          <font>
-            <Font name="Comic Sans MS" size="16.0" />
+            <Font name="Roboto Black" size="16.0" />
          </font>
       </Button>
       <Button fx:id="tower1Button" layoutX="161.0" layoutY="180.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="131.0" text="Eye Tower">
          <font>
-            <Font name="Comic Sans MS" size="16.0" />
+            <Font name="Roboto Black" size="16.0" />
          </font>
       </Button>
       <Button fx:id="tower2Button" layoutX="348.0" layoutY="180.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="131.0" text="Brain Tower">
          <font>
-            <Font name="Comic Sans MS" size="16.0" />
+            <Font name="Roboto Black" size="16.0" />
          </font>
       </Button>
       <Button fx:id="tower3Button" layoutX="534.0" layoutY="180.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="131.0" text="Heart Tower">
          <font>
-            <Font name="Comic Sans MS" size="16.0" />
+            <Font name="Roboto Black" size="16.0" />
          </font>
       </Button>
       <Button fx:id="tower4Button" layoutX="227.0" layoutY="352.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="131.0" text="Liver Tower">
          <font>
-            <Font name="Comic Sans MS" size="16.0" />
+            <Font name="Roboto Black" size="16.0" />
          </font>
       </Button>
       <Button fx:id="tower5Button" layoutX="469.0" layoutY="352.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="131.0" text="Kidney Tower">
          <font>
-            <Font name="Comic Sans MS" size="16.0" />
+            <Font name="Roboto Black" size="16.0" />
          </font>
       </Button>
       <Label fx:id="selectedTowersLabel" layoutX="37.0" layoutY="538.0" text="Selected Towers:">
          <font>
-            <Font name="Comic Sans MS" size="16.0" />
+            <Font name="Roboto Bold" size="16.0" />
          </font>
       </Label>
       <Button fx:id="selectedTower1Button" layoutX="177.0" layoutY="533.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="131.0">
          <font>
-            <Font name="Comic Sans MS" size="16.0" />
+            <Font name="Roboto Black" size="16.0" />
          </font>
       </Button>
       <Button fx:id="selectedTower2Button" layoutX="318.0" layoutY="533.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="131.0">
          <font>
-            <Font name="Comic Sans MS" size="16.0" />
+            <Font name="Roboto Black" size="16.0" />
          </font>
       </Button>
       <Button fx:id="selectedTower3Button" layoutX="458.0" layoutY="533.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="131.0">
          <font>
-            <Font name="Comic Sans MS" size="16.0" />
+            <Font name="Roboto Black" size="16.0" />
          </font>
       </Button>
    </children>

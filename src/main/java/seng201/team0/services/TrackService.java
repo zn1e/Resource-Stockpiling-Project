@@ -121,6 +121,10 @@ public class TrackService {
         Label cartResourceLabel = new Label("Rrsc: " + cart.getResourceType());
         Label cartSpeedLabel = new Label("Spd: " + cart.getSpeed());
 
+        cartLoadLabel.setMinWidth(90);
+        cartResourceLabel.setMinWidth(65);
+        cartSpeedLabel.setMinWidth(50);
+
         cartLoadLabel.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
         cartResourceLabel.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
         cartSpeedLabel.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
