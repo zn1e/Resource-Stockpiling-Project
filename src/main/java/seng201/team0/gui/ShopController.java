@@ -18,8 +18,8 @@ import java.util.List;
 public class ShopController {
 
     private final UIService uiService;
-    private GameEnvironment gameEnvironment; // the game environment instance
-    private InventoryService inventoryService;
+    private final GameEnvironment gameEnvironment; // the game environment instance
+    private final InventoryService inventoryService;
     private Item selectedItem;
     private Tower selectedTower;
 
@@ -45,6 +45,8 @@ public class ShopController {
     private Button item1InvButton, item2InvButton, item3InvButton, item4InvButton, item5InvButton;
     @FXML
     private Button sellButton;
+    @FXML
+    private Label towerDescriptionLabel;
 
 
     public ShopController(GameEnvironment gameEnvironment) {
@@ -56,6 +58,7 @@ public class ShopController {
     public void initialize() {
         updateUI();
         updateInventoryButtons();
+        updateButtonStyles();
         List<Button> towerButtons = List.of(tower1Button, tower2Button, tower3Button, tower4Button, tower5Button);
         List<Button> itemButtons = List.of(item1Button, item2Button, item3Button);
 
@@ -76,6 +79,7 @@ public class ShopController {
         sellButton.setOnAction(event -> sellSelectedObject());
         shopText.setText("");
         descriptionLabel.setText("");
+        towerDescriptionLabel.setText("");
     }
 
     private void updateUI() {
@@ -86,7 +90,8 @@ public class ShopController {
     private void updateButtonStyles(Button... buttons) {
         for (Button button : buttons) {
             if ((selectedTower != null && button == getTowerButton(selectedTower))
-                    || (selectedItem != null && button == getItemButton(selectedItem))) {
+                    || (selectedItem != null && button == getItemButton(selectedItem))
+           ) {
                 button.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
             } else {
                 button.setStyle("");
@@ -117,7 +122,8 @@ public class ShopController {
             selectedItem = null;
             shopText.setText("");
             shopImage.setImage(clickedTower.getImage());
-            descriptionLabel.setText("Price: "+ selectedTower.getCost());
+            towerDescriptionLabel.setText(clickedTower.getTowerDescription());
+            descriptionLabel.setText("Price: "+ clickedTower.getCost());
             updateButtonStyles(tower1Button, tower2Button, tower3Button, tower4Button, tower5Button);
             updateButtonStyles(item1Button, item2Button, item3Button);
         }
@@ -135,8 +141,9 @@ public class ShopController {
             selectedItem = clickedItem;
             selectedTower = null;
             shopText.setText("");
-            shopImage.setImage(selectedItem.getImage());
-            descriptionLabel.setText("Price: "+ selectedItem.getItemCost());
+            shopImage.setImage(clickedItem.getImage());
+            towerDescriptionLabel.setText(clickedItem.getDescription());
+            descriptionLabel.setText("Price: "+ clickedItem.getItemCost());
             updateButtonStyles(item1Button, item2Button, item3Button);
             updateButtonStyles(tower1Button, tower2Button, tower3Button, tower4Button, tower5Button);
         }
@@ -151,19 +158,27 @@ public class ShopController {
                 shopText.setText("Purchase Sucessful!");
                 updateUI();
             }
-            else{
+            else if (price > gameEnvironment.getPlayerGold()){
                 shopText.setText("NOT ENOUGH MONEY LOL!");
             }
+            else if (!inventoryService.isReserveTowerInvNotFull()){
+                shopText.setText("Tower Inventory Full!");
+            }
+
         } else if (selectedItem != null) {
             int price = selectedItem.getItemCost();
-            if (price <= gameEnvironment.getPlayerGold()) {
+            if (price <= gameEnvironment.getPlayerGold() && inventoryService.isItemInvNotFull()) {
                 inventoryService.addItem(selectedItem);
                 gameEnvironment.setPlayerGold(gameEnvironment.getPlayerGold() - price);
                 shopText.setText("Purchase Sucessful!");
                 updateUI();
             }
-            else{
+            else if (price > gameEnvironment.getPlayerGold()){
                 shopText.setText("NOT ENOUGH MONEY LOL!");
+            }
+            else if (!inventoryService.isItemInvNotFull()){
+                shopText.setText("Item Inventory Full!");
+
             }
 
         }

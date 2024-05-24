@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.Cart;
+import seng201.team0.models.Item;
 import seng201.team0.models.Tower;
 
 import java.util.ArrayList;
@@ -207,5 +208,26 @@ public class TowerService {
             alertLabel2.setText("Alert 2: A tower has been removed.");
         }
     }
+    public Tower getMainTower(int index){
+        if (index>= 0 && index < mainTowers.size()){
+            System.out.println("Main Tower: "+ mainTowers.get(index));
+            return mainTowers.get(index);
+        }
+        else{
+            System.out.println("No tower found");
+            return null;
+        }
+    }
+    public void moveMainTower(Tower mainTower) {
+        if (mainTowers.remove(mainTower)) {
+            mainTowers.add(mainTower);
+        }
+    }
+    public void moveReserveToMain(Tower reserveTower) {
+        if (reserveTowers.remove(reserveTower)) {
+            mainTowers.add(reserveTower);
+        }
+    }
+
 
 }

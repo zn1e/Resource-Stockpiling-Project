@@ -2,16 +2,31 @@ package seng201.team0.models;
 
 import javafx.scene.image.Image;
 
+/**
+ * Item class represents an item in the game.
+ * It contains the information of the item's name, cost, image and description
+ */
+
 public class Item {
     protected String itemName;
     protected int itemCost;
     protected Image image;
+    protected String itemDescription;
 
+    /**
+     * Constructs an Item object with the specified name, cost, image, and description.
+     *
+     * @param itemName        the name of the item
+     * @param itemCost        the cost of the item
+     * @param image           the image of the item
+     * @param itemDescription the description of the item
+     */
 
-    public Item(String itemName, int itemCost, Image image){
+    public Item(String itemName, int itemCost, Image image, String itemDescription){
         this.itemName = itemName;
         this.itemCost = itemCost;
         this.image = image;
+        this.itemDescription = itemDescription;
 
     }
     public Image getImage(){
@@ -31,20 +46,8 @@ public class Item {
     public int getSellPrice(){
         return itemCost- 5;}
 
-    public void useResourceUpgrade(Tower tower){
-        tower.resourceUpgrade(200);
-        System.out.println(tower + "'s resource amount upgraded to "+ tower.getResourceAmount());
+    public String getDescription(){
+        return itemDescription;
+    }
 
     }
-    public void useReloadUpgrade(Tower tower){
-        tower.reloadUpgrade(10);
-        System.out.println(tower + "'s reload speed upgraded to "+ tower.getReloadSpeed());
-
-    }
-    public void useSwap(Tower tower1, Tower tower2){
-        tower1.swapTower(tower2);
-        System.out.println(tower1 + "swapped with" + tower2);
-
-    }
-}
-

@@ -36,14 +36,19 @@ public class Tower {
      * Image of tower.
      */
     private Image image;
+    /**
+     * Description of tower.
+     */
+    private String towerDescription;
 
     /**
      *Constructor for Tower.
      * @param name A String describing the name of tower
      * @param resourceType A String describing the resource type of tower
+     * @param towerDescription A string describing the tower's description
      * Initializes the value for resource amount, reload speed, level of tower, and cost (all int type).
      */
-    public Tower(String name, String resourceType, Image image){
+    public Tower(String name, String resourceType, Image image, String towerDescription){
         this.name = name;
         this.resourceType = resourceType;
         this.resourceAmount = 500;
@@ -51,6 +56,7 @@ public class Tower {
         this.level = 1;
         this.cost = 60;
         this.image = image;
+        this.towerDescription = towerDescription;
     }
 
     /**
@@ -124,17 +130,18 @@ public class Tower {
         level++;
         resourceAmount += 250;
     }
+
+    /**
+     * Method for getting the sell price of the tower
+     * @return the sell price of the tower
+     */
     public int getSellPrice(){return cost - 5;}
 
-    public void reloadUpgrade(int amount){
-        reloadSpeed -= amount;
-    }
-
+    public String getTowerDescription(){return towerDescription;}
     public void resourceUpgrade(int amount){
         resourceAmount += amount;
     }
-    public void swapTower(Tower tower){
 
     }
-}
+
 

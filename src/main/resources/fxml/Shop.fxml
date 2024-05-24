@@ -63,7 +63,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="item2Button" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" text="SWAP!" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button fx:id="item2Button" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" text="POINTS!" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
@@ -73,7 +73,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="item3Button" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" text="FIX!" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Button fx:id="item3Button" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" text="GOLD!" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
@@ -127,5 +127,6 @@
       <Button fx:id="buyButton" layoutX="687.0" layoutY="509.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="94.0" text="BUY" textFill="#43c759" />
       <Text fx:id="shopText" layoutX="607.0" layoutY="573.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <Button fx:id="sellButton" layoutX="687.0" layoutY="551.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="94.0" text="SELL" textFill="#bf4444" />
+      <Label fx:id="towerDescriptionLabel" layoutX="638.0" layoutY="217.0" text="Label" />
    </children>
 </AnchorPane>
