@@ -46,7 +46,8 @@ public class Tower {
      * @param name             A String describing the name of tower
      * @param resourceType     A String describing the resource type of tower
      * @param towerDescription A string describing the tower's description
-     *                         Initializes the value for resource amount, reload speed, level of tower, and cost (all int type).
+     * @param image  A string path of the image.
+     * Initializes the value for resource amount, reload speed, level of tower, and cost (all int type).
      */
     public Tower(String name, String resourceType, Image image, String towerDescription) {
         this.name = name;

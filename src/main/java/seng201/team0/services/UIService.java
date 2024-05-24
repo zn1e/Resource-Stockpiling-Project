@@ -6,6 +6,9 @@ import seng201.team0.models.Tower;
 
 import java.util.List;
 
+/**
+ * Service class for updating the user interface of the main screen.
+ */
 public class UIService {
     /**
      * The game environment instance.

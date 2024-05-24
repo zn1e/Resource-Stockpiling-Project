@@ -112,6 +112,9 @@ public class GameEnvironment {
      * @param setupScreenLauncher2 Consumer function to launch number of round and difficulty selection screen.
      * @param setupScreenLauncher3 Consumer function to launch tower selection screen.
      * @param mainScreenLauncher Consumer function to launch main screen.
+     * @param shopScreenLauncher Consumer function to launch shop screen.
+     * @param endScreenLauncher Consumer function to launch end screen.
+     * @param inventoryScreenLauncher Consumer function to launch inventory screen.
      * @param clearScreen Runnable to clear the screen.
      *
      */

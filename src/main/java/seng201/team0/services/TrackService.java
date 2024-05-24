@@ -20,6 +20,10 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Service class for the track. This handles the initialization of carts in the track,
+ * and its movement. It also triggers the random event after the max distance is covered.
+ */
 public class TrackService {
     /**
      * The game environment instance.
@@ -288,6 +292,7 @@ public class TrackService {
     /**
      * Trigger random events after round.
      * @param trackGrid GridPane where random events occurred.
+     * @param alertLabels Label list of the alerts.
      */
     public void triggerRandomEvents(GridPane trackGrid, Label[] alertLabels){
         List<Tower> towersToChange = new ArrayList<>();

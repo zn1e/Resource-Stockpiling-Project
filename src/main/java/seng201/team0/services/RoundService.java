@@ -10,6 +10,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Service class that handles the rounds of the game.
+ */
+
 public class RoundService {
     /**
      * The game environment instance.

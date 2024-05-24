@@ -6,6 +6,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import seng201.team0.GameEnvironment;
 
+/**
+ * Service class for name selection gui.
+ */
 public class NameSelectionService {
     /**
      * The game environment instance.

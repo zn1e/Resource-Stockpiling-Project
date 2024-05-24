@@ -171,7 +171,7 @@ public class InventoryService {
         return reserveTower;
     }
     /**
-     * Swap the position of main tower to the position of reserve tower & vice versa.
+     * Swap the position of main tower to the position of reserve tower and vice versa.
      * @param mainTower The main tower to swap.
      * @param reserveTower The reserve tower to swap with.
      */

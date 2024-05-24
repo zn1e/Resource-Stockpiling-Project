@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Service class that handles the setup of towers in the game, the interaction of
+ * it on the cart, and modifying stats or removing a tower after a random event is trigger.
+ */
 public class TowerService {
     /**
      * List of main towers.
@@ -152,6 +156,7 @@ public class TowerService {
     /**
      * Event where tower resource amount is reduced.
      * @param tower Tower object which resource amount is reduced.
+     * @param alertLabel1 Label for tower stat change alert.
      */
     public void modifyTowerStat(Tower tower, Label alertLabel1){
         int resourceAmount = tower.getResourceAmount();
@@ -168,6 +173,7 @@ public class TowerService {
      * Event where tower breaks.
      * @param tower Tower object to be broken.
      * @param trackGrid GridPane where tower is.
+     * @param alertLabel2 Label for remove tower alert.
      */
     public void breakTower(Tower tower, GridPane trackGrid, Label alertLabel2){
         int breakChance = random.nextInt(2);

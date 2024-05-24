@@ -5,6 +5,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import seng201.team0.GameEnvironment;
 
+/**
+ * Class that handles the end screen functionalities.
+ */
 public class EndScreen {
     /**
      * The game environment instance.
