@@ -325,15 +325,15 @@ public class GameEnvironment {
      * Load default towers.
      */
     private void loadDefaultTowers() {
-        defaultTowers.add(new Tower("Eye Tower", "eye", loadImage("images/eye_tower.png")
+        defaultTowers.add(new Tower("Eye Tower", "eye", loadImage("Images/eye_tower.png")
         , "Fill carts with eyes!"));
-        defaultTowers.add(new Tower("Brain Tower", "brain", loadImage("images/brain_tower.png"),
+        defaultTowers.add(new Tower("Brain Tower", "brain", loadImage("Images/brain_tower.png"),
                 "Fill carts with brains!"));
-        defaultTowers.add(new Tower("Heart Tower", "heart", loadImage("images/heart_tower.png"),
+        defaultTowers.add(new Tower("Heart Tower", "heart", loadImage("Images/heart_tower.png"),
                 "Fill carts with hearts!"));
-        defaultTowers.add(new Tower("Liver Tower", "liver", loadImage("images/liver_tower.png"),
+        defaultTowers.add(new Tower("Liver Tower", "liver", loadImage("Images/liver_tower.png"),
                 "Fill carts with liver!"));
-        defaultTowers.add(new Tower("Kidney Tower", "kidney", loadImage("images/kidney_tower.png"),
+        defaultTowers.add(new Tower("Kidney Tower", "kidney", loadImage("Images/kidney_tower.png"),
                 "Fill carts with kidneys!"));
     }
 
@@ -341,11 +341,11 @@ public class GameEnvironment {
      * Load default items.
      */
     private void loadDefaultItems() {
-        defaultItems.add(new Item("Upgrade Item", 50, loadImage("images/upgrade_item.png"),
+        defaultItems.add(new Item("Upgrade Item", 50, loadImage("Images/upgrade_item.png"),
                 "Upgrades resource capacity"));
-        defaultItems.add(new  Item("Points Item", 50, loadImage("images/Points.PNG"),
+        defaultItems.add(new  Item("Points Item", 50, loadImage("Images/Points.PNG"),
                 "Up your points gain!"));
-        defaultItems.add(new Item("Gold Item", 50, loadImage("images/Gold.PNG"),
+        defaultItems.add(new Item("Gold Item", 50, loadImage("Images/Gold.PNG"),
                 "Up your gold gain!"));
     }
 
@@ -357,6 +357,7 @@ public class GameEnvironment {
     public Image loadImage(String path) {
         return new Image(getClass().getResourceAsStream("/" + path));
     }
+
     /**
      * Launches the name selection screen.
      */
