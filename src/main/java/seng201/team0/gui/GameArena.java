@@ -24,37 +24,60 @@ import java.util.List;
  */
 
 public class GameArena {
+    /** The game environment instance. */
     private GameEnvironment gameEnvironment;
+    /** The tower service for managing towers. */
     private TowerService towerService;
+    /** The UI service for updating the user interface. */
     private UIService uiService;
+    /** The track service for managing the track. */
     private TrackService trackService;
+    /** The round service for manaing the game rounds. */
     private RoundService roundService;
+    /** The timeline for animating the game. */
     private Timeline timeline;
+
     @FXML
     GridPane trackGrid;
+
     @FXML
     Label goldLabel, pointsLabel, difficultyLabel, roundLabel;
+
     @FXML
     Button playButton;
+
     @FXML
     Button shopButton;
+
     @FXML
     Button inventoryButton;
+
     @FXML
     ProgressBar progressBar;
+
     @FXML
     Label tower1NameLabel, tower2NameLabel, tower3NameLabel, tower4NameLabel, tower5NameLabel;
+
     @FXML
     Label tower1TypeLabel, tower2TypeLabel, tower3TypeLabel, tower4TypeLabel, tower5TypeLabel;
+
     @FXML
     Label tower1AmountLabel, tower2AmountLabel, tower3AmountLabel, tower4AmountLabel, tower5AmountLabel;
+
     @FXML
     Label tower1SpeedLabel, tower2SpeedLabel, tower3SpeedLabel, tower4SpeedLabel, tower5SpeedLabel;
+
     @FXML
     Label tower1LevelLabel, tower2LevelLabel, tower3LevelLabel, tower4LevelLabel, tower5LevelLabel;
+
     @FXML
     Label alert1Label, alert2Label;
 
+    /**
+     * Constructor for the GameArena class.
+     * Initializes the services and game environment
+     * @param gameEnvironment The game environment instance.
+     */
 
     public GameArena(GameEnvironment gameEnvironment){
         this.gameEnvironment = gameEnvironment;
@@ -62,8 +85,14 @@ public class GameArena {
         this.uiService = new UIService(gameEnvironment);
         this.trackService = new TrackService(gameEnvironment);
         this.roundService = new RoundService(gameEnvironment);
+
         this.trackGrid = new GridPane();
     }
+
+    /**
+     * Initializes the game arena.
+     * Sets up the UI, towers, track, and button actions.
+     */
     public void initialize(){
         updateUI();
         setupTowers(trackGrid);
@@ -72,6 +101,10 @@ public class GameArena {
         shopButton.setOnAction(event -> shopButtonClicked());
         inventoryButton.setOnAction(event ->inventoryButtonClicked());
     }
+
+    /**
+     * Updates the user interface elements
+     */
     private void updateUI() {
         uiService.updateGoldLabel(goldLabel);
         uiService.updatePointsLabel(pointsLabel);
@@ -81,6 +114,10 @@ public class GameArena {
         progressBar.setStyle("-fx-accent: green");
         increaseProgress();
     }
+
+    /**
+     * Updates the labels for the towers.
+     */
 
     private void updateTowerLabels() {
         List<Tower> towers = gameEnvironment.getTowerList();
@@ -92,12 +129,26 @@ public class GameArena {
 
         uiService.updateTowerLabels(towers, towerNameLabels, towerTypeLabels, towerAmountLabels, towerSpeedLabels, towerLevelLabels);
     }
+
+    /**
+     * Sets up the main towers on the track grid.
+     * @param trackGrid The track grid to set up the towers on.
+     */
     private void setupTowers(GridPane trackGrid){
         towerService.setupMainTowers(trackGrid);
     }
+
+    /**
+     * Sets up the track image on the track grid.
+     * @param trackGrid The track grid to set up the track image on.
+     */
     private void setupTrack(GridPane trackGrid){
         trackService.setupTrackImage(trackGrid);
     }
+
+    /**
+     * Starts the game, initializing carts and disabling buttons.
+     */
 
     private void startGame(){
         shopButton.setDisable(true);
@@ -114,6 +165,10 @@ public class GameArena {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
+
+    /**
+     * Stops the game, re-enabling buttons and performing after-round interactions.
+     */
     private void stopGame() {
         if (timeline != null) {
             timeline.stop();
@@ -123,6 +178,10 @@ public class GameArena {
             playButton.setDisable(false);
         }
     }
+
+    /**
+     * Handles interactions after a round is completed.
+     */
     private void afterRoundInteraction(){
         List<Cart> notFilledCarts = trackService.getNotFilledCarts();
         boolean allCartsFilled = notFilledCarts.isEmpty();
@@ -132,13 +191,25 @@ public class GameArena {
         increaseProgress();
     }
 
+    /**
+     * Launches the shop screen when the shop button is clicked.
+     */
+
     private void shopButtonClicked(){
         gameEnvironment.launchShopScreen();
     }
+
+    /**
+     * Launches the inventory screen when the inventory button is clicked.
+     */
     private void inventoryButtonClicked(){
         System.out.println("Inventory Screen");
         gameEnvironment.launchInventoryScreen();
     }
+
+    /**
+     * Increases the progress bar based on the current round.
+     */
     private void increaseProgress(){
         int currentRound = gameEnvironment.getCurrentRound();
         int numberOfRounds = gameEnvironment.getNumberOfRounds();

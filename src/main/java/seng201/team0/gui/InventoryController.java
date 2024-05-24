@@ -2,7 +2,6 @@ package seng201.team0.gui;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.text.Text;
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.Item;
@@ -13,14 +12,25 @@ import seng201.team0.services.UIService;
 
 import java.util.List;
 
+/**
+ * Controller class for the inventory screen.
+ * Manages the game environment, inventory items, towers, and user interface updates.
+ */
 
 public class InventoryController {
+    /** The UI service for updating the user interface.*/
     private UIService uiService;
+    /** The game environment instance. */
     private GameEnvironment gameEnvironment; // the game environment instance
+    /** The inventory service for managing items and reserve towers. */
     private InventoryService inventoryService;
+    /** The tower service for managing the main towers*/
     private TowerService towerService;
+    /** The currently selected items. */
     private Item selectedItem;
+    /** The currently selected reserve tower */
     private Tower selectedResTower;
+    /** The currently selected main tower */
     private Tower selectedMainTower;
 
     @FXML
@@ -32,8 +42,6 @@ public class InventoryController {
     @FXML
     private Button useButton;
     @FXML
-    private Button swapButton;
-    @FXML
     private Label goldLabel;
     @FXML
     private Button backButton;
@@ -44,16 +52,22 @@ public class InventoryController {
     @FXML
     private Text backText;
 
-
+    /**
+     * Constructor for the InventoryController class.
+     * Initializes the services and game environment.
+     * @param gameEnvironment The game environment instance.
+     */
     public InventoryController(GameEnvironment gameEnvironment) {
         this.gameEnvironment = gameEnvironment;
         this.uiService = new UIService(gameEnvironment);
         this.inventoryService = gameEnvironment.getInventoryService();
         this.towerService = new TowerService(gameEnvironment);
-
-
     }
 
+    /**
+     * Initializes the inventory controller.
+     * Sets up the UI and button actions.
+     */
     public void initialize() {
         towerText.setText("");
         uiService.updateGoldLabel(goldLabel);
@@ -63,6 +77,13 @@ public class InventoryController {
         backText.setText("");
         System.out.println(towerService.getMainTowers());
     }
+
+    /**
+     * Handles the click event for a main tower button.
+     * Swaps towers if a reserve tower is selected, otherwise sets the selected main tower.
+     *
+     * @param selectedTower The selected main tower.
+     */
     private void handleMainTowerButtonClick(Tower selectedTower) {
         if (selectedResTower != null) {
             towerText.setText("Swapped "+ selectedResTower + " and " +selectedTower);
@@ -76,6 +97,11 @@ public class InventoryController {
         }
     }
 
+    /**
+     * Handles the click event for a reserve tower button.
+     * Swaps towers if a main tower is selected, otherwise sets the selected reserve tower.
+     * @param selectedTower The selected reserve tower.
+     */
     private void handleResTowerButtonClick(Tower selectedTower) {
         if (selectedMainTower != null) {
             towerText.setText("Swapped "+ selectedMainTower + " and " +selectedTower);
@@ -90,6 +116,9 @@ public class InventoryController {
 
     }
 
+    /**
+     * Updates the inventory buttons to reflect the current state of the inventory.
+     */
     private void updateInventoryButtons() {
         List<Button> resTowerButtons = List.of(res1Button, res2Button, res3Button, res4Button, res5Button);
         List<Button> itemInvButtons = List.of(item1Button, item2Button, item3Button, item4Button, item5Button);
@@ -135,6 +164,11 @@ public class InventoryController {
             }
         }
     }
+
+    /**
+     * Handles the click event for the use button.
+     * Uses the selected item on the selected tower and updates the inventory buttons.
+     */
     private void useButtonClicked() {
         if (selectedItem != null) {
             inventoryService.useItem(selectedItem, selectedMainTower);
@@ -146,6 +180,11 @@ public class InventoryController {
         uiService.updateGoldLabel(goldLabel);
     }
 
+    /**
+     * Checks if the main tower list is empty.
+     * @return true if the main tower list is empty, false otherwise.
+     */
+
     private boolean isMainTowerListEmpty(){
         if (towerService.getMainTowers().size() >= 1){
             return false;
@@ -155,6 +194,11 @@ public class InventoryController {
         }
 
     }
+
+    /**
+     * Handles the click event for the back button.
+     * Closes the setup screen if there is at least one main tower, otherwise displays an alert.
+     */
     private void backButtonClicked() {
         if (!isMainTowerListEmpty()){
             gameEnvironment.closeSetupScreen();

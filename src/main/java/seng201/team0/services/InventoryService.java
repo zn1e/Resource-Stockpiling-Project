@@ -12,13 +12,15 @@ import java.util.List;
  * It provides methods to add, remove, and retrieve items and towers from the inventory.
  */
 public class InventoryService {
+    /** The maximum size of the item inventory. */
     private static final int ITEM_INVENTORY_SIZE = 5;
+    /** The maximum size of the tower inventory. */
     private static final int TOWER_INVENTORY_SIZE = 5;
+    /** The list of items in the inventory. */
 
     private ArrayList<Item> itemInventory;
+    /** The list of reserve towers in the inventory. */
     private ArrayList<Tower> reserveTower;
-    private List<Tower> mainTowerInventory;
-    private static InventoryService instance;
     private Item item;
     private TowerService towerService;
     private GameEnvironment gameEnvironment;
@@ -133,31 +135,6 @@ public class InventoryService {
             return null;
         }
     }
-    /**
-     * Retrieves the index of a tower in the reserve tower inventory.
-     *
-     * @param tower the tower to find the index of
-     * @return the index of the tower, or -1 if not found
-     */
-
-    public int getTowerIndex(Tower tower) {
-        return reserveTower.indexOf(tower);
-    }
-    /**
-     * Retrieves the index of an item in the item inventory.
-     *
-     * @param item the item to find the index of
-     * @return the index of the item, or -1 if not found
-     */
-
-    public int getItemIndex(Item item) {
-        return itemInventory.indexOf(item);
-    }
-    /**
-     * Removes a tower from the reserve tower inventory.
-     *
-     * @param tower the tower to remove
-     */
 
     public void removeReserveTower(Tower tower){
         reserveTower.remove(tower);
@@ -173,48 +150,7 @@ public class InventoryService {
         itemInventory.remove(item);
         System.out.println(item+ " removed, Items: "+ itemInventory);
     }
-    /**
-     * Retrieves the count of towers with the specified name in the reserve tower inventory.
-     *
-     * @param towerName the name of the tower
-     * @return the count of towers with the specified name
-     */
-    public int getReserveTowerCount(String towerName) {
-        return (int) reserveTower.stream().filter(tower -> tower.getName().equals(towerName)).count();
-    }
-    /**
-     * Retrieves the count of items with the specified name in the item inventory.
-     *
-     * @param itemName the name of the item
-     * @return the count of items with the specified name
-     */
 
-    public int getItemCount(String itemName) {
-        return (int) itemInventory.stream().filter(item -> item.getName().equals(itemName)).count();
-    }
-    /**
-     * Retrieves the item inventory.
-     *
-     * @return the item inventory
-     */
-    public List getItemInventory(){
-        return itemInventory;
-    }
-    /**
-     * Retrieves the reserve tower inventory.
-     *
-     * @return the reserve tower inventory
-     */
-
-    public List getTowerInventory(){
-        return reserveTower;
-    }
-    /**
-     * Swaps a tower between the main tower inventory and the reserve tower inventory.
-     *
-     * @param mainTower Tower to swap
-     * @param reserveTower Tower to swap
-     */
     public void swapTower(Tower mainTower, Tower reserveTower){
         if (mainTower == null && reserveTower !=null){
             gameEnvironment.getTowerList().add(reserveTower);

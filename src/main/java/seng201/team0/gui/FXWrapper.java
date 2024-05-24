@@ -86,6 +86,10 @@ public class FXWrapper {
             e.printStackTrace();
         }
     }
+    /**
+     * Launches the shop screen with the provided game environment.
+     * @param gameEnvironment The game environment containing necessary data and functionalities.
+     */
     public void launchShopScreen(GameEnvironment gameEnvironment){
         try {
             FXMLLoader mainScreenLoader = new FXMLLoader(getClass().getResource("/fxml/Shop.fxml"));
@@ -105,7 +109,10 @@ public class FXWrapper {
     public void clearAnchorPane() {
         anchorPane.getChildren().removeAll(anchorPane.getChildren());
     }
-
+    /**
+     * Launches the main screen with the provided game environment.
+     * @param gameEnvironment The game environment containing necessary data and functionalities.
+     */
     public void launchMainScreen(GameEnvironment gameEnvironment) {
         try {
             FXMLLoader mainScreenLoader = new FXMLLoader(getClass().getResource("/fxml/GameArena.fxml"));
@@ -117,6 +124,10 @@ public class FXWrapper {
             e.printStackTrace();
         }
     }
+    /**
+     * Launches the end screen with the provided game environment.
+     * @param gameEnvironment The game environment containing necessary data and functionalities.
+     */
     public void launchEndScreen(GameEnvironment gameEnvironment) {
         try {
             FXMLLoader mainScreenLoader = new FXMLLoader(getClass().getResource("/fxml/EndScreen.fxml"));
@@ -128,6 +139,10 @@ public class FXWrapper {
             e.printStackTrace();
         }
     }
+    /**
+     * Launches the inventory screen with the provided game environment.
+     * @param gameEnvironment The game environment containing necessary data and functionalities.
+     */
     public void launchInventoryScreen(GameEnvironment gameEnvironment){
         try {
             FXMLLoader mainScreenLoader = new FXMLLoader(getClass().getResource("/fxml/Inventory.fxml"));

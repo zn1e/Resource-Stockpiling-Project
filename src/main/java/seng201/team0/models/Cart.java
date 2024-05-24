@@ -8,7 +8,11 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-
+/**
+ * Cart class represents an item in the game.
+ * It contains the information of the cart's name, resource capacity, resource type,
+ * current position, current load and current speed.
+ */
 public class Cart {
     /**
      * Resource capacity of the cart.

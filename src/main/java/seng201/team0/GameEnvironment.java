@@ -17,7 +17,7 @@ import java.util.function.Consumer;
  */
 public class GameEnvironment {
     private String playerName; // name of the player
-    private int playerGold = 5000;
+    private int playerGold = 50;
     private int playerPoints;
     private int goldGained;
     private int pointsGained;

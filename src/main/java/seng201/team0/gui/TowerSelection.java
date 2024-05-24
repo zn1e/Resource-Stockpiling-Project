@@ -10,6 +10,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+/**
+ * Controller class for the tower selection screen.
+ * Manages the game environment, main tower, and user interface updates in the tower selector.
+ *  */
 public class TowerSelection {
     /**
      * The game environment instance.

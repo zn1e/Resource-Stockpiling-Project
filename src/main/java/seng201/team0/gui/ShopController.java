@@ -4,23 +4,30 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import seng201.team0.GameEnvironment;
-//import seng201.team0.models.Inventory;
 import javafx.scene.control.Button;
 import seng201.team0.models.Item;
 import javafx.scene.image.ImageView;
 import seng201.team0.models.Tower;
 import seng201.team0.services.InventoryService;
 import seng201.team0.services.UIService;
-
-
 import java.util.List;
 
+/**
+ * Controller class for the shop.
+ * Manages the game environment, inventory items, towers, and user interface updates in the shop.
+ */
 public class ShopController {
-
+/** The UI service for updating the user interface */
     private final UIService uiService;
+    /** The game environment instance */
     private final GameEnvironment gameEnvironment; // the game environment instance
+
+    /** The inventory service for managing the items and reserve towers. */
     private final InventoryService inventoryService;
+    /**
+     * The currently selected item. */
     private Item selectedItem;
+    /** The currently selected Tower*/
     private Tower selectedTower;
 
     @FXML
@@ -48,13 +55,21 @@ public class ShopController {
     @FXML
     private Label towerDescriptionLabel;
 
-
+    /**
+     * Constructor for the ShopController class.
+     * Initializes the service and game environment.
+     * @param gameEnvironment The game environment instance.
+     */
     public ShopController(GameEnvironment gameEnvironment) {
         this.gameEnvironment = gameEnvironment;
         this.uiService = new UIService(gameEnvironment);
         this.inventoryService = gameEnvironment.getInventoryService();
     }
 
+    /**
+     * Initializes the shop controller.
+     * Sets up the UI and button actions.
+     */
     public void initialize() {
         updateUI();
         updateInventoryButtons();
@@ -82,11 +97,19 @@ public class ShopController {
         towerDescriptionLabel.setText("");
     }
 
+    /**
+     * Updates the user interface elements.
+     */
     private void updateUI() {
         uiService.updateGoldLabel(goldLabel);
         updateInventoryButtons();
     }
 
+    /**
+     * Updates the styles of the buttons based on the selected item or tower.
+     *
+     * @param buttons The buttons to update the styles for.
+     */
     private void updateButtonStyles(Button... buttons) {
         for (Button button : buttons) {
             if ((selectedTower != null && button == getTowerButton(selectedTower))
@@ -99,16 +122,33 @@ public class ShopController {
         }
     }
 
+    /**
+     * Gets the button associated with a given tower.
+     *
+     * @param tower The tower to get the button for.
+     * @return The button associated with the tower.
+     */
     private Button getTowerButton(Tower tower) {
         int index = gameEnvironment.getDefaultTowers().indexOf(tower);
         return List.of(tower1Button, tower2Button, tower3Button, tower4Button, tower5Button).get(index);
     }
 
+    /**
+     * Gets the button associated with a given item.
+     *
+     * @param item The item to get the button for.
+     * @return The button associated with the item.
+     */
     private Button getItemButton(Item item) {
         int index = gameEnvironment.getDefaultItems().indexOf(item);
         return List.of(item1Button, item2Button, item3Button).get(index);
     }
 
+    /**
+     * Handles the click event for a tower button.
+     * Updates the selected tower and the UI elements accordingly.
+     * @param index The index of the selected tower.
+     */
     private void handleTowerButtonClick(int index) {
         Tower clickedTower = gameEnvironment.getDefaultTowers().get(index);
         if (selectedTower == clickedTower) {
@@ -131,6 +171,11 @@ public class ShopController {
         }
     }
 
+    /**
+     * Handles the click event for an item button.
+     *
+     * @param index The index of the selected item.
+     */
     private void handleItemButtonClick(int index) {
         Item clickedItem = gameEnvironment.getDefaultItems().get(index);
         if (selectedItem == clickedItem) {
@@ -153,28 +198,34 @@ public class ShopController {
         }
     }
 
+    /**
+     * Buys the selected object (item or tower) and updates the UI.
+     * Checks if the player has enough gold and if there is enough space in the inventory.
+     */
     private void buySelectedObject() {
         if (selectedTower != null) {
             int price = selectedTower.getCost();
-            if (price <= gameEnvironment.getPlayerGold()) {
+            if (!inventoryService.isReserveTowerInvNotFull()){
+                shopText.setText("Tower Inventory Full!");
+            }
+            else if (price <= gameEnvironment.getPlayerGold()) {
                 inventoryService.addReserveTower(selectedTower);
                 gameEnvironment.setPlayerGold(gameEnvironment.getPlayerGold() - price);
-                shopText.setText("Purchase Sucessful!");
+                shopText.setText("Purchase Successful!");
                 updateUI();
             }
+
             else if (price > gameEnvironment.getPlayerGold()){
                 shopText.setText("NOT ENOUGH MONEY LOL!");
             }
-            else if (!inventoryService.isReserveTowerInvNotFull()){
-                shopText.setText("Tower Inventory Full!");
-            }
+
 
         } else if (selectedItem != null) {
             int price = selectedItem.getItemCost();
             if (price <= gameEnvironment.getPlayerGold() && inventoryService.isItemInvNotFull()) {
                 inventoryService.addItem(selectedItem);
                 gameEnvironment.setPlayerGold(gameEnvironment.getPlayerGold() - price);
-                shopText.setText("Purchase Sucessful!");
+                shopText.setText("Purchase Successful!");
                 updateUI();
             }
             else if (price > gameEnvironment.getPlayerGold()){
@@ -187,6 +238,10 @@ public class ShopController {
 
         }
     }
+
+    /**
+     * Updates the inventory buttons to reflect the current state of the inventory.
+     */
     private void updateInventoryButtons() {
         List<Button> resTowerButtons = List.of(res1Button, res2Button, res3Button, res4Button, res5Button);
         List<Button> itemInvButtons = List.of(item1InvButton, item2InvButton, item3InvButton, item4InvButton, item5InvButton);
@@ -233,6 +288,10 @@ public class ShopController {
             }
         }
     }
+    /**
+     * Sell the selected object (item or tower) and updates the UI.
+     * Adds the sell price to the players gold and removes the object from their inventory respectfully.
+     */
     private void sellSelectedObject() {
         if (selectedTower != null) {
             int sellPrice = selectedTower.getSellPrice();
@@ -252,6 +311,11 @@ public class ShopController {
             shopText.setText("Item sold!");
         }
     }
+
+    /**
+     * Handles the click event for the back button.
+     * Closes the inventory screen and goes back to the main screen.
+     */
     private void backButtonClicked() {
         gameEnvironment.closeSetupScreen();
     }
