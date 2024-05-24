@@ -88,7 +88,7 @@ public class TrackService {
      * @param trackGrid GridPane where track image is placed.
      */
     public void setupTrackImage(GridPane trackGrid){
-        Image trackImage = new Image(getClass().getResourceAsStream("/images/track.png"));
+        Image trackImage = new Image(getClass().getResourceAsStream("/Images/Track.PNG"));
         for (int i = 0; i < TRACK_POSITIONS.length;i++){
             ImageView trackImageView = new ImageView(trackImage);
             trackImageView.setFitWidth(100);
@@ -151,9 +151,9 @@ public class TrackService {
      */
     private Image cartImage(Cart cart){
         if (cart.isFull()){
-            return new Image(getClass().getResourceAsStream("/images/full_cart.png"));
+            return new Image(getClass().getResourceAsStream("/Images/full_cart.PNG"));
         } else{
-            return new Image(getClass().getResourceAsStream("/images/empty_cart.png"));
+            return new Image(getClass().getResourceAsStream("/Images/empty_cart.PNG"));
         }
     }
 
