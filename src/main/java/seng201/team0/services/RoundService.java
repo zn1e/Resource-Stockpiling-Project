@@ -45,6 +45,7 @@ public class RoundService {
             gameEnvironment.launchEndScreen();
         } else if (allCartsFilled && currentRound == numberOfRounds) {
             gameEnvironment.setVictoryFlag(true);
+            gameEnvironment.incrementCompletedRounds();
             gameEnvironment.launchEndScreen();
         }else {
             addRewards();
