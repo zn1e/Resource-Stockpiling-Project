@@ -7,7 +7,12 @@ import seng201.team0.gui.FXWindow;
  * @author seng201 teaching team
  */
 public class App {
-
+    /**
+     * Initializes new instance of app.
+     */
+    public App(){
+        super();
+    }
     /**
      * Entry point which runs the javaFX application
      * Due to how JavaFX works we must call MainWindow.launchScreen() from here,

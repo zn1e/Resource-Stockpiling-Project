@@ -15,6 +15,12 @@ import java.io.IOException;
  */
 public class FXWindow extends Application {
     /**
+     * Default constructor for initializing a new instance of FXWindow.
+     */
+    public FXWindow(){
+        super();
+    }
+    /**
      * Opens the gui with the fxml content specified in resources/fxml/main.fxml
      * @param primaryStage The current fxml stage, handled by javaFX Application class
      * @throws IOException if there is an issue loading fxml file

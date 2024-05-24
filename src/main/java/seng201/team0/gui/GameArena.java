@@ -179,7 +179,7 @@ public class GameArena {
         inventoryButton.setDisable(true);
         playButton.setDisable(true);
         trackService.initializeCarts(trackGrid);
-        trackService.maxDistanceCoveredProperty().addListener((observableValue, notCompleted, nowCompleted) -> {
+        trackService.maxDistanceCovered().addListener((observableValue, notCompleted, nowCompleted) -> {
             if (nowCompleted){
                 stopGame();
 

@@ -18,6 +18,12 @@ public class FXWrapper {
     private Stage stage;
 
     /**
+     * Default constructor for initializing new instance of FXWrapper.
+     */
+    public FXWrapper(){
+        super();
+    }
+    /**
      * Initialize the game environment with the provided stage and setup screen launch methods.
      * @param stage The primary stage for the JavaFX application.
      */

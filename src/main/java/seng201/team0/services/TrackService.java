@@ -285,7 +285,7 @@ public class TrackService {
      * Gets the current state of the distance covered.
      * @return A boolean describing if the max distance is covered.
      */
-    public BooleanProperty maxDistanceCoveredProperty(){
+    public BooleanProperty maxDistanceCovered(){
         return maxDistanceCovered;
     }
 
