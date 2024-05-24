@@ -15,6 +15,7 @@ public class RoundService {
      * The game environment instance.
      */
     private GameEnvironment gameEnvironment;
+    private InventoryService inventoryService;
 
     /**
      * Constructor for this class with the specified game environment instance.
@@ -22,6 +23,7 @@ public class RoundService {
      */
     public RoundService(GameEnvironment gameEnvironment){
         this.gameEnvironment = gameEnvironment;
+        this.inventoryService = new InventoryService(gameEnvironment);
     }
 
     /**
@@ -50,14 +52,30 @@ public class RoundService {
     /**
      * Add rewards to the player based on the completed round difficulty.
      */
-    private void addRewards(){
+    private void addRewards() {
         String roundDifficulty = gameEnvironment.getRoundDifficulty();
-        if (roundDifficulty.equals("easy")){
+        if (roundDifficulty.equals("easy")) {
             gameEnvironment.addPlayerGold(50);
             gameEnvironment.addPlayerPoints(10);
-        } else{
+            if (!inventoryService.isGoldItemUsed()){
+                gameEnvironment.addPlayerGold(75);
+                inventoryService.setGoldItemUsed(true);
+            }
+            if (!inventoryService.isPointsItemUsed()){
+                inventoryService.setPointsItemUsed(true);
+                gameEnvironment.addPlayerPoints(5);
+            }
+        } else {
             gameEnvironment.addPlayerGold(100);
             gameEnvironment.addPlayerPoints(20);
+            if (!inventoryService.isGoldItemUsed()){
+                inventoryService.setGoldItemUsed(true);
+                gameEnvironment.addPlayerGold(90);
+            }
+            if (!inventoryService.isPointsItemUsed()){
+                inventoryService.setPointsItemUsed(true);
+                gameEnvironment.addPlayerPoints(10);
+            }
         }
         gameEnvironment.incrementCompletedRounds();
         gameEnvironment.incrementCurrentRound();

@@ -218,16 +218,6 @@ public class TowerService {
             return null;
         }
     }
-    public void moveMainTower(Tower mainTower) {
-        if (mainTowers.remove(mainTower)) {
-            mainTowers.add(mainTower);
-        }
-    }
-    public void moveReserveToMain(Tower reserveTower) {
-        if (reserveTowers.remove(reserveTower)) {
-            mainTowers.add(reserveTower);
-        }
-    }
 
 
 }

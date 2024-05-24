@@ -24,9 +24,9 @@ public class InventoryController {
     private Tower selectedMainTower;
 
     @FXML
-    private ToggleButton main1Button, main2Button, main3Button, main4Button, main5Button;
+    private Button main1Button, main2Button, main3Button, main4Button, main5Button;
     @FXML
-    private ToggleButton res1Button, res2Button, res3Button, res4Button, res5Button;
+    private Button res1Button, res2Button, res3Button, res4Button, res5Button;
     @FXML
     private Button item1Button, item2Button, item3Button, item4Button, item5Button;
     @FXML
@@ -41,6 +41,8 @@ public class InventoryController {
     private Text itemText;
     @FXML
     private Text towerText;
+    @FXML
+    private Text backText;
 
 
     public InventoryController(GameEnvironment gameEnvironment) {
@@ -49,35 +51,58 @@ public class InventoryController {
         this.inventoryService = gameEnvironment.getInventoryService();
         this.towerService = new TowerService(gameEnvironment);
 
+
     }
 
     public void initialize() {
         towerText.setText("");
         uiService.updateGoldLabel(goldLabel);
         updateInventoryButtons();
-        //backButton.setOnAction(event -> backButtonClicked());
-        swapButton.setOnAction(event -> swapButtonClicked());
-        initializeButtonActions();
-        //useButton.setOnAction(event -> useButtonClicked());
+        backButton.setOnAction(event -> backButtonClicked());
+        useButton.setOnAction(event -> useButtonClicked());
+        backText.setText("");
+        System.out.println(towerService.getMainTowers());
+    }
+    private void handleMainTowerButtonClick(Tower selectedTower) {
+        if (selectedResTower != null) {
+            towerText.setText("Swapped "+ selectedResTower + " and " +selectedTower);
+            inventoryService.swapTower(selectedTower, selectedResTower);
+            selectedResTower = null;
+            selectedMainTower = null;
+            updateInventoryButtons();
+        } else {
+            selectedMainTower = selectedTower;
+            updateInventoryButtons();
+        }
+    }
+
+    private void handleResTowerButtonClick(Tower selectedTower) {
+        if (selectedMainTower != null) {
+            towerText.setText("Swapped "+ selectedMainTower + " and " +selectedTower);
+            inventoryService.swapTower(selectedMainTower, selectedTower);
+            selectedMainTower = null;
+            selectedResTower = null;
+            updateInventoryButtons();
+        } else {
+            selectedResTower = selectedTower;
+            updateInventoryButtons();
+        }
+
     }
 
     private void updateInventoryButtons() {
-        List<ToggleButton> resTowerButtons = List.of(res1Button, res2Button, res3Button, res4Button, res5Button);
+        List<Button> resTowerButtons = List.of(res1Button, res2Button, res3Button, res4Button, res5Button);
         List<Button> itemInvButtons = List.of(item1Button, item2Button, item3Button, item4Button, item5Button);
-        List<ToggleButton> mainTowerButtons = List.of(main1Button, main2Button, main3Button, main4Button, main5Button);
+        List<Button> mainTowerButtons = List.of(main1Button, main2Button, main3Button, main4Button, main5Button);
 
         for (int i = 0; i < resTowerButtons.size(); i++) {
             Tower tower = inventoryService.getReserveTower(i);
             if (tower != null) {
                 resTowerButtons.get(i).setText(tower.getName());
-                resTowerButtons.get(i).setOnAction(event -> {
-                    selectedResTower = tower;
-                    selectedItem = null;
-
-                });
+                resTowerButtons.get(i).setOnAction(event -> handleResTowerButtonClick(tower));
             } else {
                 resTowerButtons.get(i).setText("Empty");
-                resTowerButtons.get(i).setOnAction(null);
+                resTowerButtons.get(i).setOnAction(event -> handleResTowerButtonClick(null));
             }
         }
 
@@ -88,10 +113,13 @@ public class InventoryController {
                 itemInvButtons.get(i).setOnAction(event -> {
                     selectedItem = item;
                     selectedResTower = null;
+                    selectedMainTower = null;
+                    itemText.setText(item +" selected");
                 });
             } else {
                 itemInvButtons.get(i).setText("Empty");
                 itemInvButtons.get(i).setOnAction(null);
+                itemText.setText("");
 
             }
 
@@ -100,77 +128,45 @@ public class InventoryController {
             Tower tower = towerService.getMainTower(i);
             if (tower != null) {
                 mainTowerButtons.get(i).setText(tower.getName());
-                mainTowerButtons.get(i).setOnAction(event -> {
-                    selectedResTower = tower;
-                    selectedItem = null;
-
-                });
+                mainTowerButtons.get(i).setOnAction(event -> handleMainTowerButtonClick(tower));
             } else {
                 mainTowerButtons.get(i).setText("Empty");
-                mainTowerButtons.get(i).setOnAction(null);
+                mainTowerButtons.get(i).setOnAction(event -> handleMainTowerButtonClick(null));
             }
         }
     }
-    private void initializeButtonActions(){
-        main1Button.setOnAction(event -> handleMainTowerButtonClick(0));
-        main2Button.setOnAction(event -> handleMainTowerButtonClick(1));
-        main3Button.setOnAction(event -> handleMainTowerButtonClick(2));
-        main4Button.setOnAction(event -> handleMainTowerButtonClick(3));
-        main5Button.setOnAction(event -> handleMainTowerButtonClick(4));
-
-        res1Button.setOnAction(event -> handleResTowerButtonClick(0));
-        res2Button.setOnAction(event -> handleResTowerButtonClick(1));
-        res3Button.setOnAction(event -> handleResTowerButtonClick(2));
-        res4Button.setOnAction(event -> handleResTowerButtonClick(3));
-        res5Button.setOnAction(event -> handleResTowerButtonClick(4));
-    }
-    private void handleMainTowerButtonClick(int index) {
-        if (main1Button.isSelected() || main2Button.isSelected() || main3Button.isSelected() || main4Button.isSelected() || main5Button.isSelected()) {
-            selectedMainTower = towerService.getMainTower(index);
-            clearResSelections();
+    private void useButtonClicked() {
+        if (selectedItem != null) {
+            inventoryService.useItem(selectedItem, selectedMainTower);
+            itemText.setText(selectedItem + " Used!");
+            updateInventoryButtons();
         } else {
-            selectedMainTower = null;
+            System.out.println("No item selected.");
         }
+        uiService.updateGoldLabel(goldLabel);
     }
-    private void handleResTowerButtonClick(int index) {
-        if (res1Button.isSelected() || res2Button.isSelected() || res3Button.isSelected() || res4Button.isSelected() || res5Button.isSelected()) {
-            selectedResTower = inventoryService.getReserveTower(index);
-            clearMainSelections();
-        } else {
-            selectedResTower = null;
+
+    private boolean isMainTowerListEmpty(){
+        if (towerService.getMainTowers().size() >= 1){
+            return false;
         }
-    }
-
-
-    private void clearMainSelections() {
-        main1Button.setSelected(false);
-        main2Button.setSelected(false);
-        main3Button.setSelected(false);
-        main4Button.setSelected(false);
-        main5Button.setSelected(false);
-        selectedMainTower = null;
-    }
-
-    private void clearResSelections() {
-        res1Button.setSelected(false);
-        res2Button.setSelected(false);
-        res3Button.setSelected(false);
-        res4Button.setSelected(false);
-        res5Button.setSelected(false);
-        selectedResTower = null;
-    }
-
-    private void swapButtonClicked() {
-        if (selectedMainTower != null) {
-            towerService.moveMainTower(selectedMainTower);
-        } else if (selectedResTower != null) {
-            towerService.moveReserveToMain(selectedResTower);
+        else{
+            return true;
         }
-        updateInventoryButtons();
-        clearMainSelections();
-        clearResSelections();
+
+    }
+    private void backButtonClicked() {
+        if (!isMainTowerListEmpty()){
+            gameEnvironment.closeSetupScreen();
+        }
+        else{
+            backText.setText("At least ONE MAIN TOWER!");
+
+        }
+
     }
 }
+
 
 
 

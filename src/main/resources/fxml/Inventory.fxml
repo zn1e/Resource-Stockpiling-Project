@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -65,20 +64,20 @@
             <Button fx:id="item3Button" mnemonicParsing="false" prefHeight="146.0" prefWidth="146.0" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <Button fx:id="item4Button" mnemonicParsing="false" prefHeight="148.0" prefWidth="178.0" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="4" />
             <Button fx:id="item5Button" mnemonicParsing="false" prefHeight="194.0" prefWidth="162.0" text="Button" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-            <ToggleButton fx:id="main1Button" mnemonicParsing="false" prefHeight="94.0" prefWidth="157.0" text="ToggleButton" />
-            <ToggleButton fx:id="main2Button" mnemonicParsing="false" prefHeight="94.0" prefWidth="157.0" text="ToggleButton" GridPane.columnIndex="1" />
-            <ToggleButton fx:id="main3Button" mnemonicParsing="false" prefHeight="94.0" prefWidth="157.0" text="ToggleButton" GridPane.rowIndex="1" />
-            <ToggleButton fx:id="main4Button" mnemonicParsing="false" prefHeight="94.0" prefWidth="157.0" text="ToggleButton" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ToggleButton fx:id="main5Button" mnemonicParsing="false" prefHeight="94.0" prefWidth="157.0" text="ToggleButton" GridPane.rowIndex="2" />
-            <ToggleButton fx:id="res1Button" mnemonicParsing="false" prefHeight="94.0" prefWidth="157.0" text="ToggleButton" GridPane.columnIndex="3" />
-            <ToggleButton fx:id="res3Button" mnemonicParsing="false" prefHeight="94.0" prefWidth="157.0" text="ToggleButton" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <ToggleButton fx:id="res4Button" mnemonicParsing="false" prefHeight="94.0" prefWidth="157.0" text="ToggleButton" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <ToggleButton fx:id="res2Button" mnemonicParsing="false" prefHeight="94.0" prefWidth="157.0" text="ToggleButton" GridPane.columnIndex="4" />
-            <ToggleButton fx:id="res5Button" mnemonicParsing="false" prefHeight="94.0" prefWidth="157.0" text="ToggleButton" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Button fx:id="main5Button" mnemonicParsing="false" prefHeight="174.0" prefWidth="206.0" text="Button" GridPane.rowIndex="2" />
+            <Button fx:id="main4Button" mnemonicParsing="false" prefHeight="174.0" prefWidth="206.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="main2Button" mnemonicParsing="false" prefHeight="174.0" prefWidth="206.0" text="Button" GridPane.columnIndex="1" />
+            <Button fx:id="main3Button" mnemonicParsing="false" prefHeight="174.0" prefWidth="206.0" text="Button" GridPane.rowIndex="1" />
+            <Button fx:id="res4Button" mnemonicParsing="false" prefHeight="174.0" prefWidth="206.0" text="Button" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Button fx:id="res1Button" mnemonicParsing="false" prefHeight="174.0" prefWidth="206.0" text="Button" GridPane.columnIndex="3" />
+            <Button fx:id="res2Button" mnemonicParsing="false" prefHeight="174.0" prefWidth="206.0" text="Button" GridPane.columnIndex="4" />
+            <Button fx:id="res3Button" mnemonicParsing="false" prefHeight="174.0" prefWidth="206.0" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Button fx:id="res5Button" mnemonicParsing="false" prefHeight="174.0" prefWidth="206.0" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Button fx:id="main1Button" mnemonicParsing="false" prefHeight="174.0" prefWidth="206.0" text="Button" />
+            <Text fx:id="towerText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="4" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <Button fx:id="useButton" layoutX="708.0" layoutY="466.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="70.0" text="USE ITEM" />
-      <Button fx:id="swapButton" layoutX="708.0" layoutY="163.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="70.0" text="SWAP" />
       <Text layoutX="116.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MAIN">
          <font>
             <Font size="16.0" />
@@ -90,6 +89,10 @@
          </font>
       </Text>
       <Text fx:id="itemText" layoutX="688.0" layoutY="525.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="110.40000000000009" />
-      <Text fx:id="towerText" layoutX="732.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="backText" fill="RED" layoutX="28.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TEXT">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

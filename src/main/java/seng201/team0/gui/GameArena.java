@@ -18,6 +18,11 @@ import seng201.team0.services.UIService;
 
 import java.util.List;
 
+/**
+ * Controller class for the game arena.
+ * Manages the game environment, tower setup, track setup, and user interface upates.
+ */
+
 public class GameArena {
     private GameEnvironment gameEnvironment;
     private TowerService towerService;
@@ -95,10 +100,14 @@ public class GameArena {
     }
 
     private void startGame(){
+        shopButton.setDisable(true);
+        inventoryButton.setDisable(true);
+        playButton.setDisable(true);
         trackService.initializeCarts(trackGrid);
         trackService.maxDistanceCoveredProperty().addListener((observableValue, notCompleted, nowCompleted) -> {
             if (nowCompleted){
                 stopGame();
+
             }
         });
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> trackService.moveCarts(trackGrid)));
@@ -109,6 +118,9 @@ public class GameArena {
         if (timeline != null) {
             timeline.stop();
             afterRoundInteraction();
+            shopButton.setDisable(false);
+            inventoryButton.setDisable(false);
+            playButton.setDisable(false);
         }
     }
     private void afterRoundInteraction(){

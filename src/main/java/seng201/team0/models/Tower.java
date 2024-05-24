@@ -42,13 +42,14 @@ public class Tower {
     private String towerDescription;
 
     /**
-     *Constructor for Tower.
-     * @param name A String describing the name of tower
-     * @param resourceType A String describing the resource type of tower
+     * Constructor for Tower.
+     *
+     * @param name             A String describing the name of tower
+     * @param resourceType     A String describing the resource type of tower
      * @param towerDescription A string describing the tower's description
-     * Initializes the value for resource amount, reload speed, level of tower, and cost (all int type).
+     *                         Initializes the value for resource amount, reload speed, level of tower, and cost (all int type).
      */
-    public Tower(String name, String resourceType, Image image, String towerDescription){
+    public Tower(String name, String resourceType, Image image, String towerDescription) {
         this.name = name;
         this.resourceType = resourceType;
         this.resourceAmount = 500;
@@ -61,87 +62,109 @@ public class Tower {
 
     /**
      * Method for getting the name of the tower.
+     *
      * @return A string representing the name of tower.
      */
-    public String getName(){
+    public String getName() {
         return name;
     }
 
     /**
      * Sets the name of tower.
+     *
      * @param name A string representing the new name of tower.
      */
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
     /**
      * Method for getting the amount of resources of tower.
+     *
      * @return An int representing the resource amount of tower.
      */
-    public int getResourceAmount(){
+    public int getResourceAmount() {
         return resourceAmount;
     }
 
     /**
      * Sets new resource amount of tower.
+     *
      * @param resourceAmount An int containing the value of resource amount of tower.
      */
-    public void setResourceAmount(int resourceAmount){
+    public void setResourceAmount(int resourceAmount) {
         this.resourceAmount = resourceAmount;
     }
 
     /**
      * Method for getting the amount of reload speed.
+     *
      * @return An int representing the reload speed of tower.
      */
-    public int getReloadSpeed(){
+    public int getReloadSpeed() {
         return reloadSpeed;
     }
 
     /**
      * Method for getting the resource type of tower.
+     *
      * @return A string representing the resource type of tower.
      */
-    public String getResourceType(){
+    public String getResourceType() {
         return resourceType;
     }
 
-    public int getLevel(){
+    public int getLevel() {
         return level;
     }
+
     /**
      * Sets the resource type of the tower.
+     *
      * @param resourceType A String representing the new resource type of tower.
      */
 
-    public void setResourceType(String resourceType){
+    public void setResourceType(String resourceType) {
         this.resourceType = resourceType;
     }
-    public Image getImage(){
+
+    public Image getImage() {
         return image;
     }
-    public int getCost(){return cost;}
+
+    public int getCost() {
+        return cost;
+    }
+
     /**
      * Method for upgrading the level of tower.
      * Increases the level of tower by 1, resource amount by 500, and reload speed by 25.
      */
-    public void levelUp(){
+    public void levelUp() {
         level++;
-        resourceAmount += 250;
+        resourceAmount += 500;
     }
 
     /**
      * Method for getting the sell price of the tower
+     *
      * @return the sell price of the tower
      */
-    public int getSellPrice(){return cost - 5;}
+    public int getSellPrice() {
+        return cost - 5;
+    }
 
-    public String getTowerDescription(){return towerDescription;}
-    public void resourceUpgrade(int amount){
+    public String getTowerDescription() {
+        return towerDescription;
+    }
+
+    public void resourceUpgrade(int amount) {
         resourceAmount += amount;
     }
 
+    public String toString() {
+        return name;
     }
+}
 
 

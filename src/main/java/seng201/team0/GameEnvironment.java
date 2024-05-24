@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 import seng201.team0.models.Tower;
 import seng201.team0.models.Item;
 import seng201.team0.services.InventoryService;
+import seng201.team0.services.TowerService;
 
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class GameEnvironment {
     private String roundDifficulty; // difficulty of round
     private List<Tower> towerList; // list of towers
     private InventoryService inventoryService;
+    private TowerService towerService;
     private final List<Tower> defaultTowers = new ArrayList<>(); // initializes an array list for default towers
     private final List<Item> defaultItems = new ArrayList<>(); // initializes an array list for default items
     private final Consumer<GameEnvironment> setupScreenLauncher1; // launch the name selection screen
@@ -195,9 +197,9 @@ public class GameEnvironment {
     private void loadDefaultItems() {
         defaultItems.add(new Item("Upgrade Item", 50, loadImage("images/upgrade_item.png"),
                 "Upgrades resource capacity"));
-        defaultItems.add(new  Item("Points Item", 50, loadImage("images/swap_item.png"),
+        defaultItems.add(new  Item("Points Item", 50, loadImage("images/Points.PNG"),
                 "Up your points gain!"));
-        defaultItems.add(new Item("Gold Item", 50, loadImage("images/repair_item.png"),
+        defaultItems.add(new Item("Gold Item", 50, loadImage("images/Gold.PNG"),
                 "Up your gold gain!"));
     }
 
@@ -276,4 +278,5 @@ public class GameEnvironment {
     public InventoryService getInventoryService() {
         return inventoryService;
     }
+
 }

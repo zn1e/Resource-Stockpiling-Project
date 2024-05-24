@@ -20,9 +20,13 @@ public class Item {
      * @param itemCost        the cost of the item
      * @param image           the image of the item
      * @param itemDescription the description of the item
+     * @throws IllegalArgumentException if the item cost is negative
      */
 
     public Item(String itemName, int itemCost, Image image, String itemDescription){
+        if (itemCost <0 ){
+            throw new IllegalArgumentException("Item cost cannot be negative.");
+        }
         this.itemName = itemName;
         this.itemCost = itemCost;
         this.image = image;

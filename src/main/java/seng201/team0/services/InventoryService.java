@@ -16,12 +16,14 @@ public class InventoryService {
     private static final int TOWER_INVENTORY_SIZE = 5;
 
     private ArrayList<Item> itemInventory;
-    private ArrayList<Tower> towerInventory;
+    private ArrayList<Tower> reserveTower;
     private List<Tower> mainTowerInventory;
     private static InventoryService instance;
     private Item item;
     private TowerService towerService;
     private GameEnvironment gameEnvironment;
+    private boolean goldItemUsed = false;
+    private boolean pointsItemUsed = false;
     /**
      * Constructs an InventoryService object with the specified game environment.
      *
@@ -30,20 +32,21 @@ public class InventoryService {
 
     public InventoryService(GameEnvironment gameEnvironment){
         this.itemInventory = new ArrayList<>(ITEM_INVENTORY_SIZE);
-        this.towerInventory = new ArrayList<>(TOWER_INVENTORY_SIZE);
+        this.reserveTower = new ArrayList<>(TOWER_INVENTORY_SIZE);
         this.gameEnvironment = gameEnvironment;
-        // List<Tower> mainTowerInventory = new ArrayList<>(gameEnvironment.getTowerList());
     }
+
+
     /**
      * Adds a tower to the reserve tower inventory.
      *
      * @param tower the tower to add
      */
     public void addReserveTower(Tower tower){
-        if (towerInventory.size() < TOWER_INVENTORY_SIZE){
-            towerInventory.add(tower);
-            System.out.println("Added " + tower + " to itemInventory. Space left: " + (TOWER_INVENTORY_SIZE - towerInventory.size()));
-            System.out.println("Reserve towers: " + towerInventory);
+        if (reserveTower.size() < TOWER_INVENTORY_SIZE){
+            reserveTower.add(tower);
+            System.out.println("Added " + tower + " to itemInventory. Space left: " + (TOWER_INVENTORY_SIZE - reserveTower.size()));
+            System.out.println("Reserve towers: " + reserveTower);
 
         }
         else{
@@ -88,7 +91,7 @@ public class InventoryService {
      * @return true if the reserve tower inventory is not full, false otherwise
      */
     public boolean isReserveTowerInvNotFull(){
-        if(towerInventory.size() < TOWER_INVENTORY_SIZE){
+        if(reserveTower.size() < TOWER_INVENTORY_SIZE){
             return true;
         }
         else{
@@ -103,9 +106,9 @@ public class InventoryService {
      */
 
     public Tower getReserveTower(int index){
-        if (index >= 0 && index < towerInventory.size()){
-            System.out.println("Tower: "+ towerInventory.get(index));
-            return towerInventory.get(index);
+        if (index >= 0 && index < reserveTower.size()){
+            System.out.println("Tower: "+ reserveTower.get(index));
+            return reserveTower.get(index);
 
         }
         else{
@@ -138,7 +141,7 @@ public class InventoryService {
      */
 
     public int getTowerIndex(Tower tower) {
-        return towerInventory.indexOf(tower);
+        return reserveTower.indexOf(tower);
     }
     /**
      * Retrieves the index of an item in the item inventory.
@@ -157,8 +160,8 @@ public class InventoryService {
      */
 
     public void removeReserveTower(Tower tower){
-        towerInventory.remove(tower);
-        System.out.println(tower + "removed" +"Reserve Towers: "+ towerInventory);
+        reserveTower.remove(tower);
+        System.out.println(tower + "removed" +"Reserve Towers: "+ reserveTower);
 
     }
     /**
@@ -177,7 +180,7 @@ public class InventoryService {
      * @return the count of towers with the specified name
      */
     public int getReserveTowerCount(String towerName) {
-        return (int) towerInventory.stream().filter(tower -> tower.getName().equals(towerName)).count();
+        return (int) reserveTower.stream().filter(tower -> tower.getName().equals(towerName)).count();
     }
     /**
      * Retrieves the count of items with the specified name in the item inventory.
@@ -204,7 +207,7 @@ public class InventoryService {
      */
 
     public List getTowerInventory(){
-        return towerInventory;
+        return reserveTower;
     }
     /**
      * Swaps a tower between the main tower inventory and the reserve tower inventory.
@@ -212,65 +215,70 @@ public class InventoryService {
      * @param mainTower Tower to swap
      * @param reserveTower Tower to swap
      */
-    public void SwapTower(Tower mainTower, Tower reserveTower){
+    public void swapTower(Tower mainTower, Tower reserveTower){
         if (mainTower == null && reserveTower !=null){
-            towerService.getMainTowers().add(reserveTower);
-            towerInventory.remove(reserveTower); // add the reserve tower into the main towers when the main is empty
-        } else if (mainTower != null && reserveTower ==null){
-            towerInventory.add(mainTower);
-            towerService.getMainTowers().remove(mainTower); //add the main tower into the reserve tower when the reserve is empty
+            gameEnvironment.getTowerList().add(reserveTower);
+            this.reserveTower.remove(reserveTower); // add the reserve tower into the main towers when the main is empty
+        } else if (mainTower != null && reserveTower == null){
+            this.reserveTower.add(mainTower);
+            gameEnvironment.getTowerList().remove(mainTower); //add the main tower into the reserve tower when the reserve is empty
         }
         else{
-            towerService.getMainTowers().remove(mainTower);
-            towerService.getMainTowers().add(reserveTower);
-            towerInventory.remove(reserveTower);
-            towerInventory.add(mainTower); //swapping the main and reserve towers if both of them are not empty
+            gameEnvironment.getTowerList().remove(mainTower);
+            gameEnvironment.getTowerList().add(reserveTower);
+            this.reserveTower.remove(reserveTower);
+            this.reserveTower.add(mainTower); //swapping the main and reserve towers if both of them are not empty
 
         }
 
     }
     /**
-     * Uses an item on a tower.
+     * Uses an item based on its type.
      *
      * @param item  the item to use
-     * @param tower the tower to use the item on
+     * @param tower the tower to use the item on, can be null if the item doesn't affect a tower
      */
-    public void useItemOnTower(Item item, Tower tower) {
-        if (item.getName().equals("Upgrade Item")) {
-            // Upgrade the tower's properties
-            tower.levelUp();
-            removeItem(item);
-        } else {
-            System.out.println("This item cannot be used on a tower.");
-        }
-    }
-    /**
-     * Uses a gold item.
-     *
-     * @param item the gold item to use
-     */
-    public void useGoldItem(Item item) {
-        if (item.getName().equals("Gold Item")) {
-            gameEnvironment.addPlayerGold(5);
-            removeItem(item);
-        } else {
-            System.out.println("This item is not a gold item.");
-        }
-    }
+    public void useItem(Item item, Tower tower) {
+        switch (item.getName()) {
+            case "Upgrade Item":
+                if (tower != null) {
+                    tower.levelUp();
+                    removeItem(item);
+                } else {
+                    System.out.println("No tower specified to upgrade.");
+                }
+                break;
 
-    /**
-     * Uses a points item.
-     * @param item the points item to use
-     */
-    public void usePointItem(Item item){
-        if (item.getName().equals("Points Item")){
-            gameEnvironment.addPlayerPoints(5);
-            removeItem(item);
-        } else {
-            System.out.println("This item is not a points item");
+            case "Gold Item":
+                System.out.println("gold item used");
+                goldItemUsed = true;
+                removeItem(item);
+                break;
+
+            case "Points Item":
+                System.out.println("points item used");
+                pointsItemUsed = true;
+                removeItem(item);
+                break;
+
+            default:
+                System.out.println("This item cannot be used.");
+                break;
         }
     }
+    public void setGoldItemUsed(boolean used){
+        goldItemUsed = used;
+    }
+    public void setPointsItemUsed(boolean used){
+        pointsItemUsed = used;
+    }
+    public boolean isGoldItemUsed(){
+        return goldItemUsed;
 
+    }
+    public boolean isPointsItemUsed(){
+        return pointsItemUsed;
+    }
 
 
 }
