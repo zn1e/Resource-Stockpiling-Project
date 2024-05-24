@@ -5,7 +5,7 @@
 - Sriena Olsen
 
 ## Running the Application
-Open the terminal window where the project directory is located and run the command <br> `java -jar seng201_team0.jar` to open the application.
+Open the terminal window where the project directory is located and run the command <br> `java -jar seng201_team75.jar` to open the application.
 ## How to Build Application
 1. Open a command line interface inside the project directory and run `./gradlew run` to run the app.
 2. The app should then open a new window, this may not be displayed over IntelliJ but can be easily selected from the taskbar
