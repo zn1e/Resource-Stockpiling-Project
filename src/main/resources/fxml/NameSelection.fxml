@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: /images/background.PNG;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.NameSelection">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.NameSelection">
    <children>
       <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="78.0" layoutY="40.0" prefHeight="136.0" prefWidth="645.0" text="Welcome to ORGAN FACTORY!" textAlignment="CENTER">
          <font>
-            <Font name="Creepster" size="60.0" />
+            <Font size="60.0" />
          </font>
       </Label>
       <Label fx:id="enterNameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="307.0" layoutY="214.0" text="Enter Name:">
