@@ -1,14 +1,12 @@
 package seng201.team0.services;
 
-import javafx.application.Platform;
+
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.Cart;
-import seng201.team0.models.Item;
 import seng201.team0.models.Tower;
 
 import java.util.ArrayList;
@@ -20,10 +18,7 @@ public class TowerService {
      * List of main towers.
      */
     private List<Tower> mainTowers;
-    /**
-     * List of reserve towers.
-     */
-    private List<Tower> reserveTowers;
+
     /**
      * List of positions of main towers.
      */
@@ -36,6 +31,9 @@ public class TowerService {
      * The game environment instance.
      */
     private GameEnvironment gameEnvironment;
+    /**
+     * The random instance.
+     */
     private Random random;
 
     /**
@@ -62,27 +60,11 @@ public class TowerService {
     }
 
     /**
-     * Gets the position of main towers.
-     * @return A list containing the main towers positions.
-     */
-    public List<int[]> getMainTowerPositions(){
-        return mainTowerPositions;
-    }
-
-    /**
      * Gets the list of main towers.
      * @return A list containing the main towers.
      */
     public List<Tower> getMainTowers(){
         return mainTowers;
-    }
-
-    /**
-     * Gets the list of reserve towers.
-     * @return A list containing the reserve towers.
-     */
-    public List<Tower> getReserveTowers(){
-        return reserveTowers;
     }
 
     /**
@@ -116,24 +98,6 @@ public class TowerService {
             Integer rowIndex = GridPane.getRowIndex(towerImageView);
             Integer colIndex = GridPane.getColumnIndex(towerImageView);
             System.out.println("Tower ImageView added with rowIndex: " + rowIndex + " and colIndex: " + colIndex);
-        }
-    }
-
-    /**
-     * Places new tower on available position with its image representation.
-     * @param newTower The tower object to be added on the position.
-     * @param trackGrid GridPane on which to place the new tower.
-     */
-    public void addNewTower(Tower newTower, GridPane trackGrid){
-        int[] newPosition = getNextAvailablePosition();
-        if (newPosition != null){
-            mainTowers.add(newTower);
-            mainTowerPositions.add(newPosition);
-
-            ImageView newTowerImageView = new ImageView(newTower.getImage());
-            newTowerImageView.setFitHeight(80);
-            newTowerImageView.setFitWidth(50);
-            trackGrid.add(newTowerImageView, newPosition[0], newPosition[1]);
         }
     }
 
@@ -208,6 +172,12 @@ public class TowerService {
             alertLabel2.setText("Alert 2: A tower has been removed.");
         }
     }
+
+    /**
+     * Gets the main tower.
+     * @param index An int representing the index of tower from the list.
+     * @return Tower from the main towers list on given index.
+     */
     public Tower getMainTower(int index){
         if (index>= 0 && index < mainTowers.size()){
             System.out.println("Main Tower: "+ mainTowers.get(index));

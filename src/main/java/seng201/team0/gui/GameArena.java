@@ -36,40 +36,64 @@ public class GameArena {
     private RoundService roundService;
     /** The timeline for animating the game. */
     private Timeline timeline;
-
+    /**
+     * The track where the carts and tower are set.
+     */
     @FXML
     GridPane trackGrid;
-
+    /**
+     * Labels for gold, points, difficulty, and rounds.
+     */
     @FXML
     Label goldLabel, pointsLabel, difficultyLabel, roundLabel;
-
+    /**
+     * Button for starting the round.
+     */
     @FXML
     Button playButton;
-
+    /**
+     * Button for shop.
+     */
     @FXML
     Button shopButton;
-
+    /**
+     * Button for inventory.
+     */
     @FXML
     Button inventoryButton;
-
+    /**
+     * Progress bar based on the current round.
+     */
     @FXML
     ProgressBar progressBar;
-
+    /**
+     * Labels for tower names.
+     */
     @FXML
     Label tower1NameLabel, tower2NameLabel, tower3NameLabel, tower4NameLabel, tower5NameLabel;
-
+    /**
+     * Labels for tower types.
+     */
     @FXML
     Label tower1TypeLabel, tower2TypeLabel, tower3TypeLabel, tower4TypeLabel, tower5TypeLabel;
-
+    /**
+     * Labels for resource amount of tower.
+     */
     @FXML
     Label tower1AmountLabel, tower2AmountLabel, tower3AmountLabel, tower4AmountLabel, tower5AmountLabel;
-
+    /**
+     * Labels for tower speed.
+     */
     @FXML
     Label tower1SpeedLabel, tower2SpeedLabel, tower3SpeedLabel, tower4SpeedLabel, tower5SpeedLabel;
-
+    /**
+     * Labels for tower levels.
+     */
     @FXML
     Label tower1LevelLabel, tower2LevelLabel, tower3LevelLabel, tower4LevelLabel, tower5LevelLabel;
-
+    /**
+     * Labels for alerts.
+     */
     @FXML
     Label alert1Label, alert2Label;
 

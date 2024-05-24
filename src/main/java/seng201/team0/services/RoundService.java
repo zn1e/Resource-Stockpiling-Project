@@ -15,6 +15,9 @@ public class RoundService {
      * The game environment instance.
      */
     private GameEnvironment gameEnvironment;
+    /**
+     * The inventory service instance.
+     */
     private InventoryService inventoryService;
 
     /**

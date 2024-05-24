@@ -4,7 +4,6 @@ import javafx.scene.image.Image;
 import seng201.team0.models.Tower;
 import seng201.team0.models.Item;
 import seng201.team0.services.InventoryService;
-import seng201.team0.services.TowerService;
 
 
 import java.util.ArrayList;
@@ -16,30 +15,94 @@ import java.util.function.Consumer;
  * It includes methods to launch setup screen, main screen, and clear screen.
  */
 public class GameEnvironment {
-    private String playerName; // name of the player
+    /**
+     * The player name.
+     */
+    private String playerName;
+    /**
+     * Player gold default to 50.
+     */
     private int playerGold = 50;
+    /**
+     * Player points.
+     */
     private int playerPoints;
+    /**
+     * Gold gained by player.
+     */
     private int goldGained;
+    /**
+     * Points gained by player.
+     */
     private int pointsGained;
-    private int numberOfRounds; // number of rounds of game
+    /**
+     * Number of rounds of game.
+     */
+    private int numberOfRounds;
+    /**
+     * Number of completed rounds.
+     */
     private int completedRounds;
+    /**
+     * The current round default to 1.
+     */
     private int currentRound = 1;
+    /**
+     * Flag indicating the result of game.
+     */
     private boolean victoryFlag;
-    private String roundDifficulty; // difficulty of round
-    private List<Tower> towerList; // list of towers
+    /**
+     * The difficulty of round.
+     */
+    private String roundDifficulty;
+    /**
+     * List of towers.
+     */
+    private List<Tower> towerList;
+    /**
+     * The inventory service instance.
+     */
     private InventoryService inventoryService;
-    private TowerService towerService;
-    private final List<Tower> defaultTowers = new ArrayList<>(); // initializes an array list for default towers
-    private final List<Item> defaultItems = new ArrayList<>(); // initializes an array list for default items
-    private final Consumer<GameEnvironment> setupScreenLauncher1; // launch the name selection screen
-    private final Consumer<GameEnvironment> setupScreenLauncher2; // launch the number of round and difficulty selection screen
-    private final Consumer<GameEnvironment> setupScreenLauncher3; // launch the tower selection screen
-    private final Consumer<GameEnvironment> mainScreenLauncher; // launch the main screen
-    private final Consumer<GameEnvironment> shopScreenLauncher; // launch shop screen
-    private final Consumer<GameEnvironment> inventoryScreenLauncher; //launch inventory screen
+    /**
+     * Initializes an array list for default towers.
+     */
+    private final List<Tower> defaultTowers = new ArrayList<>();
+    /**
+     * Initializes an array list for default items
+     */
+    private final List<Item> defaultItems = new ArrayList<>();
+    /**
+     * Launch the name selection screen.
+     */
+    private final Consumer<GameEnvironment> setupScreenLauncher1;
+    /**
+     * Launch the number of round and difficulty selection screen.
+     */
+    private final Consumer<GameEnvironment> setupScreenLauncher2;
+    /**
+     * Launch the tower selection screen.
+     */
+    private final Consumer<GameEnvironment> setupScreenLauncher3;
+    /**
+     * Launch the main screen
+     */
+    private final Consumer<GameEnvironment> mainScreenLauncher;
+    /**
+     * Launch shop screen.
+     */
+    private final Consumer<GameEnvironment> shopScreenLauncher;
+    /**
+     * Launch inventory screen.
+     */
+    private final Consumer<GameEnvironment> inventoryScreenLauncher;
+    /**
+     * Launch the end screen.
+     */
     private final Consumer<GameEnvironment> endScreenLauncher;
-    private final Runnable clearScreen; // clear the screen
-
+    /**
+     * Clears the screen.
+     */
+    private final Runnable clearScreen;
     /**
      * Constructor for Game Environment class.
      * Initializes the setup screens launcher, main screen launcher, and clear screen functionality.
@@ -89,39 +152,84 @@ public class GameEnvironment {
     public void setPlayerName(String name){
         this.playerName = name;
     }
+
+    /**
+     * Gets the player gold.
+     * @return An int having the value of player gold.
+     */
     public int getPlayerGold(){
         return playerGold;
     }
+
+    /**
+     * Sets the player gold.
+     * @param playerGold An int having the new value of player gold.
+     */
     public void setPlayerGold(int playerGold){
         this.playerGold = playerGold;
     }
+
+    /**
+     * Gets the player points.
+     * @return An int with the value of player points.
+     */
     public int getPlayerPoints(){
         return playerPoints;
     }
+
+    /**
+     * Add player gold.
+     * @param gold An int representing the value to be added on the player gold.
+     */
     public void addPlayerGold(int gold){
         playerGold += gold;
         goldGained += gold;
     }
+
+    /**
+     * Add player points.
+     * @param points An int representing the value to be added on the player points.
+     */
     public void addPlayerPoints(int points){
         playerPoints += points;
         pointsGained += points;
     }
+
+    /**
+     * Gets the gold gained by player.
+     * @return An int with value of player's gold gained.
+     */
     public int getGoldGained(){
         return goldGained;
     }
+
+    /**
+     * Gets the points gained by the player.
+     * @return An int with value of player's points gained.
+     */
     public int getPointsGained(){
         return pointsGained;
     }
 
-    public void setPlayerPoints(int playerPoints){
-        this.playerPoints = playerPoints;
-    }
+    /**
+     * Gets the current round.
+     * @return An int with value of current round.
+     */
     public int getCurrentRound(){
         return currentRound;
     }
+
+    /**
+     * Gets the number of completed rounds.
+     * @return An int with value of completed rounds.
+     */
     public int getCompletedRounds(){
         return completedRounds;
     }
+
+    /**
+     * Increment the current round.
+     */
     public void incrementCurrentRound(){
         currentRound++;
     }
@@ -132,9 +240,18 @@ public class GameEnvironment {
     public void setNumberOfRounds(int numberOfRounds){
         this.numberOfRounds = numberOfRounds;
     }
+
+    /**
+     * Increment the number of completed rounds.
+     */
     public void incrementCompletedRounds(){
         completedRounds++;
     }
+
+    /**
+     * Gets the number of rounds.
+     * @return An int with value of number of rounds.
+     */
     public int getNumberOfRounds(){
         return numberOfRounds;
     }
@@ -145,6 +262,11 @@ public class GameEnvironment {
     public void setRoundDifficulty(String roundDifficulty){
         this.roundDifficulty = roundDifficulty;
     }
+
+    /**
+     * Gets the round difficulty.
+     * @return A string representing the round difficulty.
+     */
     public String getRoundDifficulty(){
         return roundDifficulty;
     }
@@ -172,16 +294,33 @@ public class GameEnvironment {
         return defaultTowers;
     }
 
+    /**
+     * Gets the list of default items.
+     * @return List of default items.
+     */
     public List<Item> getDefaultItems() {
         return defaultItems;
     }
+
+    /**
+     * Sets the result of the game.
+     * @param flag Boolean representing the result of the game.
+     */
     public void setVictoryFlag(boolean flag){
         this.victoryFlag = flag;
     }
+
+    /**
+     * Gets the result of the game.
+     * @return A boolean representing the result of the game.
+     */
     public boolean getVictoryFlag(){
         return victoryFlag;
     }
 
+    /**
+     * Load default towers.
+     */
     private void loadDefaultTowers() {
         defaultTowers.add(new Tower("Eye Tower", "eye", loadImage("images/eye_tower.png")
         , "Fill carts with eyes!"));
@@ -194,6 +333,10 @@ public class GameEnvironment {
         defaultTowers.add(new Tower("Kidney Tower", "kidney", loadImage("images/kidney_tower.png"),
                 "Fill carts with kidneys!"));
     }
+
+    /**
+     * Load default items.
+     */
     private void loadDefaultItems() {
         defaultItems.add(new Item("Upgrade Item", 50, loadImage("images/upgrade_item.png"),
                 "Upgrades resource capacity"));
@@ -203,6 +346,11 @@ public class GameEnvironment {
                 "Up your gold gain!"));
     }
 
+    /**
+     * Load images of tower.
+     * @param path String representing the path of the image.
+     * @return The image of tower.
+     */
     private Image loadImage(String path) {
         return new Image(getClass().getResourceAsStream("/" + path));
     }
@@ -246,10 +394,18 @@ public class GameEnvironment {
         mainScreenLauncher.accept(this);
     }
 
+    /**
+     * Launch the shop screen.
+     */
+
     public void launchShopScreen(){
         clearScreen.run();
         shopScreenLauncher.accept(this);
     }
+
+    /**
+     * Launch the end screen.
+     */
     public void launchEndScreen(){
         clearScreen.run();
         endScreenLauncher.accept(this);
@@ -272,7 +428,6 @@ public class GameEnvironment {
 
     /**
      * Retrieves the instance of the InventoryService.
-     *
      * @return the instance of the InventoryService
      */
     public InventoryService getInventoryService() {

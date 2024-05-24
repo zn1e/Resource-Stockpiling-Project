@@ -3,9 +3,7 @@ package seng201.team0.services;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import seng201.team0.GameEnvironment;
 
 public class NameSelectionService {

@@ -8,9 +8,21 @@ import javafx.scene.image.Image;
  */
 
 public class Item {
+    /**
+     * String item name.
+     */
     protected String itemName;
+    /**
+     * Int item cost.
+     */
     protected int itemCost;
+    /**
+     * Image of an item.
+     */
     protected Image image;
+    /**
+     * String for item description.
+     */
     protected String itemDescription;
 
     /**
@@ -33,23 +45,49 @@ public class Item {
         this.itemDescription = itemDescription;
 
     }
+
+    /**
+     * Gets the image.
+     * @return image of the item.
+     */
     public Image getImage(){
         return image;
     }
+
+    /**
+     * Gets the item cost.
+     * @return An int representing the value of an item.
+     */
     public int getItemCost(){
         return itemCost;}
 
+    /**
+     * Gets the item name.
+     * @return String of the item name.
+     */
     public String getName(){
         return itemName;
     }
 
+    /**
+     * Gets the text representation of the string of item.
+     * @return String name of the item.
+     */
     public String toString(){
-
         return itemName;
     }
+
+    /**
+     * Get the sell price.
+     * @return An int representing the sell price.
+     */
     public int getSellPrice(){
         return itemCost- 5;}
 
+    /**
+     * Gets the item description.
+     * @return String describing the item.
+     */
     public String getDescription(){
         return itemDescription;
     }

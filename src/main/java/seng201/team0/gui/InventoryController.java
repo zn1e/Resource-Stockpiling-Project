@@ -32,23 +32,49 @@ public class InventoryController {
     private Tower selectedResTower;
     /** The currently selected main tower */
     private Tower selectedMainTower;
-
+    /**
+     * Buttons for main towers.
+     */
     @FXML
     private Button main1Button, main2Button, main3Button, main4Button, main5Button;
+    /**
+     * Buttons for reserve towers.
+     */
     @FXML
     private Button res1Button, res2Button, res3Button, res4Button, res5Button;
+    /**
+     * Buttons for items.
+     */
     @FXML
     private Button item1Button, item2Button, item3Button, item4Button, item5Button;
+    /**
+     * Button for using an item.
+     */
     @FXML
     private Button useButton;
+    /**
+     * Label for gold.
+     */
     @FXML
     private Label goldLabel;
+    /**
+     * Button for going back to main screen.
+     */
     @FXML
     private Button backButton;
+    /**
+     * Text for item description.
+     */
     @FXML
     private Text itemText;
+    /**
+     * Text for tower description.
+     */
     @FXML
     private Text towerText;
+    /**
+     * Text for having at least one main tower.
+     */
     @FXML
     private Text backText;
 
@@ -81,7 +107,6 @@ public class InventoryController {
     /**
      * Handles the click event for a main tower button.
      * Swaps towers if a reserve tower is selected, otherwise sets the selected main tower.
-     *
      * @param selectedTower The selected main tower.
      */
     private void handleMainTowerButtonClick(Tower selectedTower) {
@@ -184,7 +209,6 @@ public class InventoryController {
      * Checks if the main tower list is empty.
      * @return true if the main tower list is empty, false otherwise.
      */
-
     private boolean isMainTowerListEmpty(){
         if (towerService.getMainTowers().size() >= 1){
             return false;

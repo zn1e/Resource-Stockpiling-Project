@@ -3,9 +3,8 @@ package seng201.team0.services;
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.Item;
 import seng201.team0.models.Tower;
-
 import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  * The InventoryService class manages the inventory of items and towers in the game.
@@ -17,18 +16,23 @@ public class InventoryService {
     /** The maximum size of the tower inventory. */
     private static final int TOWER_INVENTORY_SIZE = 5;
     /** The list of items in the inventory. */
-
     private ArrayList<Item> itemInventory;
     /** The list of reserve towers in the inventory. */
     private ArrayList<Tower> reserveTower;
-    private Item item;
-    private TowerService towerService;
+    /**
+     * The game environment instance.
+     */
     private GameEnvironment gameEnvironment;
+    /**
+     * Boolean if a gold item is used.
+     */
     private boolean goldItemUsed = false;
+    /**
+     * Boolean if a points item is used.
+     */
     private boolean pointsItemUsed = false;
     /**
      * Constructs an InventoryService object with the specified game environment.
-     *
      * @param gameEnvironment the game environment
      */
 
@@ -41,7 +45,6 @@ public class InventoryService {
 
     /**
      * Adds a tower to the reserve tower inventory.
-     *
      * @param tower the tower to add
      */
     public void addReserveTower(Tower tower){
@@ -58,7 +61,6 @@ public class InventoryService {
         }
     /**
      * Adds an item to the item inventory.
-     *
      * @param item the item to add
      */
     public void addItem(Item item){
@@ -75,7 +77,6 @@ public class InventoryService {
     }
     /**
      * Checks if the item inventory is not full.
-     *
      * @return true if the item inventory is not full, false otherwise
      */
     public boolean isItemInvNotFull(){
@@ -89,7 +90,6 @@ public class InventoryService {
     }
     /**
      * Checks if the reserve tower inventory is not full.
-     *
      * @return true if the reserve tower inventory is not full, false otherwise
      */
     public boolean isReserveTowerInvNotFull(){
@@ -102,7 +102,6 @@ public class InventoryService {
     }
     /**
      * Retrieves a tower from the reserve tower inventory at the specified index.
-     *
      * @param index the index of the tower to retrieve
      * @return the tower at the specified index, or null if not found
      */
@@ -121,7 +120,6 @@ public class InventoryService {
     }
     /**
      * Retrieves an item from the item inventory at the specified index.
-     *
      * @param index the index of the item to retrieve
      * @return the item at the specified index, or null if not found
      */
@@ -136,6 +134,10 @@ public class InventoryService {
         }
     }
 
+    /**
+     * Removes the reserve tower from the inventory.
+     * @param tower Tower to be removed.
+     */
     public void removeReserveTower(Tower tower){
         reserveTower.remove(tower);
         System.out.println(tower + "removed" +"Reserve Towers: "+ reserveTower);
@@ -143,7 +145,6 @@ public class InventoryService {
     }
     /**
      * Removes an item from the item inventory.
-     *
      * @param item the item to remove
      */
     public void removeItem(Item item){
@@ -151,6 +152,11 @@ public class InventoryService {
         System.out.println(item+ " removed, Items: "+ itemInventory);
     }
 
+    /**
+     * Swap the position of main tower to the position of reserve tower & vice versa.
+     * @param mainTower The main tower to swap.
+     * @param reserveTower The reserve tower to swap with.
+     */
     public void swapTower(Tower mainTower, Tower reserveTower){
         if (mainTower == null && reserveTower !=null){
             gameEnvironment.getTowerList().add(reserveTower);
@@ -170,7 +176,6 @@ public class InventoryService {
     }
     /**
      * Uses an item based on its type.
-     *
      * @param item  the item to use
      * @param tower the tower to use the item on, can be null if the item doesn't affect a tower
      */
@@ -202,16 +207,35 @@ public class InventoryService {
                 break;
         }
     }
+
+    /**
+     * Sets the boolean if a gold item is used.
+     * @param used Boolean that determines if a gold item is used.
+     */
     public void setGoldItemUsed(boolean used){
         goldItemUsed = used;
     }
+
+    /**
+     * Sets the boolean if a point item is used.
+     * @param used Boolean that determines if a points item is used.
+     */
     public void setPointsItemUsed(boolean used){
         pointsItemUsed = used;
     }
+
+    /**
+     * Gets the boolean if gold item is used.
+     * @return Boolean describing if gold item is used.
+     */
     public boolean isGoldItemUsed(){
         return goldItemUsed;
-
     }
+
+    /**
+     * Gets the boolean if point item is used.
+     * @return Boolean describing if point item is used.
+     */
     public boolean isPointsItemUsed(){
         return pointsItemUsed;
     }

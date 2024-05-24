@@ -29,29 +29,64 @@ public class ShopController {
     private Item selectedItem;
     /** The currently selected Tower*/
     private Tower selectedTower;
-
+    /**
+     * Button for going back to main screen.
+     */
     @FXML
     private Button backButton;
+    /**
+     * Button for buying.
+     */
     @FXML
     private Button buyButton;
+    /**
+     * Buttons for towers.
+     */
     @FXML
     private Button tower1Button, tower2Button, tower3Button, tower4Button, tower5Button;
+    /**
+     * Buttons for items.
+     */
     @FXML
     private Button item1Button, item2Button, item3Button;
+    /**
+     * Label for gold.
+     */
     @FXML
-    Label goldLabel;
+    private Label goldLabel;
+    /**
+     * ImageView for displaying object image.
+     */
     @FXML
     private ImageView shopImage;
+    /**
+     * Text for description of selected object.
+     */
     @FXML
     private Text descriptionLabel;
+    /**
+     * Text for shop.
+     */
     @FXML
     private Text shopText;
+    /**
+     * Buttons for reserve towers.
+     */
     @FXML
     private Button res1Button, res2Button, res3Button, res4Button, res5Button;
+    /**
+     * Buttons for items in inventory.
+     */
     @FXML
     private Button item1InvButton, item2InvButton, item3InvButton, item4InvButton, item5InvButton;
+    /**
+     * Button for selling.
+     */
     @FXML
     private Button sellButton;
+    /**
+     * Label for tower description.
+     */
     @FXML
     private Label towerDescriptionLabel;
 
@@ -107,7 +142,6 @@ public class ShopController {
 
     /**
      * Updates the styles of the buttons based on the selected item or tower.
-     *
      * @param buttons The buttons to update the styles for.
      */
     private void updateButtonStyles(Button... buttons) {
@@ -124,7 +158,6 @@ public class ShopController {
 
     /**
      * Gets the button associated with a given tower.
-     *
      * @param tower The tower to get the button for.
      * @return The button associated with the tower.
      */
@@ -135,7 +168,6 @@ public class ShopController {
 
     /**
      * Gets the button associated with a given item.
-     *
      * @param item The item to get the button for.
      * @return The button associated with the item.
      */
@@ -173,7 +205,6 @@ public class ShopController {
 
     /**
      * Handles the click event for an item button.
-     *
      * @param index The index of the selected item.
      */
     private void handleItemButtonClick(int index) {
