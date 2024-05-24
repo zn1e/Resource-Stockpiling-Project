@@ -4,6 +4,7 @@ import seng201.team0.GameEnvironment;
 import seng201.team0.models.Item;
 import seng201.team0.models.Tower;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -151,7 +152,24 @@ public class InventoryService {
         itemInventory.remove(item);
         System.out.println(item+ " removed, Items: "+ itemInventory);
     }
+    /**
+     * Retrieves the item inventory.
+     *
+     * @return the item inventory
+     */
+    public List getItemInventory(){
+        return itemInventory;
+    }
+    /**
+     * Retrieves the reserve tower inventory.
+     *
+     * @return the reserve tower inventory
+     */
 
+
+    public List getTowerInventory(){
+        return reserveTower;
+    }
     /**
      * Swap the position of main tower to the position of reserve tower & vice versa.
      * @param mainTower The main tower to swap.

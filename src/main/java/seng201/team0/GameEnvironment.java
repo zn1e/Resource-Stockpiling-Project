@@ -351,7 +351,7 @@ public class GameEnvironment {
      * @param path String representing the path of the image.
      * @return The image of tower.
      */
-    private Image loadImage(String path) {
+    public Image loadImage(String path) {
         return new Image(getClass().getResourceAsStream("/" + path));
     }
     /**
