@@ -50,7 +50,6 @@ public class TowerSelection {
 
     /**
      * Constructor for the TowerSelection with the specified game environment instance.
-     *
      * @param gameEnvironment The game environment instance to associate with this class.
      */
     public TowerSelection(GameEnvironment gameEnvironment) {

@@ -43,7 +43,6 @@ public class Tower {
 
     /**
      * Constructor for Tower.
-     *
      * @param name             A String describing the name of tower
      * @param resourceType     A String describing the resource type of tower
      * @param towerDescription A string describing the tower's description
@@ -62,7 +61,6 @@ public class Tower {
 
     /**
      * Method for getting the name of the tower.
-     *
      * @return A string representing the name of tower.
      */
     public String getName() {
@@ -71,7 +69,6 @@ public class Tower {
 
     /**
      * Sets the name of tower.
-     *
      * @param name A string representing the new name of tower.
      */
     public void setName(String name) {
@@ -80,7 +77,6 @@ public class Tower {
 
     /**
      * Method for getting the amount of resources of tower.
-     *
      * @return An int representing the resource amount of tower.
      */
     public int getResourceAmount() {
@@ -89,7 +85,6 @@ public class Tower {
 
     /**
      * Sets new resource amount of tower.
-     *
      * @param resourceAmount An int containing the value of resource amount of tower.
      */
     public void setResourceAmount(int resourceAmount) {
@@ -98,7 +93,6 @@ public class Tower {
 
     /**
      * Method for getting the amount of reload speed.
-     *
      * @return An int representing the reload speed of tower.
      */
     public int getReloadSpeed() {
@@ -107,20 +101,22 @@ public class Tower {
 
     /**
      * Method for getting the resource type of tower.
-     *
      * @return A string representing the resource type of tower.
      */
     public String getResourceType() {
         return resourceType;
     }
 
+    /**
+     * Get the tower level.
+     * @return An int describing the value of tower level.
+     */
     public int getLevel() {
         return level;
     }
 
     /**
      * Sets the resource type of the tower.
-     *
      * @param resourceType A String representing the new resource type of tower.
      */
 
@@ -128,10 +124,18 @@ public class Tower {
         this.resourceType = resourceType;
     }
 
+    /**
+     * Gets the image of tower.
+     * @return An image of the tower.
+     */
     public Image getImage() {
         return image;
     }
 
+    /**
+     * Gets the cost of tower.
+     * @return An int cost of the tower.
+     */
     public int getCost() {
         return cost;
     }
@@ -147,21 +151,24 @@ public class Tower {
 
     /**
      * Method for getting the sell price of the tower
-     *
      * @return the sell price of the tower
      */
     public int getSellPrice() {
         return cost - 5;
     }
 
+    /**
+     * Gets the tower description.
+     * @return String of the tower description.
+     */
     public String getTowerDescription() {
         return towerDescription;
     }
 
-    public void resourceUpgrade(int amount) {
-        resourceAmount += amount;
-    }
-
+    /**
+     * Gets the text representation of the string tower name.
+     * @return String in text representation of the tower name.
+     */
     public String toString() {
         return name;
     }

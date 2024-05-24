@@ -292,22 +292,25 @@ public class TrackService {
     public void triggerRandomEvents(GridPane trackGrid, Label[] alertLabels){
         List<Tower> towersToChange = new ArrayList<>();
         List<Tower> towersToRemove = new ArrayList<>();
-        for (Tower tower: towerService.getMainTowers()){
-            int statChangeChance = random.nextInt(100);
-            if (statChangeChance < 20){
-                towersToChange.add(tower);
+        if (!(gameEnvironment.getCurrentRound() == gameEnvironment.getNumberOfRounds())){
+            for (Tower tower: towerService.getMainTowers()){
+                int statChangeChance = random.nextInt(100);
+                if (statChangeChance < 20){
+                    towersToChange.add(tower);
+                }
+                int breakTowerChance = random.nextInt(100);
+                if (breakTowerChance < 30){
+                    towersToRemove.add(tower);
+                }
             }
-            int breakTowerChance = random.nextInt(100);
-            if (breakTowerChance < 35){
-                towersToRemove.add(tower);
+            for (Tower tower : towersToChange){
+                towerService.modifyTowerStat(tower, alertLabels[0]);
+            }
+            for (Tower tower : towersToRemove){
+                towerService.breakTower(tower, trackGrid, alertLabels[1]);
             }
         }
-        for (Tower tower : towersToChange){
-            towerService.modifyTowerStat(tower, alertLabels[0]);
-        }
-        for (Tower tower : towersToRemove){
-            towerService.breakTower(tower, trackGrid, alertLabels[1]);
-        }
+
     }
 
 }
