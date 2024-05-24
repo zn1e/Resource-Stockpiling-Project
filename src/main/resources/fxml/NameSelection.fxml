@@ -6,16 +6,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: /images/background.PNG;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.NameSelection">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f08b84;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.NameSelection">
    <children>
-      <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="78.0" layoutY="40.0" prefHeight="136.0" prefWidth="645.0" text="Welcome to ORGAN FACTORY!" textAlignment="CENTER">
+      <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="47.0" layoutY="64.0" prefHeight="130.0" prefWidth="723.0" text="WELCOME TO ORGAN FACTORY! " textAlignment="CENTER">
          <font>
-            <Font name="Creepster" size="60.0" />
+            <Font name="Dyuthi Regular" size="51.0" />
          </font>
       </Label>
-      <Label fx:id="enterNameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="307.0" layoutY="214.0" text="Enter Name:">
+      <Label fx:id="enterNameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="299.0" layoutY="233.0" text="Enter Name:">
          <font>
-            <Font name="Creepster" size="40.0" />
+            <Font name="Dyuthi Regular" size="40.0" />
          </font>
       </Label>
       <TextField fx:id="playerNameTextField" alignment="CENTER" layoutX="294.0" layoutY="299.0" prefHeight="35.0" prefWidth="212.0">
@@ -24,15 +24,15 @@
          </font></TextField>
       <Button fx:id="nextButton" layoutX="624.0" layoutY="520.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="76.0" text="Next">
          <font>
-            <Font name="Comic Sans MS" size="16.0" />
+            <Font name="Roboto Black" size="16.0" />
          </font></Button>
       <Button fx:id="verifyButton" layoutX="338.0" layoutY="381.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="124.0" text="Verify">
          <font>
-            <Font name="Comic Sans MS" size="16.0" />
+            <Font name="Roboto Black" size="16.0" />
          </font></Button>
-      <Label fx:id="formatLabel" layoutX="200.0" layoutY="345.0" text="Please enter 3-15 characters. Must not include special characters.">
+      <Label fx:id="formatLabel" layoutX="203.0" layoutY="350.0" text="Please enter 3-15 characters. Must not include special characters.">
          <font>
-            <Font name="Comic Sans MS" size="13.0" />
+            <Font name="Roboto Bold" size="14.0" />
          </font>
       </Label>
    </children>

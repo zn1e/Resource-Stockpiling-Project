@@ -5,46 +5,46 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.EndScreen">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f08b84;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.EndScreen">
    <children>
       <Label fx:id="resultLabel" alignment="CENTER" layoutX="184.0" layoutY="63.0" prefHeight="77.0" prefWidth="433.0" text="VICTORY!">
          <font>
-            <Font name="Creepster" size="96.0" />
+            <Font name="Dyuthi Regular" size="96.0" />
          </font>
       </Label>
       <Label fx:id="playerNameLabel" contentDisplay="CENTER" layoutX="271.0" layoutY="273.0" prefHeight="27.0" prefWidth="260.0" text="Player Name: ">
          <font>
-            <Font name="Comic Sans MS" size="19.0" />
+            <Font name="Roboto Black" size="19.0" />
          </font>
       </Label>
       <Label fx:id="statsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="210.0" text="STATS:">
          <font>
-            <Font name="Comic Sans MS Bold" size="29.0" />
+            <Font name="Roboto Black" size="29.0" />
          </font>
       </Label>
       <Label fx:id="roundsLabel" contentDisplay="CENTER" layoutX="271.0" layoutY="321.0" prefHeight="27.0" prefWidth="260.0" text="# of rounds:">
          <font>
-            <Font name="Comic Sans MS" size="19.0" />
+            <Font name="Roboto Black" size="19.0" />
          </font>
       </Label>
       <Label fx:id="completedRoundsLabel" contentDisplay="CENTER" layoutX="270.0" layoutY="366.0" prefHeight="27.0" prefWidth="260.0" text="# of rounds completed:">
          <font>
-            <Font name="Comic Sans MS" size="19.0" />
+            <Font name="Roboto Black" size="19.0" />
          </font>
       </Label>
       <Label fx:id="goldGainedLabel" contentDisplay="CENTER" layoutX="270.0" layoutY="411.0" prefHeight="27.0" prefWidth="260.0" text="Gold gained:">
          <font>
-            <Font name="Comic Sans MS" size="19.0" />
+            <Font name="Roboto Black" size="19.0" />
          </font>
       </Label>
       <Label fx:id="pointsGainedLabel" contentDisplay="CENTER" layoutX="270.0" layoutY="455.0" prefHeight="27.0" prefWidth="260.0" text="Points gained:">
          <font>
-            <Font name="Comic Sans MS" size="19.0" />
+            <Font name="Roboto Black" size="19.0" />
          </font>
       </Label>
-      <Button fx:id="quitButton" layoutX="361.0" layoutY="503.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="79.0" text="QUIT">
+      <Button fx:id="quitButton" layoutX="355.0" layoutY="507.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="79.0" text="QUIT">
          <font>
-            <Font name="Comic Sans MS" size="17.0" />
+            <Font name="Roboto Black" size="19.0" />
          </font>
       </Button>
    </children>

@@ -1,10 +1,10 @@
 @font-face {
-    font: 'Creepster';
+    font-family: 'Creepster';
     src: url('/fonts/Creepster.ttf')
 }
 
 @font-face {
-    font: 'Comic Sans MS';
+    font-family: 'Comic Sans MS';
     src: url('/fonts/comic.ttf')
 }
 
