@@ -155,9 +155,13 @@ public class TowerService {
      */
     public void modifyTowerStat(Tower tower, Label alertLabel1){
         int resourceAmount = tower.getResourceAmount();
-        int statChange = random.nextInt(resourceAmount - 250) + 250;
-        tower.setResourceAmount(resourceAmount - statChange);
-        alertLabel1.setText("Alert 1: Tower stat changed.");
+        int statChange = random.nextInt(250);
+        if (statChange < resourceAmount){
+            tower.setResourceAmount(resourceAmount - statChange);
+            alertLabel1.setText("Alert 1: Tower stat changed.");
+        }else{
+            System.out.println("No change, you're lucky!");
+        }
     }
 
     /**
