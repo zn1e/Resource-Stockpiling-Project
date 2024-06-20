@@ -18,8 +18,8 @@ Open the terminal window where the project directory is located and run the comm
 3. Click `Clone` and wait for the cloning process to finish. 
 <br> **Note:** *It will ask for the Eng-Git credentials if you haven't put it into IntelliJ*
 ### Cloning using command line
-- If you prefer using the command line, open the terminal of the folder you want the repository to be downloaded to and <br>
-run the command `git clone https://eng-git.canterbury.ac.nz/seng201-2024/team-75`. You will then have to open <br>
+- If you prefer using the command line, open the terminal of the folder you want the repository to be downloaded to and 
+run the command `git clone https://eng-git.canterbury.ac.nz/seng201-2024/team-75`. You will then have to open 
 this folder in IntelliJ.
 
 The above instructions are based from SENG201 - Tutorial 1 Lab.
