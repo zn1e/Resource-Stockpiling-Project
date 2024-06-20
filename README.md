@@ -1,4 +1,4 @@
-# SENG201 24S1 Group 75 Project
+# SENG201 24S1 Group 75 Project (Grade: A)
 
 ## Authors
 - Moises Allen Montalbo
